@@ -14,7 +14,6 @@ module Control(
 
 //input output
 	input[5:0] inst;
-	output PCSrc;
 	output IF_Flush;
 	output RegWrite;
 	output ALURsc;
