@@ -1,30 +1,39 @@
 module Control(
 	inst,
+	funct,
+	eq,
 	PCSrc,
 	IF_Flush,
 	RegWrite,
 	ALURsc,
 	ALUOp,
 	RegDst,
-	Branch,
 	MemWrite,
 	MemRead,
 	MemtoReg
+	Jump,
+	JunpR,
+	raWrite
 );
 
 //input output
-	input[5:0] inst;
-	output IF_Flush;
+	input[5:0] inst;//instruction[31:26]
+	input[5:0] funct;//instruction[5:0]
+	input eq;//branch detection
+	output PCSrc
+	output IF_Flush;//flush reg IF/ID
 	output RegWrite;
 	output ALURsc;
 	output[1:0] ALUOp;
 	output RegDst;
-	output Branch;
 	output MemWrite;
 	output MemRead;
 	output MemtoReg;
+	output Jump;
+	output JumpR;
+	output raWrite;
 //reg & wire
-	reg[10:0] ctrl;
+	reg[9:0] ctrl;
 //combinational
 	
 	assign PCSrc = ctrl[0];
@@ -33,14 +42,33 @@ module Control(
 	assign ALURsc = ctrl[3];
 	assign ALUop = ctrl[5:4];
 	assign RegDst = ctrl[6];
-	assign Branch = ctrl[7];
-	assign MemWrite = ctrl[8];
-	assign MemRead = ctrl[9];
-	assign MemtoReg = ctrl[10];
+	assign MemWrite = ctrl[7];
+	assign MemRead = ctrl[8];
+	assign MemtoReg = ctrl[9];
+	assign Jump = ctrl[10];
+	assign JumpR = ctrl[11];
+	assign raWrite = ctrl[12];
 
 	always@(*) begin
 		case(inst)
-			6'd0: ctrl = 0000;
+			6'h0: begin//R_type
+				case(funct)
+					6'h8: ctrl = 0010001100011;
+					6'h9: ctrl = 0110001100011;
+					default: ctrl = 0000001100100;
+				endcase
+			end
+			6'h4: begin
+				if(eq)
+					ctrl = 0000000011111;
+				else
+					ctrl = 0000000011100;//beq
+			end
+			6'h2: ctrl = 0000000000000;//j
+			6'h3: ctrl = 1000000000000;//jal
+			6'h23: ctrl = 0001100001100;//lw
+			6'h2b: ctrl = 0000010001000;//sw
+			default: ctrl = 0000000011100;//addi andi ori xori slti
 		endcase
 	end
 //no sequential
