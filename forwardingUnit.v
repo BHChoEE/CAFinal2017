@@ -1,4 +1,4 @@
-module HazardDetection(
+module Forwarding(
     IDEX_RegRt,
     IDEX_RegRs,
     EXMEM_RegRd,
