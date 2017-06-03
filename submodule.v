@@ -154,3 +154,162 @@ module register(
     end
         
 endmodule
+
+
+//==========================================================//
+//                    FF between stages                     //
+//==========================================================//
+module IF_ID_reg(
+    clk,
+    rst,
+    PC_4,
+    inst,
+    next_PC_4,
+    next_inst
+);
+    //========= in/ out declaration =============
+    input             clk;
+    input             rst;
+    input   [31:0]    PC_4;
+    input   [31:0]    inst;
+    output  [31:0]    next_PC_4;
+    output  [31:0]    next_inst;
+
+    //========= wire/reg declaration ============
+    reg     [31:0]    PC_4_reg;
+    reg     [31:0]    inst_reg;
+
+    //========= combinational part ==============
+    assign next_PC_4 = PC_4_reg;
+    assign next_inst = inst_reg;
+
+    //========= sequential part =================
+    always@(posedge clk or negedge rst) begin
+        if(rst == 1'b1) begin
+            PC_4_reg <= 32'b0;
+            inst <= 32'b0;
+        end
+        else begin
+            PC_4_reg <= PC_4;
+            inst_reg <= inst;
+        end
+    end
+endmodule
+
+module ID_EX_reg(
+    clk,
+    rst,
+    readreg1,
+    readreg2,
+    sign_ext,
+    next_readreg1,
+    next_readreg2,
+    next_sign_ext
+);
+    //============== in / out declaration =======
+    input               clk;
+    input               rst;
+    input   [31:0]      readreg1;
+    input   [31:0]      readreg2;
+    input   [31:0]      sign_ext;
+    output  [31:0]      next_readreg1;
+    output  [31:0]      next_readreg2;
+    output  [31:0]      next_sign_ext;
+    
+    //=========== reg / wire declaration =========
+    reg     [31:0]      readreg1_reg;
+    reg     [31:0]      readreg2_reg;
+    reg     [31:0]      sign_ext_reg;
+
+    //=========== combinational part =============
+    assign next_readreg1 = readreg1_reg;
+    assign next_readreg2 = readreg2_reg;
+    assign next_sign_ext = sign_ext_reg;
+
+    //=========== sequential part ================
+    always@(posedge rst or negedge clk) begin
+        if(rst == 1'b1)begin
+            readreg1_reg <= 32'b0;
+            readreg2_reg <= 32'b0;
+            sign_ext_reg <= 32'b0;
+        end
+        else begin
+            readreg1_reg <= readreg1;
+            readreg2_reg <= readreg2;
+            sign_ext_reg <= sign_ext;
+    end
+endmodule
+
+module EX_MEM_reg(
+    clk,
+    rst,
+    ALUresult,
+    readreg2,
+    next_ALUresult,
+    next_readreg2
+);
+    //============ in / out declaration =========
+    input               clk;
+    input               rst;
+    input   [31:0]      ALUreslut;
+    input   [31:0]      readreg2;
+    output  [31:0]      next_ALUresult;
+    output  [31:0]      next_readreg2;
+
+    //========= reg / wire declaration ==========
+    reg     [31:0]      ALUresult_reg;
+    reg     [31:0]      readreg2_reg;
+
+    //============ combinational part ===========
+    assign next_ALUresult = ALUresult_reg;
+    assign next_readreg2 = readreg2_reg;
+
+    //============ sequential part ==============
+    always@(posedge clk or negedge rst) begin
+        if(rst == 1'b1) begin
+            ALUresult_reg <= 32'b0;
+            readreg2_reg <= 32'b0;
+        end
+        else begin
+            ALUresult_reg <= ALUresult;
+            readreg2_reg <= readreg2;
+        end
+    end
+endmodule
+
+module MEM_WB_reg(
+    clk,
+    rst,
+    readdata,
+    ALUreslut,
+    next_readdata,
+    next_ALUresult
+);
+    //============ in / out declaration ===========
+    input               clk;
+    input               rst;
+    input   [31:0]      readdata;
+    input   [31:0]      ALUresult;
+    output  [31:0]      next_readdata;
+    output  [31:0]      next_ALUresult;
+
+    //========== reg / wire declaration ===========
+    reg     [31:0]      readdata_reg;
+    reg     [31:0]      ALUresult_reg;
+
+    //============ combinational part =============
+    assign next_readdata = readdata;
+    assign next_readreg2 = readreg2;
+
+    //============ sequential part ================
+    always@(negedge rst or posedge clk) begin
+        if(rst == 1'b1) begin
+            readdata_reg <= 32'b0;
+            ALUresult_reg <= 32'b0;
+        end
+        else begin
+            readdata_reg <= readdata;
+            ALUresult_reg <= ALUresult;
+        end
+    end
+endmodule
