@@ -42,7 +42,8 @@ module Top(
 	reg[4:0] RegRd_memwb_r,RegRd_memwb_w;
 //combinational
 	//submodule
-	
+	Control zctrl(.inst(),.funct(),.eq(),.PCSrc(),.IF_Flush(),.RegWrite(),.ALURsc(),.ALUOp(),.RegDst(),.MemWrite(),.MemRead(),.MemtoReg(),.Jump(),.JunpR(),.raWrite());	
+	HazardDetection zhd(.IDEX_MemRead(),.IDEX_RegRt(),.IFID_RegRt(),.IFID_RegRs(),.PCWrite(),.IFIDWrite(),.stall());
 	//
 //sequential
 	always@(*) begin
