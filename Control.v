@@ -20,7 +20,7 @@ module Control(
 	input[5:0] inst;//instruction[31:26]
 	input[5:0] funct;//instruction[5:0]
 	input eq;//branch detection
-	output PCSrc
+	output PCSrc;
 	output IF_Flush;//flush reg IF/ID
 	output RegWrite;
 	output ALURsc;
