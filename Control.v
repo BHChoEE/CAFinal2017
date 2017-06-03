@@ -53,22 +53,23 @@ module Control(
 		case(inst)
 			6'h0: begin//R_type
 				case(funct)
-					6'h8: ctrl = 0010001100011;
-					6'h9: ctrl = 0110001100011;
-					default: ctrl = 0000001100100;
+					6'h8: ctrl = 13'b0110001100011;
+					6'h9: ctrl = 13'b0110001100111;
+					6'h0: ctrl = 13'b0000000000000;
+					default: ctrl = 13'b0000001100100;
 				endcase
 			end
 			6'h4: begin
 				if(eq)
-					ctrl = 0000000011111;
+					ctrl = 13'b0000000011111;
 				else
-					ctrl = 0000000011100;//beq
+					ctrl = 13'b0000000011100;//beq
 			end
-			6'h2: ctrl = 0000000000000;//j
-			6'h3: ctrl = 1000000000000;//jal
-			6'h23: ctrl = 0001100001100;//lw
-			6'h2b: ctrl = 0000010001000;//sw
-			default: ctrl = 0000000011100;//addi andi ori xori slti
+			6'h2: ctrl = 13'b0000000000000;//j
+			6'h3: ctrl = 13'b1000000000000;//jal
+			6'h23: ctrl = 13'b0001100001100;//lw
+			6'h2b: ctrl = 13'b0000010001000;//sw
+			default: ctrl = 13'b0000000011100;//addi andi ori xori slti
 		endcase
 	end
 //no sequential
