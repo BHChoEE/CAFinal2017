@@ -202,9 +202,13 @@ module ID_EX_reg(
     readreg1,
     readreg2,
     sign_ext,
+    inst20_16,
+    inst15_11,
     next_readreg1,
     next_readreg2,
-    next_sign_ext
+    next_sign_ext,
+    next_inst20_16,
+    next_inst15_11
 );
     //============== in / out declaration =======
     input               clk;
@@ -212,19 +216,27 @@ module ID_EX_reg(
     input   [31:0]      readreg1;
     input   [31:0]      readreg2;
     input   [31:0]      sign_ext;
+    input   [4:0]       inst20_16;
+    input   [4:0]       inst15_11;
     output  [31:0]      next_readreg1;
     output  [31:0]      next_readreg2;
     output  [31:0]      next_sign_ext;
-    
+    output  [4:0]       next_inst20_16;
+    output  [4:0]       next_inst15_11;
+
     //=========== reg / wire declaration =========
     reg     [31:0]      readreg1_reg;
     reg     [31:0]      readreg2_reg;
     reg     [31:0]      sign_ext_reg;
+    reg     [4:0]       inst20_16_reg;
+    reg     [4:0]       inst15_11_reg;
 
     //=========== combinational part =============
     assign next_readreg1 = readreg1_reg;
     assign next_readreg2 = readreg2_reg;
     assign next_sign_ext = sign_ext_reg;
+    assign next_inst20_16 = inst20_16_reg;
+    assign next_inst15_11 = inst15_11_reg;
 
     //=========== sequential part ================
     always@(posedge rst or negedge clk) begin
@@ -232,11 +244,15 @@ module ID_EX_reg(
             readreg1_reg <= 32'b0;
             readreg2_reg <= 32'b0;
             sign_ext_reg <= 32'b0;
+            inst20_16_reg <= 5'b0;
+            inst15_11_reg <= 5'b0;
         end
         else begin
             readreg1_reg <= readreg1;
             readreg2_reg <= readreg2;
             sign_ext_reg <= sign_ext;
+            inst15_11_reg <= inst15_11;
+            inst20_16_reg <= inst20_16;
     end
 endmodule
 
@@ -245,34 +261,58 @@ module EX_MEM_reg(
     rst,
     ALUresult,
     readreg2,
+    addresult,
+    zero,
+    instDst,
     next_ALUresult,
-    next_readreg2
+    next_readreg2,
+    next_addresult,
+    next_zero,
+    next_instDst
 );
     //============ in / out declaration =========
     input               clk;
     input               rst;
     input   [31:0]      ALUreslut;
     input   [31:0]      readreg2;
+    input   [31:0]      addresult;
+    input               zero;
+    input   [4:0]       instDst;
     output  [31:0]      next_ALUresult;
     output  [31:0]      next_readreg2;
+    output  [31:0]      next_addresult;
+    output              next_zero;
+    output  [4:0]       next_instDst;
 
     //========= reg / wire declaration ==========
     reg     [31:0]      ALUresult_reg;
     reg     [31:0]      readreg2_reg;
+    reg     [31:0]      addresult_reg;
+    reg                 zero_reg;
+    reg     [5:0]       instDst_reg;
 
     //============ combinational part ===========
     assign next_ALUresult = ALUresult_reg;
     assign next_readreg2 = readreg2_reg;
+    assign next_addresult = addresult_reg;
+    assign next_zero = zero_reg;
+    assign next_instDst = instDst_reg;
 
     //============ sequential part ==============
     always@(posedge clk or negedge rst) begin
         if(rst == 1'b1) begin
             ALUresult_reg <= 32'b0;
             readreg2_reg <= 32'b0;
+            addresult_reg <= 32'b0;
+            zero_reg <= 1'b0;
+            instDst_reg <= 5'b0;
         end
         else begin
             ALUresult_reg <= ALUresult;
             readreg2_reg <= readreg2;
+            addresult_reg <= addresult;
+            zero_reg <= zero;
+            instDst_reg <= instDst;
         end
     end
 endmodule
@@ -282,16 +322,20 @@ module MEM_WB_reg(
     rst,
     readdata,
     ALUreslut,
+    instDst,
     next_readdata,
-    next_ALUresult
+    next_ALUresult,
+    next_instDst
 );
     //============ in / out declaration ===========
     input               clk;
     input               rst;
     input   [31:0]      readdata;
     input   [31:0]      ALUresult;
+    input   [4:0]       instDst;
     output  [31:0]      next_readdata;
     output  [31:0]      next_ALUresult;
+    output  [4:0]       next_instDst;
 
     //========== reg / wire declaration ===========
     reg     [31:0]      readdata_reg;
@@ -306,10 +350,12 @@ module MEM_WB_reg(
         if(rst == 1'b1) begin
             readdata_reg <= 32'b0;
             ALUresult_reg <= 32'b0;
+            instDst_reg <= 5'b0;
         end
         else begin
             readdata_reg <= readdata;
             ALUresult_reg <= ALUresult;
+            instDst_reg <= instDst;
         end
     end
 endmodule
