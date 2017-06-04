@@ -72,7 +72,7 @@ module aluCtrl(
                 ctrl <= 4'b1111;
         end
         //if the inst. is I-type
-        else if(ALUOp == 2'b11) begin
+        else if(ALUOp == 2'b01) begin
             //LW (add)
             if(temp == 6'b100011)
                 ctrl <= 4'b0010;

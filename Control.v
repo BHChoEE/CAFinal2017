@@ -55,7 +55,6 @@ module Control(
 				case(funct)
 					6'h8: ctrl = 13'b0110001100011;
 					6'h9: ctrl = 13'b0110001100111;
-					6'h0: ctrl = 13'b0000000000000;
 					default: ctrl = 13'b0000001100100;
 				endcase
 			end
@@ -66,7 +65,7 @@ module Control(
 					ctrl = 13'b0000000011100;//beq
 			end
 			6'h2: ctrl = 13'b0000000000000;//j
-			6'h3: ctrl = 13'b1000000000000;//jal
+			6'h3: ctrl = 13'b1010000000100;//jal
 			6'h23: ctrl = 13'b0001100001100;//lw
 			6'h2b: ctrl = 13'b0000010001000;//sw
 			default: ctrl = 13'b0000000011100;//addi andi ori xori slti
