@@ -1,42 +1,56 @@
 module Top(
 	clk,
-	rst,
-	PC,
-	instruction,
-	mem_addr,
-	mem_read,
-	mem_write,
-	mem_ready
-	mem_rdata,
-	mem_wdata
+	rst_n,
+	
+	ICACHE_ren,
+	ICACHE_wen,
+	ICACHE_addr,
+	ICACHE_wdata,
+	ICACHE_stall,
+	ICACHE_rdata,
+
+	DCACHE_ren,
+	DCACHE_wen,
+	DCACHE_addr,
+	DCACHE_wdata,
+	DCACHE_stall,
+	DCACHE_rddata
 );
 
 //input output
 	input clk;
-	input rst;
-	input[31:0] instruction;
-	input[31:0] mem_rdata;
-	input mem_ready;
-	output[31:0] PC;
-	output[31:0] mem_addr;
-	output[31:0] mem_wdata;
-	output mem_write;
-	output mem_read;
-//reg wire
-	reg[31:0] PC_r,PC_w;
+	input rst_n;
 
+	output ICACHE_ren;
+	output ICACHE_wen;
+	output[31:0] ICACHE_addr;
+	output[31:0] ICACHE_wdata;
+	input ICACHE_stall;
+	input[31:0] ICACHE_rdata;
+
+	output DCACHE_ren;
+	output DCACHE_wen;
+	output[31:0] DCACHE_addr;
+	output[31:0] DCACHE_wdata;
+	input DCACHE_stall;
+	input[31:0] DCAHCE_rdata;
+//reg wire
+	//IF
+	reg[31:0] PC_r,PC_w;
 	reg jump_if;
 	reg[31:0] PC_4;
-	reg[31:0] bjaddr;
-
-	//ID/EX
+	//IF
+	//ID
 	wire PCSrc,IF_Flush,RegWrite,ALURsc,RegDst,MemWrite,MemRead,MemtoReg,Jump,JumpR,raWrite,PCWrite,IFIDWrite,stall;
 	wire[1:0] ALUOp;
 	reg equal;
 	wire[31:0] next_PC_4;
 	wire[31:0] next_inst;
 	reg[31:0] sign_ext;
+	wire[31:0] Readdata1,Readdata2;
+	reg[31:0] bjaddr;
 
+	//ID
 	reg RegWrite_idex_r,RegWrite_idex_w;
 	reg ALUSrc_idex_r,ALUSrc_idex_w;
 	reg[1:0] ALUOp_idex_r,ALUOp_idex_w;
@@ -45,16 +59,19 @@ module Top(
 	reg MemWrite_idex_r,MemWrite_idex_w;
 	reg MemtoReg_idex_r,MemtoReg_idex_w;
 
+	reg[31:0] PC_4_idex_r,PC_4_idex_w;
 	reg[4:0] RegRs_idex_r,RegRs_idex_w;
 	reg[4:0] RegRt_idex_r,RegRt_idex_w;
 	reg[4:0] RegRd_idex_r,RegRd_idex_w;
+	//EX
 
 	wire[31:0] next_readreg1,next_readreg2,next_sign_ext;
-	wire[31:0] Readdata1,Readdata2;
 	reg[31:0] Aluin1,Aluin2;
 	wire[31:0] ALUresult;
 	wire[1:0] forwardA,forwardB;
-	//EX//MEM
+	//EX
+	reg[31:0] next_ALUresult;
+	wire[31:0] next_readreg2_2;
 
 	reg MemWrite_exmem_r,MemWrite_exmem_w;
 	reg MemRead_exmem_r,MemRead_exmem_w;
@@ -62,31 +79,37 @@ module Top(
 	reg MemtoReg_exmem_r,MemtoReg_exmem_w;
 
 	reg[4:0] RegRd_exmem_r,RegRd_exmem_w;
-	//MEM/WB
+	//MEM
+	wire[31:0] next_readdata,next_ALUresult2;
 	reg MemtoReg_memwb_r,MemtoReg_memwb_w;
 	reg RegWrite_memwb_r,RegWrite_memwb_w;
 
 	reg[4:0] RegRd_memwb_r,RegRd_memwb_w;
+	//WB
 
 	reg[31:0] WBdata;
 //combinational
 	//submodule
-	Control zctrl(.inst(inst_r[31:26]),.funct(inst_r[5:0]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALURsc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JunmpR(JunmpR),.raWrite(raWrite));	
+	IF_ID_reg zifidreg(.clk(clk),.rst(rst_n),.PC_4(PC_4),.inst(ICAHCE_rdata),.next_PC_4(next_PC_4),.next_inst(next_inst));
 
-	HazardDetection zhd(.IDEX_MemRead(MemRead_idex_r),.IDEX_RegRt(RegDst_idex_r),.IFID_RegRt(inst_r[20:16]),.IFID_RegRs(inst_r[25:21]),.PCWrite(PCWrite),.IFIDWrite(IFIDWrite),.stall(stall));
+	Control zctrl(.inst(next_inst[31:26]),.funct(next_inst[5:0]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALURsc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JunmpR(JunmpR),.raWrite(raWrite));	
 
-	IF_ID_reg zifidreg(.clk(clk),.rst(rst),.PC_4(PC_4),.inst(instruction),.next_PC_4(next_PX_4),.next_inst(next_inst));
-
-	ID_EX_reg zidexreg(.clk(clk),.rst(rst),.readreg1(next_inst[25:21]),.readreg2(next_inst[20:16]),.sign_ext(sign_inst),.next_readreg1(next_readreg1),.next_readreg2(next_readreg2),.next_sign_ext(next_sign_ext));
-
-	EX_MEM_reg zexmemreg(.clk(clk),.rst(rst),.ALUresult(ALUresult),.readreg2(),.next_ALUresult(),.next_readreg2());
-
-	MEM_WB_reg zmemwbreg(.clk(clk),.rst(rst),.readdata(),.ALUresult(),.next_readdata(),.next_ALUresult());
+	HazardDetection zhd(.opcode(next_inst[31:26]),.IDEX_MemRead(MemRead_idex_r),.IDEX_RegRt(RegRt_idex_r),.IFID_RegRt(next_inst[20:16]),.IFID_RegRs(next_inst[25:21]),.PCWrite(PCWrite),.IFIDWrite(IFIDWrite),.stall(stall));
 
 	register zregister(.clk(clk),.rst_n(rst),.RegWrite(RegWrite_memwb_r),.ReadReg1(next_inst[25:21]),.ReadReg2(20:16),.WriteReg(RegRd_memwb_r),.WriteData(WBData),.Readdata1(Readdata1),.Readdata2(Readdata2));
+
+	ID_EX_reg zidexreg(.clk(clk),.rst(rst),.readreg1(Readdata1),.readreg2(Readdata2),.sign_ext(sign_ext),.next_readreg1(next_readreg1),.next_readreg2(next_readreg2),.next_sign_ext(next_sign_ext));
+
 	aluCtrl zaluCtrl(.inst(),.ALUOp(ALUOp_idex_r),.ctrl());
+
 	alu zalu(.ctrl(),.x(ALUin1),.y(ALUin2),.zero(zero),.out(ALUresult));
+
 	Forwarding zforwarding(.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRs(RegRs_idex_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegRd(RegRd_memwb_r),.EXMEM_RegWrite(RegWrite_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.forwardA(forwardA),.forwardB(forwardB));
+
+	EX_MEM_reg zexmemreg(.clk(clk),.rst(rst),.ALUresult(ALUresult),.readreg2(next_readreg2),.next_ALUresult(next_ALUresult),.next_readreg2(next_readreg2_2));
+
+	MEM_WB_reg zmemwbreg(.clk(clk),.rst(rst),.readdata(mem_rdata),.ALUresult(next_ALUresult),.next_readdata(next_readdata),.next_ALUresult(next_ALUresult2));
+
 
 //IF
 	//jump
@@ -176,6 +199,7 @@ module Top(
 			end
 		end
 	end
+	//mux for link
 //MEM
 //WB
 	always@(*) begin

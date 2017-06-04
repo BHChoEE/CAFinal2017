@@ -402,8 +402,8 @@ module MEM_WB_reg(
     reg     [31:0]      ALUresult_reg;
 
     //============ combinational part =============
-    assign next_readdata = readdata;
-    assign next_readreg2 = readreg2;
+    assign next_readdata = readdata_reg;
+    assign next_readreg2 = ALUresult_reg;
 
     //============ sequential part ================
     always@(negedge rst or posedge clk) begin
