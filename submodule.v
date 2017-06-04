@@ -3,77 +3,176 @@
 //                    ALU control                           //
 //==========================================================//
 /*  
-    6 kinds of aluCtrl signal:
+    11 kinds of aluCtrl signal:
     add:    0010
     sub:    0110
     and:    0000
     or:     0001
-    nor:    1100
+    xor:    0011
+    nor:    0100
     slt:    0111
+    sll:    0101
+    sra:    1000
+    srl:    1001
+    nop:    1111
 */
 module aluCtrl(
-        inst,
+        opcode,
+        funct,
         ALUOp,
         ctrl
 );
-    //==== in/out reg/wire declaration ====
-    input   [5:0]   inst;
-    input   [1:0]   ALUOp;
-    output  [3:0]   ctrl;
+    //============== in/out declaration ===============
+    input       [5:0]   opcode;
+    input       [5:0]   funct;
+    input       [1:0]   ALUOp;
+    output reg  [3:0]   ctrl;
 
-    wire    [1:0]   tmp;
-    //==== combinational part ====
-    assign tmp[0] = ALUOp[1] & inst[1];
-    assign tmp[1] = inst[0] | inst[3];
-    assign ctrl[3] = 1'b0;
-    assign ctrl[2] = ALUOp[0] | tmp[0];
-    assign ctrl[1] = (~ALUOp[1]) | (~inst[2]);
-    assign ctrl[0] = ALUOp[1] & tmp[1];
+    //============== wire/ reg/ declaration ===========
+    wire    [5:0]   temp;
+
+    //============== combinational part ===============
+    //to choose which funct to use I / R type
+    assign temp = (ALUOp == 2'b10)? funct : opcode;
+    always@(*)begin
+        //if the inst. is R-type
+        if(ALUOp == 2'b10) begin
+            //ADD
+            if(temp == 6'b100000)
+                ctrl <= 4'b0010;
+            //SUB
+            else if(temp == 6'b100010)
+                ctrl <= 4'b0110;
+            //AND
+            else if(temp == 6'b100100)
+                ctrl <= 4'b0000;
+            //OR
+            else if(temp == 6'b100101)
+                ctrl <= 4'b0001;
+            //XOR
+            else if(temp == 6'b100110)
+                ctrl <= 4'b0011;
+            //NOR
+            else if(temp == 6'b100111)
+                ctrl <= 4'b0100;
+            //SLT
+            else if(temp == 6'b101010)
+                ctrl <= 4'b0111;
+            //SLL
+            else if(temp == 6'b000000)
+                ctrl <= 4'b0101;
+            //SRA
+            else if(temp == 6'b000011)
+                ctrl <= 4'b1000;
+            //SRL
+            else if(temp == 6'b000010)
+                ctrl <= 4'b1001;
+            //NOP
+            else 
+                ctrl <= 4'b1111;
+        end
+        //if the inst. is I-type
+        else if(ALUOp == 2'b11) begin
+            //LW (add)
+            if(temp == 6'b100011)
+                ctrl <= 4'b0010;
+            //SW (add)
+            else if(temp == 6'b101011)
+                ctrl <= 4'b0010;
+            //ADDI (add)
+            else if(temp == 6'b001001)
+                ctrl <= 4'b0010;
+            //ANDI (and)
+            else if(temp == 6'b001100)
+                ctrl <= 4'b0000;
+            //ORI (or)
+            else if(temp == 6'b001101)
+                ctrl <= 4'b0001;
+            //XORI (xor)
+            else if(temp == 6'b001110)
+                ctrl <= 4'b0011;
+            //SLTI (slt)
+            else if(temp == 6'b001010)
+                ctrl <= 4'b0111;
+            //NOP
+            else
+                ctrl <= 4'b1111;
+        end
+        //NOP
+        else begin
+            ctrl <= 4'b1111;
+        end
+    end
+    //=============== sequential part ================
 endmodule
-
+//TODO
 //==========================================================//
 //                           ALU                            //
 //==========================================================//
+/*  
+    11 kinds of aluCtrl signal:
+    add:    0010
+    sub:    0110
+    and:    0000
+    or:     0001
+    xor:    0011
+    nor:    0100
+    slt:    0111
+    sll:    0101
+    sra:    1000
+    srl:    1001
+    nop:    1111
+*/
 module alu(
     ctrl,
     x,
     y,
-    zero,
     out
 );
-    //==== in/out reg/wire declaration ====
-    input   [3:0]   ctrl;
-    input   [31:0]  x, y;
-    output          zero;
-    output  [31:0]  out;
+    //================== in/out declaration ==================
+    input       [3:0]   ctrl;
+    input       [31:0]  x, y;
+    output reg  [31:0]  out;
+    //============== reg / wire declaration ==================
 
-    reg         prev_zero;
-    reg [31:0]  prev_out;
-    //==== combinational part ====
-    assign zero = prev_zero;
-    assign out = prev_out;
+    //================== combinational part ==================
     always@(*) begin
+        //    add:    0010
         if(ctrl == 4'b0010)
-            prev_out <= x + y;
+            out <= x + y;
+        //    sub:    0110
         else if(ctrl == 4'b0110)
-            prev_out <= x - y;
+            out <= x - y;
+        //    and:    0000
         else if(ctrl == 4'b0000)
-            prev_out <= x & y;
+            out <= x & y;
+        //    or:     0001
         else if(ctrl == 4'b0001)
-            prev_out <= x | y;
+            out <= x | y;
+        //    xor:    0011
+        else if(ctrl == 4'b0011)
+            out <= x ^ y;
+        //    nor:    0100
+        else if(ctrl == 4'b0100)
+            out <= ~(x | y);
+        //    slt:    0111
         else if(ctrl == 4'b0111) begin
             if (x < y)
-                prev_out <= 1;
+                out <= 1;
             else
-                prev_out <= 32'b0;
+                out <= 32'b0;
         end
-        else if(ctrl == 4'b1100)
-            prev_out <= ~(x | y);
-        if(x - y == 32'b0)
-	    prev_zero <= 1'b1;
-	else if(x - y != 32'b0)
-	    prev_zero <= 1'b0;
+        //    sll:    0101
+        else if(ctrl == 4'b0101)
+            out <= x << y;
+        //    sra:    1000
+        else if(ctrl == 4'b1000)
+            out <= x >>> y;
+        //    srl:    1001
+        else if(ctrl == 4'b1001)
+            out <= x >> y;
     end
+    //================= sequential part =====================
 endmodule
 
 //==========================================================//
@@ -162,36 +261,36 @@ endmodule
 module IF_ID_reg(
     clk,
     rst,
+    IF_ID_write,
+    IF_flush,
     PC_4,
     inst,
     next_PC_4,
     next_inst
 );
     //========= in/ out declaration =============
-    input             clk;
-    input             rst;
-    input   [31:0]    PC_4;
-    input   [31:0]    inst;
-    output  [31:0]    next_PC_4;
-    output  [31:0]    next_inst;
+    input               clk;
+    input               rst;
+    input               IF_ID_write;
+    input               IF_flush;
+    input       [31:0]  PC_4;
+    input       [31:0]  inst;
+    output reg  [31:0]  next_PC_4;
+    output reg  [31:0]  next_inst;
 
     //========= wire/reg declaration ============
-    reg     [31:0]    PC_4_reg;
-    reg     [31:0]    inst_reg;
 
     //========= combinational part ==============
-    assign next_PC_4 = PC_4_reg;
-    assign next_inst = inst_reg;
 
     //========= sequential part =================
     always@(posedge clk or negedge rst) begin
-        if(rst == 1'b1) begin
-            PC_4_reg <= 32'b0;
-            inst <= 32'b0;
+        if(rst == 1'b0) begin
+            next_PC_4 <= 32'b0;
+            next_inst <= 32'b0;
         end
         else begin
-            PC_4_reg <= PC_4;
-            inst_reg <= inst;
+            next_PC_4 <= (IF_ID_write )  ? ((IF_flush)? 32'b0: PC_4) : next_PC_4;
+            next_inst <= (IF_ID_write )  ? ((IF_flush)? 32'b0: inst) : next_inst;
         end
     end
 endmodule
@@ -202,13 +301,9 @@ module ID_EX_reg(
     readreg1,
     readreg2,
     sign_ext,
-    inst20_16,
-    inst15_11,
     next_readreg1,
     next_readreg2,
-    next_sign_ext,
-    next_inst20_16,
-    next_inst15_11
+    next_sign_ext
 );
     //============== in / out declaration =======
     input               clk;
@@ -216,13 +311,10 @@ module ID_EX_reg(
     input   [31:0]      readreg1;
     input   [31:0]      readreg2;
     input   [31:0]      sign_ext;
-    input   [4:0]       inst20_16;
-    input   [4:0]       inst15_11;
     output  [31:0]      next_readreg1;
     output  [31:0]      next_readreg2;
     output  [31:0]      next_sign_ext;
-    output  [4:0]       next_inst20_16;
-    output  [4:0]       next_inst15_11;
+
 
     //=========== reg / wire declaration =========
     reg     [31:0]      readreg1_reg;
@@ -240,20 +332,16 @@ module ID_EX_reg(
 
     //=========== sequential part ================
     always@(posedge rst or negedge clk) begin
-        if(rst == 1'b1)begin
+        if(rst == 1'b0)begin
             readreg1_reg <= 32'b0;
             readreg2_reg <= 32'b0;
             sign_ext_reg <= 32'b0;
-            inst20_16_reg <= 5'b0;
-            inst15_11_reg <= 5'b0;
         end
         else begin
             readreg1_reg <= readreg1;
             readreg2_reg <= readreg2;
             sign_ext_reg <= sign_ext;
-            inst15_11_reg <= inst15_11;
-            inst20_16_reg <= inst20_16;
-    end
+        end
 endmodule
 
 module EX_MEM_reg(
@@ -261,58 +349,34 @@ module EX_MEM_reg(
     rst,
     ALUresult,
     readreg2,
-    addresult,
-    zero,
-    instDst,
     next_ALUresult,
-    next_readreg2,
-    next_addresult,
-    next_zero,
-    next_instDst
+    next_readreg2
 );
     //============ in / out declaration =========
     input               clk;
     input               rst;
     input   [31:0]      ALUreslut;
     input   [31:0]      readreg2;
-    input   [31:0]      addresult;
-    input               zero;
-    input   [4:0]       instDst;
     output  [31:0]      next_ALUresult;
     output  [31:0]      next_readreg2;
-    output  [31:0]      next_addresult;
-    output              next_zero;
-    output  [4:0]       next_instDst;
 
     //========= reg / wire declaration ==========
     reg     [31:0]      ALUresult_reg;
     reg     [31:0]      readreg2_reg;
-    reg     [31:0]      addresult_reg;
-    reg                 zero_reg;
-    reg     [5:0]       instDst_reg;
 
     //============ combinational part ===========
     assign next_ALUresult = ALUresult_reg;
     assign next_readreg2 = readreg2_reg;
-    assign next_addresult = addresult_reg;
-    assign next_zero = zero_reg;
-    assign next_instDst = instDst_reg;
 
     //============ sequential part ==============
     always@(posedge clk or negedge rst) begin
-        if(rst == 1'b1) begin
+        if(rst == 1'b0) begin
             ALUresult_reg <= 32'b0;
             readreg2_reg <= 32'b0;
-            addresult_reg <= 32'b0;
-            zero_reg <= 1'b0;
-            instDst_reg <= 5'b0;
         end
         else begin
             ALUresult_reg <= ALUresult;
             readreg2_reg <= readreg2;
-            addresult_reg <= addresult;
-            zero_reg <= zero;
-            instDst_reg <= instDst;
         end
     end
 endmodule
@@ -322,20 +386,16 @@ module MEM_WB_reg(
     rst,
     readdata,
     ALUreslut,
-    instDst,
     next_readdata,
     next_ALUresult,
-    next_instDst
 );
     //============ in / out declaration ===========
     input               clk;
     input               rst;
     input   [31:0]      readdata;
     input   [31:0]      ALUresult;
-    input   [4:0]       instDst;
     output  [31:0]      next_readdata;
     output  [31:0]      next_ALUresult;
-    output  [4:0]       next_instDst;
 
     //========== reg / wire declaration ===========
     reg     [31:0]      readdata_reg;
@@ -350,12 +410,10 @@ module MEM_WB_reg(
         if(rst == 1'b1) begin
             readdata_reg <= 32'b0;
             ALUresult_reg <= 32'b0;
-            instDst_reg <= 5'b0;
         end
         else begin
             readdata_reg <= readdata;
             ALUresult_reg <= ALUresult;
-            instDst_reg <= instDst;
         end
     end
 endmodule
