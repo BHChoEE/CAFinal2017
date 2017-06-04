@@ -29,9 +29,9 @@ module HazardDetection(
 			st = 1'b1;
 		end
 		else begin
-			pcw  = 1'b0;
-			ifidw = 1'b0;
-			st = 1'b1;
+			pcw  = 1'b1;
+			ifidw = 1'b1;
+			st = 1'b0;
 		end
 	end
 //no sequential part

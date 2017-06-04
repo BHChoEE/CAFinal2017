@@ -83,10 +83,10 @@ module Top(
 
 	MEM_WB_reg zmemwbreg(.clk(clk),.rst(rst),.readdata(),.ALUresult(),.next_readdata(),.next_ALUresult());
 
-	register zregister(.clk(clk),.rst_n(rst),.RegWrite(),.ReadReg1(),.ReadReg2(),.WriteReg(),.WriteData(),.Readdata1(),.Readdata2());
-	aluCtrl zaluCtrl(.inst(),.ALUOp(),.ctrl());
+	register zregister(.clk(clk),.rst_n(rst),.RegWrite(RegWrite_memwb_r),.ReadReg1(next_inst[25:21]),.ReadReg2(20:16),.WriteReg(RegRd_memwb_r),.WriteData(WBData),.Readdata1(Readdata1),.Readdata2(Readdata2));
+	aluCtrl zaluCtrl(.inst(),.ALUOp(ALUOp_idex_r),.ctrl());
 	alu zalu(.ctrl(),.x(ALUin1),.y(ALUin2),.zero(zero),.out(ALUresult));
-	Forwarding zforwarding(.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRs(RegRs_idex_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegRd(RegRd_memwb_r),.EXMEM_RegWrite(RegWrite_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.forwardA(),.forwardB());
+	Forwarding zforwarding(.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRs(RegRs_idex_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegRd(RegRd_memwb_r),.EXMEM_RegWrite(RegWrite_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.forwardA(forwardA),.forwardB(forwardB));
 
 //IF
 	//jump
@@ -182,7 +182,7 @@ module Top(
 		WBdata = MemtoReg ? next_readdata: next_ALUresult2; 
 	end
 //sequential
-	always@(*) begin
+	always@(posedge clk or negedge rst) begin
 		if(!i_rst) begin
 			PC_r <= 32'b0;
 			PC_4_r <= 32'b0;
