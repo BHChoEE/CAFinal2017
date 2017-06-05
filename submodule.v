@@ -72,7 +72,7 @@ module aluCtrl(
                 ctrl <= 4'b1111;
         end
         //if the inst. is I-type
-        else if(ALUOp == 2'b01) begin
+        else if(ALUOp == 2'b11) begin
             //LW (add)
             if(temp == 6'b100011)
                 ctrl <= 4'b0010;
@@ -263,6 +263,7 @@ module IF_ID_reg(
     rst,
     IF_ID_write,
     IF_flush,
+    proc_stall,
     PC_4,
     inst,
     next_PC_4,
@@ -273,6 +274,7 @@ module IF_ID_reg(
     input               rst;
     input               IF_ID_write;
     input               IF_flush;
+    input               proc_stall;
     input       [31:0]  PC_4;
     input       [31:0]  inst;
     output reg  [31:0]  next_PC_4;
@@ -289,8 +291,8 @@ module IF_ID_reg(
             next_inst <= 32'b0;
         end
         else begin
-            next_PC_4 <= (IF_ID_write )  ? ((IF_flush)? 32'b0: PC_4) : next_PC_4;
-            next_inst <= (IF_ID_write )  ? ((IF_flush)? 32'b0: inst) : next_inst;
+            next_PC_4 <= (IF_ID_write || !proc_stall)  ? ((IF_flush)? 32'b0: PC_4) : next_PC_4;
+            next_inst <= (IF_ID_write || !proc_stall)  ? ((IF_flush)? 32'b0: inst) : next_inst;
         end
     end
 endmodule
@@ -298,6 +300,7 @@ endmodule
 module ID_EX_reg(
     clk,
     rst,
+    proc_stall,
     readreg1,
     readreg2,
     sign_ext,
@@ -306,77 +309,66 @@ module ID_EX_reg(
     next_sign_ext
 );
     //============== in / out declaration =======
-    input               clk;
-    input               rst;
-    input   [31:0]      readreg1;
-    input   [31:0]      readreg2;
-    input   [31:0]      sign_ext;
-    output  [31:0]      next_readreg1;
-    output  [31:0]      next_readreg2;
-    output  [31:0]      next_sign_ext;
+    input                   clk;
+    input                   rst;
+    input                   proc_stall;
+    input       [31:0]      readreg1;
+    input       [31:0]      readreg2;
+    input       [31:0]      sign_ext;
+    output reg  [31:0]      next_readreg1;
+    output reg  [31:0]      next_readreg2;
+    output reg  [31:0]      next_sign_ext;
 
 
     //=========== reg / wire declaration =========
-    reg     [31:0]      readreg1_reg;
-    reg     [31:0]      readreg2_reg;
-    reg     [31:0]      sign_ext_reg;
-    reg     [4:0]       inst20_16_reg;
-    reg     [4:0]       inst15_11_reg;
 
     //=========== combinational part =============
-    assign next_readreg1 = readreg1_reg;
-    assign next_readreg2 = readreg2_reg;
-    assign next_sign_ext = sign_ext_reg;
-    assign next_inst20_16 = inst20_16_reg;
-    assign next_inst15_11 = inst15_11_reg;
 
     //=========== sequential part ================
     always@(posedge rst or negedge clk) begin
         if(rst == 1'b0)begin
-            readreg1_reg <= 32'b0;
-            readreg2_reg <= 32'b0;
-            sign_ext_reg <= 32'b0;
+            next_readreg1 <= 32'b0;
+            next_readreg2 <= 32'b0;
+            next_sign_ext <= 32'b0;
         end
         else begin
-            readreg1_reg <= readreg1;
-            readreg2_reg <= readreg2;
-            sign_ext_reg <= sign_ext;
+            next_readreg1 <= (proc_stall) ? next_readreg1 : readreg1;
+            next_readreg2 <= (proc_stall) ? next_readreg2 : readreg2;
+            next_sign_ext <= (proc_stall) ? next_sign_ext : sign_ext;
         end
 endmodule
 
 module EX_MEM_reg(
     clk,
     rst,
+    proc_stall,
     ALUresult,
     readreg2,
     next_ALUresult,
     next_readreg2
 );
     //============ in / out declaration =========
-    input               clk;
-    input               rst;
-    input   [31:0]      ALUreslut;
-    input   [31:0]      readreg2;
-    output  [31:0]      next_ALUresult;
-    output  [31:0]      next_readreg2;
+    input                   clk;
+    input                   rst;
+    input                   proc_stall;
+    input       [31:0]      ALUreslut;
+    input       [31:0]      readreg2;
+    output reg  [31:0]      next_ALUresult;
+    output reg  [31:0]      next_readreg2;
 
     //========= reg / wire declaration ==========
-    reg     [31:0]      ALUresult_reg;
-    reg     [31:0]      readreg2_reg;
-
+    
     //============ combinational part ===========
-    assign next_ALUresult = ALUresult_reg;
-    assign next_readreg2 = readreg2_reg;
 
     //============ sequential part ==============
     always@(posedge clk or negedge rst) begin
         if(rst == 1'b0) begin
-            ALUresult_reg <= 32'b0;
-            readreg2_reg <= 32'b0;
+            next_ALUresult <= 32'b0;
+            next_readreg2 <= 32'b0;
         end
         else begin
-            ALUresult_reg <= ALUresult;
-            readreg2_reg <= readreg2;
+            next_ALUresult <= (proc_stall) ? next_ALUresult : ALUresult;
+            next_readreg2 <= (proc_stall) ? next_readreg2 : readreg2;
         end
     end
 endmodule
@@ -384,36 +376,34 @@ endmodule
 module MEM_WB_reg(
     clk,
     rst,
+    proc_stall,
     readdata,
     ALUreslut,
     next_readdata,
     next_ALUresult,
 );
     //============ in / out declaration ===========
-    input               clk;
-    input               rst;
-    input   [31:0]      readdata;
-    input   [31:0]      ALUresult;
-    output  [31:0]      next_readdata;
-    output  [31:0]      next_ALUresult;
+    input                   clk;
+    input                   rst;
+    input                   proc_stall;
+    input       [31:0]      readdata;
+    input       [31:0]      ALUresult;
+    output reg  [31:0]      next_readdata;
+    output reg  [31:0]      next_ALUresult;
 
     //========== reg / wire declaration ===========
-    reg     [31:0]      readdata_reg;
-    reg     [31:0]      ALUresult_reg;
 
     //============ combinational part =============
-    assign next_readdata = readdata_reg;
-    assign next_readreg2 = ALUresult_reg;
 
     //============ sequential part ================
     always@(negedge rst or posedge clk) begin
         if(rst == 1'b1) begin
-            readdata_reg <= 32'b0;
-            ALUresult_reg <= 32'b0;
+            next_readdata <= 32'b0;
+            next_ALUresult <= 32'b0;
         end
         else begin
-            readdata_reg <= readdata;
-            ALUresult_reg <= ALUresult;
+            next_readdata <= (proc_stall) ? next_readdata : readdata;
+            next_ALUresult <= (proc_stall) ? next_ALUresult : ALUresult;
         end
     end
 endmodule
