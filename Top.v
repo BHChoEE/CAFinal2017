@@ -1,4 +1,4 @@
-module Top(
+module MIPS_Pipeline(
 	clk,
 	rst_n,
 	
@@ -23,18 +23,23 @@ module Top(
 
 	output ICACHE_ren;
 	output ICACHE_wen;
-	output[31:0] ICACHE_addr;
+	output[29:0] ICACHE_addr;
 	output[31:0] ICACHE_wdata;
 	input ICACHE_stall;
 	input[31:0] ICACHE_rdata;
 
 	output DCACHE_ren;
 	output DCACHE_wen;
-	output[31:0] DCACHE_addr;
+	output[29:0] DCACHE_addr;
 	output[31:0] DCACHE_wdata;
 	input DCACHE_stall;
 	input[31:0] DCAHCE_rdata;
 //reg wire
+	//stall
+	reg stall_ifid;
+	reg stall_idex; 
+	reg stall_memwb;
+	reg stall_exmem;
 	//IF
 	reg[31:0] PC_r,PC_w;
 	reg jump_if;
@@ -93,8 +98,16 @@ module Top(
 
 	reg[31:0] WBdata;
 //combinational
+	assign ICACHE_re = 1'b1;
+	assign ICACHE_we = 1'b0;
+	assign ICACHE_addr = PC_r[31:2];
+	assign ICACHE_wdata = 32'd0;
+	assign DCACHE_re = MemRead_exmem_r;
+	assign DCACHE_we = MemWrite_exmem_r;
+	assign DCACHE_addr = next_readreg2_2[31:2];
+	assign DCACHE_wdata = next_ALUresult;
 	//submodule
-	IF_ID_reg zifidreg(.clk(clk),.rst(rst_n),.PC_4(PC_4),.inst(ICAHCE_rdata),.next_PC_4(next_PC_4),.next_inst(next_inst),.IF_Flush(IF_Flush),.IFIDWrite(IFIDWRite),.stall(stall),.stallJ(stallJ));
+	IF_ID_reg zifidreg(.clk(clk),.rst(rst_n),.PC_4(PC_4),.inst(ICAHCE_rdata),.next_PC_4(next_PC_4),.next_inst(next_inst),.IF_Flush(IF_Flush),.IFIDWrite(IFIDWRite),.proc_stall(stall_ifid));
 
 	Control zctrl(.inst(next_inst[31:26]),.funct(next_inst[5:0]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALURsc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JunmpR(JunmpR),.raWrite(raWrite));	
 
@@ -104,7 +117,7 @@ module Top(
 
 	register zregister(.clk(clk),.rst_n(rst),.RegWrite(RegWrite_memwb_r),.ReadReg1(next_inst[25:21]),.ReadReg2(20:16),.WriteReg(RegRd_memwb_r),.WriteData(WBData),.Readdata1(Readdata1),.Readdata2(Readdata2));
 
-	ID_EX_reg zidexreg(.clk(clk),.rst(rst),.readreg1(Readdata1),.readreg2(Readdata2),.sign_ext(sign_ext),.next_readreg1(next_readreg1),.next_readreg2(next_readreg2),.next_sign_ext(next_sign_ext));
+	ID_EX_reg zidexreg(.clk(clk),.rst(rst),.readreg1(Readdata1),.readreg2(Readdata2),.sign_ext(sign_ext),.next_readreg1(next_readreg1),.next_readreg2(next_readreg2),.next_sign_ext(next_sign_ext),.proc_stall(stall_idex));
 
 	aluCtrl zaluCtrl(.opcode(Opcode_idex_r),.funct(Funct_idex_r),.ALUOp(ALUOp_idex_r),.ctrl(ALUctrl));
 
@@ -112,11 +125,17 @@ module Top(
 
 	Forwarding zforwarding(.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRs(RegRs_idex_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegRd(RegRd_memwb_r),.EXMEM_RegWrite(RegWrite_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.forwardA(forwardA),.forwardB(forwardB));
 
-	EX_MEM_reg zexmemreg(.clk(clk),.rst(rst),.ALUresult(ALUresult2exmem),.readreg2(readreg_forward),.next_ALUresult(next_ALUresult),.next_readreg2(next_readreg2_2));
+	EX_MEM_reg zexmemreg(.clk(clk),.rst(rst),.ALUresult(ALUresult2exmem),.readreg2(readreg_forward),.next_ALUresult(next_ALUresult),.next_readreg2(next_readreg2_2),.proc_stall(stall_exem));
 
-	MEM_WB_reg zmemwbreg(.clk(clk),.rst(rst),.readdata(mem_rdata),.ALUresult(next_ALUresult),.next_readdata(next_readdata),.next_ALUresult(next_ALUresult2));
+	MEM_WB_reg zmemwbreg(.clk(clk),.rst(rst),.readdata(mem_rdata),.ALUresult(next_ALUresult),.next_readdata(next_readdata),.next_ALUresult(next_ALUresult2),.proc_stall(stall_memwb));
 
-
+//stall unit
+	always@(*) begin
+		stall_ifid = DCACHE_stall || ICACHE_stall || stallJ;
+		stall_idex = DCACHE_stall || ICACHE_stall || stallJ;
+		stall_memwb = DCACHE_stall || ICACHE_stall;
+		stall_exmem = DCACHE_stall || ICACHE_stall;
+	end
 //IF
 	//jump
 	always@(*) begin
@@ -134,7 +153,7 @@ module Top(
 			end
 			else begin
 				if(jump_if)
-					PC_w = {6{0},{instruction[25:0]}};
+					PC_w = {{PC_4[31:28]},{instruction[25:0]},2{0}};
 				else
 					PC_w = PC_4;
 			end
@@ -173,9 +192,7 @@ module Top(
 				default: bjaddr = Readdata1;
 			endcase
 		end
-		else if(jump) begin
-			bjaddr = {{next_PC_4[31:28]},{next_inst[25:0]},2{0}};
-		end else
+		else
 			bjaddr = (sign_ext << 2) + PC_4;
 		begin
 	end
