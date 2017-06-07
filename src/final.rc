@@ -1,0 +1,128 @@
+Magic 271485
+Revision 2012.04
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort -4 1 1366 705 197 293
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd" "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 3
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 55354.165556
+cursor 13417.22748254332
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 44
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb"
+addSignal -h 15 /Final_tb/clk
+addSignal -h 15 -holdScope rst_n
+addSignal -h 15 -UNSIGNED -HEX /Final_tb/chip0/i_MIPS/ICACHE_addr[29:0]
+addSignal -h 15 -holdScope ICACHE_ren
+addSignal -h 15 -holdScope ICACHE_stall
+addSignal -h 15 -UNSIGNED -HEX -holdScope ICACHE_wdata[31:0]
+addSignal -h 15 -holdScope ICACHE_wen
+addGroup "G3"
+addSignal -h 15 -UNSIGNED -BIN /Final_tb/chip0/i_MIPS/ICACHE_rdata[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_addr[29:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_rdata[31:0]
+addSignal -h 15 -holdScope DCACHE_ren
+addSignal -h 15 -holdScope DCACHE_stall
+addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_wdata[31:0]
+addSignal -h 15 -holdScope DCACHE_wen
+addSignal -h 15 -UNSIGNED -HEX -holdScope ALUOp_idex_r[100]
+addSignal -h 15 -holdScope ALUSrc_idex_r
+addSignal -h 15 -UNSIGNED -HEX -holdScope Funct_idex_r[500]
+addSignal -h 15 -holdScope Jump_idex_r
+addSignal -h 15 -holdScope MemRead_idex_r
+addSignal -h 15 -holdScope MemWrite_idex_r
+addSignal -h 15 -holdScope MemtoReg_idex_r
+addSignal -h 15 -UNSIGNED -HEX -holdScope Opcode_idex_r[500]
+addSignal -h 15 -UNSIGNED -HEX -holdScope PC_4_idex_r[31:0]
+addSignal -h 15 -holdScope RegDst_idex_r
+addSignal -h 15 -UNSIGNED -HEX -holdScope RegRd_idex_r[400]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RegRs_idex_r[400]
+addSignal -h 15 -UNSIGNED -HEX -holdScope RegRt_idex_r[400]
+addSignal -h 15 -holdScope RegWrite_idex_r
+addSignal -h 15 -holdScope MemRead
+addSignal -h 15 -holdScope MemWrite
+addSignal -h 15 -holdScope MemRead_idex_w
+addSignal -h 15 -holdScope MemWrite_idex_w
+addSignal -h 15 /Final_tb/chip0/i_MIPS/zifidreg/IF_ID_write
+addSignal -h 15 -holdScope IF_flush
+addSignal -h 15 -UNSIGNED -HEX -holdScope PC_4[31:0]
+addSignal -h 15 -holdScope clk
+addSignal -h 15 -UNSIGNED -HEX -holdScope inst[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_PC_4[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_inst[31:0]
+addSignal -h 15 -holdScope proc_stall
+addSignal -h 15 -holdScope rst
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_PC_4_w[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope next_inst_w[31:0]
+addGroup "G4"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/Final_tb"
+"/Final_tb/chip0"
+"/Final_tb/chip0/i_MIPS"
+"/Final_tb/chip0/i_MIPS/zalu"
+"/Final_tb/chip0/i_MIPS/zctrl"
+"/Final_tb/chip0/i_MIPS/zforwardjump"
+"/Final_tb/chip0/i_MIPS/zifidreg"
+"/Final_tb/testbed"
+
+SCOPE_LIST_BEGIN
+"/Final_tb"
+"/Final_tb/chip0/i_MIPS/zforwardjump"
+"/Final_tb/chip0/i_MIPS/zforwarding"
+"/Final_tb/chip0/i_MIPS"
+"/Final_tb/chip0/i_MIPS/zaluCtrl"
+"/Final_tb/chip0/i_MIPS/zctrl"
+"/Final_tb/chip0"
+"/Final_tb/chip0/i_MIPS/zalu"
+"/Final_tb/chip0/D_cache"
+"/Final_tb/testbed"
+"/Final_tb/chip0/i_MIPS/zifidreg"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

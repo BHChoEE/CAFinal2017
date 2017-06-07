@@ -39,68 +39,68 @@ module aluCtrl(
         if(ALUOp == 2'b10) begin
             //ADD
             if(temp == 6'b100000)
-                ctrl <= 4'b0010;
+                ctrl = 4'b0010;
             //SUB
             else if(temp == 6'b100010)
-                ctrl <= 4'b0110;
+                ctrl = 4'b0110;
             //AND
             else if(temp == 6'b100100)
-                ctrl <= 4'b0000;
+                ctrl = 4'b0000;
             //OR
             else if(temp == 6'b100101)
-                ctrl <= 4'b0001;
+                ctrl = 4'b0001;
             //XOR
             else if(temp == 6'b100110)
-                ctrl <= 4'b0011;
+                ctrl = 4'b0011;
             //NOR
             else if(temp == 6'b100111)
-                ctrl <= 4'b0100;
+                ctrl = 4'b0100;
             //SLT
             else if(temp == 6'b101010)
-                ctrl <= 4'b0111;
+                ctrl = 4'b0111;
             //SLL
             else if(temp == 6'b000000)
-                ctrl <= 4'b0101;
+                ctrl = 4'b0101;
             //SRA
             else if(temp == 6'b000011)
-                ctrl <= 4'b1000;
+                ctrl = 4'b1000;
             //SRL
             else if(temp == 6'b000010)
-                ctrl <= 4'b1001;
+                ctrl = 4'b1001;
             //NOP
             else 
-                ctrl <= 4'b1111;
+                ctrl = 4'b1111;
         end
         //if the inst. is I-type
-        else if(ALUOp == 2'b11) begin
+        else if(ALUOp == 2'b01) begin
             //LW (add)
             if(temp == 6'b100011)
-                ctrl <= 4'b0010;
+                ctrl = 4'b0010;
             //SW (add)
             else if(temp == 6'b101011)
-                ctrl <= 4'b0010;
+                ctrl = 4'b0010;
             //ADDI (add)
-            else if(temp == 6'b001001)
-                ctrl <= 4'b0010;
+            else if(temp == 6'b001000)
+                ctrl = 4'b0010;
             //ANDI (and)
             else if(temp == 6'b001100)
-                ctrl <= 4'b0000;
+                ctrl = 4'b0000;
             //ORI (or)
             else if(temp == 6'b001101)
-                ctrl <= 4'b0001;
+                ctrl = 4'b0001;
             //XORI (xor)
             else if(temp == 6'b001110)
-                ctrl <= 4'b0011;
+                ctrl = 4'b0011;
             //SLTI (slt)
             else if(temp == 6'b001010)
-                ctrl <= 4'b0111;
+                ctrl = 4'b0111;
             //NOP
             else
-                ctrl <= 4'b1111;
+                ctrl = 4'b1111;
         end
         //NOP
         else begin
-            ctrl <= 4'b1111;
+            ctrl = 4'b1111;
         end
     end
 endmodule
@@ -139,38 +139,40 @@ module alu(
     always@(*) begin
         //    add:    0010
         if(ctrl == 4'b0010)
-            out <= x + y;
+            out = x + y;
         //    sub:    0110
         else if(ctrl == 4'b0110)
-            out <= x - y;
+            out = x - y;
         //    and:    0000
         else if(ctrl == 4'b0000)
-            out <= x & y;
+            out = x & y;
         //    or:     0001
         else if(ctrl == 4'b0001)
-            out <= x | y;
+            out = x | y;
         //    xor:    0011
         else if(ctrl == 4'b0011)
-            out <= x ^ y;
+            out = x ^ y;
         //    nor:    0100
         else if(ctrl == 4'b0100)
-            out <= ~(x | y);
+            out = ~(x | y);
         //    slt:    0111
         else if(ctrl == 4'b0111) begin
             if (x < y)
-                out <= 1;
+                out = 1;
             else
-                out <= 32'b0;
+                out = 32'b0;
         end
         //    sll:    0101
         else if(ctrl == 4'b0101)
-            out <= x << y;
+            out = x << y;
         //    sra:    1000
         else if(ctrl == 4'b1000)
-            out <= x >>> y;
+            out = x >>> y;
         //    srl:    1001
         else if(ctrl == 4'b1001)
-            out <= x >> y;
+            out = x >> y;
+		else
+			out = 31'd0;
     end
     //================= sequential part =====================
 endmodule
@@ -235,7 +237,7 @@ module register(
 	    register[30] <= 32'b0;
 	    register[31] <= 32'b0;
 	end
-	else if(rst_n) begin
+	else begin
 		//write operation
 	    if(RegWrite == 1'b1) begin
             	if(WriteReg != 5'b0)
@@ -283,16 +285,22 @@ module IF_ID_reg(
     //========= wire/reg declaration ============
 
     //========= combinational part ==============
+	
+	wire[31:0] next_PC_4_w;
+	wire[31:0] next_inst_w;
+
+	assign next_PC_4_w = (IF_ID_write && !proc_stall)  ? ((IF_flush)? 32'b0: PC_4) : next_PC_4;
+	assign next_inst_w = (IF_ID_write && !proc_stall)  ? ((IF_flush)? 32'b0: inst) : next_inst;
 
     //========= sequential part =================
     always@(posedge clk or negedge rst) begin
-        if(rst == 1'b0) begin
+        if(!rst) begin
             next_PC_4 <= 32'b0;
             next_inst <= 32'b0;
         end
         else begin
-            next_PC_4 <= (IF_ID_write || !proc_stall)  ? ((IF_flush)? 32'b0: PC_4) : next_PC_4;
-            next_inst <= (IF_ID_write || !proc_stall)  ? ((IF_flush)? 32'b0: inst) : next_inst;
+            next_PC_4 <= next_PC_4_w;// (IF_ID_write || !proc_stall)  ? ((IF_flush)? 32'b0: PC_4) : next_PC_4;
+            next_inst <= next_inst_w;//(IF_ID_write || !proc_stall)  ? ((IF_flush)? 32'b0: inst) : next_inst;
         end
     end
 endmodule
@@ -325,8 +333,8 @@ module ID_EX_reg(
     //=========== combinational part =============
 
     //=========== sequential part ================
-    always@(posedge rst or negedge clk) begin
-        if(rst == 1'b0)begin
+    always@(posedge clk or negedge rst) begin
+        if(!rst)begin
             next_readreg1 <= 32'b0;
             next_readreg2 <= 32'b0;
             next_sign_ext <= 32'b0;
@@ -363,7 +371,7 @@ module EX_MEM_reg(
 
     //============ sequential part ==============
     always@(posedge clk or negedge rst) begin
-        if(rst == 1'b0) begin
+        if(!rst) begin
             next_ALUresult <= 32'b0;
             next_readreg2 <= 32'b0;
         end
@@ -398,7 +406,7 @@ module MEM_WB_reg(
 
     //============ sequential part ================
     always@(negedge rst or posedge clk) begin
-        if(rst == 1'b1) begin
+        if(!rst) begin
             next_readdata <= 32'b0;
             next_ALUresult <= 32'b0;
         end

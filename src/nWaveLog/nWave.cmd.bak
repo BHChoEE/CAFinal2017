@@ -1,198 +1,1714 @@
+wvResizeWindow -win $_nWave1 -4 1 1366 705
+wvResizeWindow -win $_nWave1 -4 1 1366 705
 wvResizeWindow -win $_nWave1 4 9 1362 705
+wvRestoreSignal -win $_nWave1 \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.rc" \
+           -overWriteAutoAlias on
 wvConvertFile -win $_nWave1 -o \
            "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
            "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvSetPosition -win $_nWave1 {("G1" 0)}
-wvOpenFile -win $_nWave1 \
-           {/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb}
+wvResizeWindow -win $_nWave1 -4 1 1366 705
+wvResizeWindow -win $_nWave1 -4 1 1366 705
+wvResizeWindow -win $_nWave1 -4 1 1362 705
+wvSelectSignal -win $_nWave1 {( "G4" 1 )} 
+wvSelectSignal -win $_nWave1 {( "G4" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 )} 
+wvSelectSignal -win $_nWave1 {( "G4" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 )} 
+wvSelectSignal -win $_nWave1 {( "G4" 1 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G4" 0)}
+wvSelectGroup -win $_nWave1 {G4}
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G5" 0)}
+wvSetPosition -win $_nWave1 {("G3" 7)}
+wvSelectGroup -win $_nWave1 {G5}
+wvSelectGroup -win $_nWave1 {G5}
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 7)}
+wvSetPosition -win $_nWave1 {("G3" 7)}
+wvSelectGroup -win $_nWave1 {G3}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 2 3 4 5 6 7 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 1)}
 wvGetSignalOpen -win $_nWave1
 wvGetSignalSetScope -win $_nWave1 "/Final_tb"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/slow_memD"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/slow_memI"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
-wvSetPosition -win $_nWave1 {("G1" 2)}
-wvSetPosition -win $_nWave1 {("G1" 2)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/Final_tb/chip0/clk} \
-{/Final_tb/chip0/rst_n} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 2 )} 
-wvSetPosition -win $_nWave1 {("G1" 2)}
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
 wvGetSignalClose -win $_nWave1
 wvGetSignalOpen -win $_nWave1
 wvGetSignalSetScope -win $_nWave1 "/Final_tb"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
-wvSetPosition -win $_nWave1 {("G1" 8)}
-wvSetPosition -win $_nWave1 {("G1" 8)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/Final_tb/chip0/clk} \
-{/Final_tb/chip0/rst_n} \
-{/Final_tb/chip0/ICACHE_addr\[29:0\]} \
-{/Final_tb/chip0/ICACHE_rdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_ren} \
-{/Final_tb/chip0/ICACHE_stall} \
-{/Final_tb/chip0/ICACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_wen} \
-}
-wvAddSignal -win $_nWave1 -group {"G2" \
-}
-wvSelectSignal -win $_nWave1 {( "G1" 3 4 5 6 7 8 )} 
-wvSetPosition -win $_nWave1 {("G1" 8)}
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
 wvGetSignalClose -win $_nWave1
-wvResizeWindow -win $_nWave1 4 9 1362 705
-wvSelectSignal -win $_nWave1 {( "G1" 3 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 4 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 5 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 7 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 8 )} 
+wvSetCursor -win $_nWave1 9531.562213 -snap {("G4" 0)}
 wvDisplayGridCount -win $_nWave1 -off
 wvGetSignalClose -win $_nWave1
 wvConvertFile -win $_nWave1 -o \
            "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
            "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
 wvReloadFile -win $_nWave1
-wvSelectSignal -win $_nWave1 {( "G1" 6 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 3 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 4 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 8 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 4 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 1 )} 
 wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
-wvSetPosition -win $_nWave1 {("G1" 9)}
-wvSetPosition -win $_nWave1 {("G1" 9)}
+wvSetPosition -win $_nWave1 {("G3" 7)}
+wvSetPosition -win $_nWave1 {("G3" 7)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/Final_tb/chip0/clk} \
-{/Final_tb/chip0/rst_n} \
-{/Final_tb/chip0/ICACHE_addr\[29:0\]} \
-{/Final_tb/chip0/ICACHE_rdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_ren} \
-{/Final_tb/chip0/ICACHE_stall} \
-{/Final_tb/chip0/ICACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_wen} \
-{/Final_tb/chip0/i_MIPS/PC_r\[31:0\]} \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
 }
-wvAddSignal -win $_nWave1 -group {"G2" \
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
 }
-wvSelectSignal -win $_nWave1 {( "G1" 9 )} 
-wvSetPosition -win $_nWave1 {("G1" 9)}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 2 3 4 5 6 7 )} 
+wvSetPosition -win $_nWave1 {("G3" 7)}
 wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 5 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 6 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 4 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 7 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 6 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 6 )} 
+wvSetPosition -win $_nWave1 {("G3" 6)}
+wvExpandBus -win $_nWave1 {("G3" 6)}
+wvSetPosition -win $_nWave1 {("G3" 39)}
+wvScrollUp -win $_nWave1 10
+wvSelectSignal -win $_nWave1 {( "G3" 6 )} 
+wvSetPosition -win $_nWave1 {("G3" 6)}
+wvCollapseBus -win $_nWave1 {("G3" 6)}
+wvSetPosition -win $_nWave1 {("G3" 6)}
+wvSetPosition -win $_nWave1 {("G3" 7)}
 wvGetSignalOpen -win $_nWave1
 wvGetSignalSetScope -win $_nWave1 "/Final_tb"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
-wvSetPosition -win $_nWave1 {("G1" 11)}
-wvSetPosition -win $_nWave1 {("G1" 11)}
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 9)}
+wvSetPosition -win $_nWave1 {("G3" 9)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/Final_tb/chip0/clk} \
-{/Final_tb/chip0/rst_n} \
-{/Final_tb/chip0/ICACHE_addr\[29:0\]} \
-{/Final_tb/chip0/ICACHE_rdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_ren} \
-{/Final_tb/chip0/ICACHE_stall} \
-{/Final_tb/chip0/ICACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_wen} \
-{/Final_tb/chip0/i_MIPS/PC_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/PCWrite} \
-{/Final_tb/chip0/i_MIPS/stallJ} \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
 }
-wvAddSignal -win $_nWave1 -group {"G2" \
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUresult2exmem\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ALUresult\[31:0\]} \
 }
-wvSelectSignal -win $_nWave1 {( "G1" 10 11 )} 
-wvSetPosition -win $_nWave1 {("G1" 11)}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 8 9 )} 
+wvSetPosition -win $_nWave1 {("G3" 9)}
 wvGetSignalClose -win $_nWave1
-wvSelectSignal -win $_nWave1 {( "G1" 11 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 10 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 10 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvExpandBus -win $_nWave1 {("G3" 8)}
+wvSetPosition -win $_nWave1 {("G3" 41)}
+wvScrollUp -win $_nWave1 10
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvCollapseBus -win $_nWave1 {("G3" 8)}
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvSetPosition -win $_nWave1 {("G3" 9)}
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
 wvGetSignalOpen -win $_nWave1
 wvGetSignalSetScope -win $_nWave1 "/Final_tb"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
-wvSetPosition -win $_nWave1 {("G1" 12)}
-wvSetPosition -win $_nWave1 {("G1" 12)}
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvSetPosition -win $_nWave1 {("G3" 11)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/Final_tb/chip0/clk} \
-{/Final_tb/chip0/rst_n} \
-{/Final_tb/chip0/ICACHE_addr\[29:0\]} \
-{/Final_tb/chip0/ICACHE_rdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_ren} \
-{/Final_tb/chip0/ICACHE_stall} \
-{/Final_tb/chip0/ICACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_wen} \
-{/Final_tb/chip0/i_MIPS/PC_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/PCWrite} \
-{/Final_tb/chip0/i_MIPS/stallJ} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/stallJ_r\[1:0\]} \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
 }
-wvAddSignal -win $_nWave1 -group {"G2" \
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUresult2exmem\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ALUresult\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ALUin1\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ALUin2\[31:0\]} \
 }
-wvSelectSignal -win $_nWave1 {( "G1" 12 )} 
-wvSetPosition -win $_nWave1 {("G1" 12)}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 10 11 )} 
+wvSetPosition -win $_nWave1 {("G3" 11)}
 wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 4556.296223 -snap {("G3" 11)}
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 9 10 11 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 7)}
+wvSelectGroup -win $_nWave1 {G4}
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 7)}
+wvSetPosition -win $_nWave1 {("G3" 7)}
 wvGetSignalOpen -win $_nWave1
 wvGetSignalSetScope -win $_nWave1 "/Final_tb"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwarding"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
-wvSetPosition -win $_nWave1 {("G1" 25)}
-wvSetPosition -win $_nWave1 {("G1" 25)}
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvSetPosition -win $_nWave1 {("G3" 11)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
-{/Final_tb/chip0/clk} \
-{/Final_tb/chip0/rst_n} \
-{/Final_tb/chip0/ICACHE_addr\[29:0\]} \
-{/Final_tb/chip0/ICACHE_rdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_ren} \
-{/Final_tb/chip0/ICACHE_stall} \
-{/Final_tb/chip0/ICACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/ICACHE_wen} \
-{/Final_tb/chip0/i_MIPS/PC_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/PCWrite} \
-{/Final_tb/chip0/i_MIPS/stallJ} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/stallJ_r\[1:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/EXMEM_MemRead} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/EXMEM_RegRd\[4:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/EXMEM_RegWrite} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/ForwardJ\[1:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/ForwardJ_r\[1:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/IDEX_Opcode\[5:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/IDEX_RegRd\[4:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/IDEX_RegRt\[4:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/IDEX_RegWrite} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/MEMWB_RegRd\[4:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/MEMWB_RegWrite} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/RegJump\[4:0\]} \
-{/Final_tb/chip0/i_MIPS/zforwardjump/stallJ} \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
 }
-wvAddSignal -win $_nWave1 -group {"G2" \
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/zalu/ctrl\[300\]} \
+{/Final_tb/chip0/i_MIPS/zalu/out\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zalu/x\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zalu/y\[31:0\]} \
 }
-wvSelectSignal -win $_nWave1 {( "G1" 13 14 15 16 17 18 19 20 21 22 23 24 25 )} \
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 8 9 10 11 )} 
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvExpandBus -win $_nWave1 {("G3" 8)}
+wvSetPosition -win $_nWave1 {("G3" 15)}
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvCollapseBus -win $_nWave1 {("G3" 8)}
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
+wvReloadFile -win $_nWave1
+wvResizeWindow -win $_nWave1 -4 1 1366 705
+wvSetCursor -win $_nWave1 32142.673634 -snap {("G3" 10)}
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 1 )} 
+wvSetCursor -win $_nWave1 30896.346438 -snap {("G3" 1)}
+wvSetCursor -win $_nWave1 31367.646638
+wvSetCursor -win $_nWave1 31734.213460
+wvSetCursor -win $_nWave1 31629.480083
+wvSetCursor -win $_nWave1 31420.013327
+wvSelectSignal -win $_nWave1 {( "G3" 7 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 7 )} 
+wvSetCursor -win $_nWave1 20632.475418 -snap {("G3" 7)}
+wvSelectSignal -win $_nWave1 {( "G3" 5 )} 
+wvSetCursor -win $_nWave1 24193.410262 -snap {("G3" 5)}
+wvSetCursor -win $_nWave1 24769.443840
+wvSetCursor -win $_nWave1 24769.443840
+wvSetCursor -win $_nWave1 24455.243706
+wvSetCursor -win $_nWave1 26288.077817
+wvSetCursor -win $_nWave1 30320.312861
+wvSetCursor -win $_nWave1 30425.046238
+wvSelectSignal -win $_nWave1 {( "G3" 4 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 4 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 5 )} 
+wvSetCursor -win $_nWave1 30425.046238
+wvSetCursor -win $_nWave1 30791.613061
+wvSetCursor -win $_nWave1 31001.079816
+wvSetCursor -win $_nWave1 30425.046238
+wvSetCursor -win $_nWave1 31053.446505
+wvSetCursor -win $_nWave1 15029.239708
+wvSetCursor -win $_nWave1 8588.136976
+wvSetCursor -win $_nWave1 8692.870354
+wvSetCursor -win $_nWave1 9373.637309
+wvSetCursor -win $_nWave1 10997.004665
+wvSetCursor -win $_nWave1 18590.174552
+wvSetCursor -win $_nWave1 18799.641307
+wvSetCursor -win $_nWave1 18956.741374
+wvSetCursor -win $_nWave1 19428.041574
+wvSetCursor -win $_nWave1 7750.269954
+wvSetCursor -win $_nWave1 8588.136976
+wvSetCursor -win $_nWave1 8588.136976
+wvSetCursor -win $_nWave1 15238.706464
+wvSetCursor -win $_nWave1 15029.239708
+wvSetCursor -win $_nWave1 18747.274619
+wvSetCursor -win $_nWave1 15186.339775
+wvSetCursor -win $_nWave1 15133.973086
+wvSetCursor -win $_nWave1 14976.873019
+wvSetCursor -win $_nWave1 19009.108063
+wvSetCursor -win $_nWave1 19480.408263
+wvSetCursor -win $_nWave1 18799.641307
+wvSetCursor -win $_nWave1 19009.108063
+wvSelectSignal -win $_nWave1 {( "G3" 6 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 7 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 9 10 11 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 7)}
+wvSelectSignal -win $_nWave1 {( "G3" 7 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 2 )} 
+wvSetCursor -win $_nWave1 37127.982415
+wvSetCursor -win $_nWave1 36970.882348
+wvSelectSignal -win $_nWave1 {( "G3" 1 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 2 )} 
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/next_readreg2\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSetPosition -win $_nWave1 {("G3" 8)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 20475.375352 -snap {("G4" 0)}
+wvSelectSignal -win $_nWave1 {( "G3" 7 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSetCursor -win $_nWave1 24455.243706
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 10)}
+wvSetPosition -win $_nWave1 {("G3" 10)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/next_readreg2\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/MemRead_exmem_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_exmem_r} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 9 10 )} 
+wvSetPosition -win $_nWave1 {("G3" 10)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 8 )} 
+wvSetCursor -win $_nWave1 31053.446505
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 14)}
+wvSetPosition -win $_nWave1 {("G3" 14)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/next_readreg2\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/MemRead_exmem_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_exmem_r} \
+{/Final_tb/chip0/i_MIPS/stall_exmem} \
+{/Final_tb/chip0/i_MIPS/stall_idex} \
+{/Final_tb/chip0/i_MIPS/stall_ifid} \
+{/Final_tb/chip0/i_MIPS/stall_memwb} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 11 12 13 14 )} 
+wvSetPosition -win $_nWave1 {("G3" 14)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 12 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 11 12 13 14 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 10)}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/next_readreg2\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/MemRead_exmem_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_exmem_r} \
+{/Final_tb/chip0/i_MIPS/IFIDWrite} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 25345.477417
+wvSetCursor -win $_nWave1 26235.711128
+wvSetCursor -win $_nWave1 25973.877684
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 1 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 7 )} 
+wvSetCursor -win $_nWave1 30634.512994
+wvSetCursor -win $_nWave1 30896.346438
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoom -win $_nWave1 0.000000 32467.347105
+wvSetCursor -win $_nWave1 25472.040469
+wvSetCursor -win $_nWave1 25662.130323
+wvSetCursor -win $_nWave1 25852.220177
+wvSetCursor -win $_nWave1 26004.292060
+wvSelectSignal -win $_nWave1 {( "G3" 8 9 10 11 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 7)}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetSignalFilter -win $_nWave1 "*_idex"
+wvGetSignalSetSignalFilter -win $_nWave1 "*_idex_"
+wvGetSignalSetSignalFilter -win $_nWave1 "*_idex_*"
+wvGetSignalSetSignalFilter -win $_nWave1 "*_idex_r*"
+wvSetPosition -win $_nWave1 {("G3" 21)}
+wvSetPosition -win $_nWave1 {("G3" 21)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 8 9 10 11 12 13 14 15 16 17 18 19 20 21 )} \
            
-wvSetPosition -win $_nWave1 {("G1" 25)}
+wvSetPosition -win $_nWave1 {("G3" 21)}
 wvGetSignalClose -win $_nWave1
-wvSelectSignal -win $_nWave1 {( "G1" 15 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
-wvSetCursor -win $_nWave1 1704.386679 -snap {("G1" 3)}
-wvSetCursor -win $_nWave1 3408.773357 -snap {("G1" 2)}
-wvSelectSignal -win $_nWave1 {( "G1" 19 )} 
-wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
-wvZoom -win $_nWave1 0.000000 7669.740054
-wvSetCursor -win $_nWave1 195.450318 -snap {("G1" 2)}
-wvSetCursor -win $_nWave1 4441.439979 -snap {("G1" 2)}
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
+wvReloadFile -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvZoomOut -win $_nWave1
+wvZoom -win $_nWave1 0.000000 27677.082778
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetSignalFilter -win $_nWave1 "Jump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalClose -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
+wvReloadFile -win $_nWave1
+wvZoomOut -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 21 )} 
+wvSetCursor -win $_nWave1 20223.067510
+wvSetCursor -win $_nWave1 20352.702558
+wvSetCursor -win $_nWave1 20547.155130
+wvSelectSignal -win $_nWave1 {( "G3" 13 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 13 )} 
+wvSetCursor -win $_nWave1 19834.162365
+wvSetCursor -win $_nWave1 20158.249986
+wvSetCursor -win $_nWave1 20611.972654
+wvSetCursor -win $_nWave1 20028.614938
+wvSetCursor -win $_nWave1 20741.607702
+wvSetCursor -win $_nWave1 20676.790178
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
+wvReloadFile -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 13 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 10 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 9 )} 
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 22)}
+wvSetPosition -win $_nWave1 {("G3" 22)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/next_inst\[9:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 22 )} 
+wvSetPosition -win $_nWave1 {("G3" 22)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 22 )} 
+wvExpandBus -win $_nWave1 {("G3" 22)}
+wvSelectSignal -win $_nWave1 {( "G3" 22 )} 
+wvSetPosition -win $_nWave1 {("G3" 22)}
+wvCollapseBus -win $_nWave1 {("G3" 22)}
+wvSetPosition -win $_nWave1 {("G3" 22)}
+wvSelectSignal -win $_nWave1 {( "G3" 22 )} 
+wvExpandBus -win $_nWave1 {("G3" 22)}
+wvSelectSignal -win $_nWave1 {( "G3" 21 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 22 )} 
+wvSetPosition -win $_nWave1 {("G3" 22)}
+wvCollapseBus -win $_nWave1 {("G3" 22)}
+wvSetPosition -win $_nWave1 {("G3" 22)}
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G4" 0)}
+wvSetPosition -win $_nWave1 {("G3" 21)}
+wvSelectSignal -win $_nWave1 {( "G3" 21 )} 
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 23)}
+wvSetPosition -win $_nWave1 {("G3" 23)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead} \
+{/Final_tb/chip0/i_MIPS/MemWrite} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 22 23 )} 
+wvSetPosition -win $_nWave1 {("G3" 23)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 23 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 13 )} 
+wvSetCursor -win $_nWave1 14389.490344
+wvSetCursor -win $_nWave1 14519.125392
+wvSetCursor -win $_nWave1 15361.753205
+wvSetCursor -win $_nWave1 15621.023301
+wvSetCursor -win $_nWave1 24760.294195
+wvSetCursor -win $_nWave1 24889.929243
+wvSetCursor -win $_nWave1 24889.929243
+wvSetCursor -win $_nWave1 25019.564291
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvSetPosition -win $_nWave1 {("G3" 25)}
+wvSetPosition -win $_nWave1 {("G3" 25)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead} \
+{/Final_tb/chip0/i_MIPS/MemWrite} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_w} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_w} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 24 25 )} 
+wvSetPosition -win $_nWave1 {("G3" 25)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 25 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 24 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 25 )} 
+wvSetCursor -win $_nWave1 19963.797414
+wvSetCursor -win $_nWave1 15426.570729
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 20482.337606
+wvSetCursor -win $_nWave1 20028.614938
+wvSetCursor -win $_nWave1 15750.658349
+wvSetCursor -win $_nWave1 15426.570729
+wvSetCursor -win $_nWave1 15426.570729
+wvSetCursor -win $_nWave1 15426.570729
+wvSetCursor -win $_nWave1 20611.972654
+wvSetCursor -win $_nWave1 20158.249986
+wvSetCursor -win $_nWave1 20158.249986
+wvSetCursor -win $_nWave1 19898.979890
+wvSetCursor -win $_nWave1 19898.979890
+wvSetCursor -win $_nWave1 19898.979890
+wvSetCursor -win $_nWave1 19898.979890
+wvSetCursor -win $_nWave1 19898.979890
+wvSetCursor -win $_nWave1 15426.570729
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalClose -win $_nWave1
+wvSelectGroup -win $_nWave1 {G4}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zifidreg"
+wvSetPosition -win $_nWave1 {("G3" 26)}
+wvSetPosition -win $_nWave1 {("G3" 26)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead} \
+{/Final_tb/chip0/i_MIPS/MemWrite} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_w} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_w} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_inst\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 26 )} 
+wvSetPosition -win $_nWave1 {("G3" 26)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 16398.833590 -snap {("G3" 26)}
+wvSetCursor -win $_nWave1 14454.307868
+wvSetCursor -win $_nWave1 14648.760440
+wvSetCursor -win $_nWave1 14908.030536
+wvSetCursor -win $_nWave1 15426.570729
+wvSelectSignal -win $_nWave1 {( "G3" 26 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G4" 0)}
+wvSetPosition -win $_nWave1 {("G3" 25)}
+wvSelectSignal -win $_nWave1 {( "G3" 25 )} 
+wvSelectGroup -win $_nWave1 {G4}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zifidreg"
+wvSetPosition -win $_nWave1 {("G3" 34)}
+wvSetPosition -win $_nWave1 {("G3" 34)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead} \
+{/Final_tb/chip0/i_MIPS/MemWrite} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_w} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_w} \
+{/Final_tb/chip0/i_MIPS/zifidreg/IF_ID_write} \
+{/Final_tb/chip0/i_MIPS/zifidreg/IF_flush} \
+{/Final_tb/chip0/i_MIPS/zifidreg/PC_4\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/clk} \
+{/Final_tb/chip0/i_MIPS/zifidreg/inst\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_PC_4\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_inst\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/proc_stall} \
+{/Final_tb/chip0/i_MIPS/zifidreg/rst} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 26 27 28 29 30 31 32 33 34 )} 
+wvSetPosition -win $_nWave1 {("G3" 34)}
+wvGetSignalClose -win $_nWave1
+wvScrollUp -win $_nWave1 4
+wvScrollDown -win $_nWave1 4
+wvSelectSignal -win $_nWave1 {( "G3" 33 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 32 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 32 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 33 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 32 )} 
+wvSetCursor -win $_nWave1 15102.483108
+wvSetCursor -win $_nWave1 15361.753205
+wvSetCursor -win $_nWave1 15361.753205
+wvSetCursor -win $_nWave1 15361.753205
+wvSetCursor -win $_nWave1 15556.205777
+wvSetCursor -win $_nWave1 18343.359312 -snap {("G3" 18)}
+wvSetCursor -win $_nWave1 14454.307868
+wvSetCursor -win $_nWave1 15102.483108
+wvSetCursor -win $_nWave1 15167.300632
+wvSetCursor -win $_nWave1 15491.388253
+wvSetCursor -win $_nWave1 14843.213012
+wvSetCursor -win $_nWave1 14843.213012
+wvSetCursor -win $_nWave1 15037.665584
+wvSetCursor -win $_nWave1 15556.205777
+wvSetCursor -win $_nWave1 15037.665584
+wvSetCursor -win $_nWave1 15556.205777
+wvSetCursor -win $_nWave1 15102.483108
+wvSetCursor -win $_nWave1 15361.753205
+wvSetCursor -win $_nWave1 15361.753205
+wvSetCursor -win $_nWave1 15621.023301
+wvSetCursor -win $_nWave1 15556.205777
+wvSaveSignal -win $_nWave1 \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.rc"
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 15167.300632 -snap {("G1" 5)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 16074.745969
+wvSetCursor -win $_nWave1 15750.658349
+wvSetCursor -win $_nWave1 15491.388253
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
+wvReloadFile -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 36)}
+wvSetPosition -win $_nWave1 {("G3" 36)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead} \
+{/Final_tb/chip0/i_MIPS/MemWrite} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_w} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_w} \
+{/Final_tb/chip0/i_MIPS/zifidreg/IF_ID_write} \
+{/Final_tb/chip0/i_MIPS/zifidreg/IF_flush} \
+{/Final_tb/chip0/i_MIPS/zifidreg/PC_4\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/clk} \
+{/Final_tb/chip0/i_MIPS/zifidreg/inst\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_PC_4\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_inst\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/proc_stall} \
+{/Final_tb/chip0/i_MIPS/zifidreg/rst} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_PC_4_w\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_inst_w\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 35 36 )} 
+wvSetPosition -win $_nWave1 {("G3" 36)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 35 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 35 )} 
+wvSetCursor -win $_nWave1 15556.205777 -snap {("G3" 31)}
+wvSetCursor -win $_nWave1 15296.935681
+wvSetCursor -win $_nWave1 15621.023301
+wvSetCursor -win $_nWave1 15426.570729
+wvSetCursor -win $_nWave1 15426.570729
+wvSetCursor -win $_nWave1 15556.205777
+wvSelectSignal -win $_nWave1 {( "G3" 26 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 27 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 26 )} 
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
+wvReloadFile -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 32 )} 
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
+wvReloadFile -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 25 )} 
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvSelectSignal -win $_nWave1 {( "G3" 13 )} 
+wvScrollDown -win $_nWave1 6
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 15167.300632
+wvSetCursor -win $_nWave1 14972.848060
+wvSetCursor -win $_nWave1 15361.753205
+wvSetCursor -win $_nWave1 19574.892269
+wvSetCursor -win $_nWave1 18667.446932
+wvSetCursor -win $_nWave1 19121.169601
+wvSetCursor -win $_nWave1 18991.534553
+wvSetCursor -win $_nWave1 19445.257221
+wvSetCursor -win $_nWave1 18861.899504
+wvSetCursor -win $_nWave1 19834.162365
+wvSetCursor -win $_nWave1 19315.622173
+wvSetCursor -win $_nWave1 19056.352077
+wvSetCursor -win $_nWave1 18991.534553
+wvSetCursor -win $_nWave1 19121.169601
+wvSetCursor -win $_nWave1 19250.804649
+wvSetCursor -win $_nWave1 19250.804649
+wvSetCursor -win $_nWave1 19380.439697
+wvSetCursor -win $_nWave1 19445.257221
+wvSelectSignal -win $_nWave1 {( "G3" 32 )} 
+wvSetCursor -win $_nWave1 19445.257221
+wvSetCursor -win $_nWave1 8426.278129
+wvSetCursor -win $_nWave1 8102.190509
+wvSetCursor -win $_nWave1 8491.095653
+wvSetCursor -win $_nWave1 8750.365749
+wvSetCursor -win $_nWave1 8750.365749
+wvSetCursor -win $_nWave1 9009.635846
+wvSetCursor -win $_nWave1 9722.628611
+wvSetCursor -win $_nWave1 9657.811086
+wvSetCursor -win $_nWave1 9268.905942
+wvSetCursor -win $_nWave1 9398.540990
+wvSetCursor -win $_nWave1 9852.263659
+wvSetCursor -win $_nWave1 9917.081183
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
+wvReloadFile -win $_nWave1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 13417.227483
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSaveSignal -win $_nWave1 \
+           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.rc"
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 14
+wvSetPosition -win $_nWave1 {("G3" 0)}
+wvCollapseGroup -win $_nWave1 "G3"
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zmemwbreg"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zmemwbreg"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvSetPosition -win $_nWave1 {("G3" 0)}
+wvSetPosition -win $_nWave1 {("G3" 0)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead} \
+{/Final_tb/chip0/i_MIPS/MemWrite} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_w} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_w} \
+{/Final_tb/chip0/i_MIPS/zifidreg/IF_ID_write} \
+{/Final_tb/chip0/i_MIPS/zifidreg/IF_flush} \
+{/Final_tb/chip0/i_MIPS/zifidreg/PC_4\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/clk} \
+{/Final_tb/chip0/i_MIPS/zifidreg/inst\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_PC_4\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_inst\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/proc_stall} \
+{/Final_tb/chip0/i_MIPS/zifidreg/rst} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_PC_4_w\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_inst_w\[31:0\]} \
+}
+wvCollapseGroup -win $_nWave1 "G3"
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSetPosition -win $_nWave1 {("G3" 0)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zifidreg"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/zregister/ReadData1\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/ReadData2\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/ReadReg1\[4:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/ReadReg2\[4:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/RegWrite} \
+{/Final_tb/chip0/i_MIPS/zregister/WriteData\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/WriteReg\[400\]} \
+{/Final_tb/chip0/i_MIPS/zregister/clk} \
+{/Final_tb/chip0/i_MIPS/zregister/prev_ReadData1\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/prev_ReadData2\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ALUOp_idex_r\[100\]} \
+{/Final_tb/chip0/i_MIPS/ALUSrc_idex_r} \
+{/Final_tb/chip0/i_MIPS/Funct_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/Jump_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemtoReg_idex_r} \
+{/Final_tb/chip0/i_MIPS/Opcode_idex_r\[500\]} \
+{/Final_tb/chip0/i_MIPS/PC_4_idex_r\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/RegDst_idex_r} \
+{/Final_tb/chip0/i_MIPS/RegRd_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRs_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegRt_idex_r\[400\]} \
+{/Final_tb/chip0/i_MIPS/RegWrite_idex_r} \
+{/Final_tb/chip0/i_MIPS/MemRead} \
+{/Final_tb/chip0/i_MIPS/MemWrite} \
+{/Final_tb/chip0/i_MIPS/MemRead_idex_w} \
+{/Final_tb/chip0/i_MIPS/MemWrite_idex_w} \
+{/Final_tb/chip0/i_MIPS/zifidreg/IF_ID_write} \
+{/Final_tb/chip0/i_MIPS/zifidreg/IF_flush} \
+{/Final_tb/chip0/i_MIPS/zifidreg/PC_4\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/clk} \
+{/Final_tb/chip0/i_MIPS/zifidreg/inst\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_PC_4\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_inst\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/proc_stall} \
+{/Final_tb/chip0/i_MIPS/zifidreg/rst} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_PC_4_w\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zifidreg/next_inst_w\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G4" \
+}
+wvSelectSignal -win $_nWave1 {( "G3" 1 2 3 4 5 6 7 8 9 10 11 )} 
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G3" 1 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 6 7 8 9 10 11 12 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 1 )} 
+wvSelectSignal -win $_nWave1 {( "G3" 1 2 3 4 5 6 7 8 9 10 11 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G3" 11)}
+wvSetPosition -win $_nWave1 {("G3" 0)}
+wvCollapseGroup -win $_nWave1 "G3"
+wvExpandGroup -win $_nWave1 "G3"
+wvCollapseGroup -win $_nWave1 "G3"
+wvSelectGroup -win $_nWave1 {G4}
+wvSelectGroup -win $_nWave1 {G4}
+wvCollapseGroup -win $_nWave1 "G1"
+wvSelectGroup -win $_nWave1 {G4}
+wvExpandGroup -win $_nWave1 "G3"
+wvSelectGroup -win $_nWave1 {G4}
+wvScrollDown -win $_nWave1 9
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 10
+wvScrollDown -win $_nWave1 0
+wvSelectSignal -win $_nWave1 {( "G3" 1 )} 
+wvSelectGroup -win $_nWave1 {G3}
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G4" 0)}
+wvSetPosition -win $_nWave1 {("G1" 7)}
+wvSelectGroup -win $_nWave1 {G4}
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 7)}
+wvSetPosition -win $_nWave1 {("G1" 7)}
+wvSelectGroup -win $_nWave1 {G2}
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 7)}
+wvSetPosition -win $_nWave1 {("G1" 7)}
+wvExpandGroup -win $_nWave1 "G1"
+wvSelectGroup -win $_nWave1 {G2}
+wvSelectGroup -win $_nWave1 {G2}
+wvSelectGroup -win $_nWave1 {G2}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zifidreg"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zifidreg"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zifidreg"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zifidreg"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
+wvSetPosition -win $_nWave1 {("G1" 11)}
+wvSetPosition -win $_nWave1 {("G1" 11)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+{/Final_tb/chip0/i_MIPS/zregister/ReadData1\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/ReadData2\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/ReadReg1\[4:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/ReadReg2\[4:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 8 9 10 11 )} 
+wvSetPosition -win $_nWave1 {("G1" 11)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 16334.016066
+wvSelectSignal -win $_nWave1 {( "G1" 9 )} 
+wvSetCursor -win $_nWave1 10954.161568
+wvSetCursor -win $_nWave1 10435.621375
+wvSetCursor -win $_nWave1 10046.716231
+wvSelectSignal -win $_nWave1 {( "G1" 8 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 11 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 8 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 9 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 8 )} 
+wvSetCursor -win $_nWave1 7518.832792
+wvSetCursor -win $_nWave1 7842.920413
+wvSetCursor -win $_nWave1 7972.555461
+wvSetCursor -win $_nWave1 8361.460605
+wvSetCursor -win $_nWave1 7778.102888
+wvSetCursor -win $_nWave1 7907.737937
+wvSetCursor -win $_nWave1 7907.737937
+wvSetCursor -win $_nWave1 8880.000798
+wvSetCursor -win $_nWave1 8880.000798
+wvSetCursor -win $_nWave1 7778.102888
+wvSetCursor -win $_nWave1 8361.460605
+wvSetCursor -win $_nWave1 9074.453370

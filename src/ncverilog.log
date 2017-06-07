@@ -1,5 +1,5 @@
 ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
-TOOL:	ncverilog	10.20-s114: Started on Jun 07, 2017 at 14:04:45 CST
+TOOL:	ncverilog	10.20-s114: Started on Jun 07, 2017 at 23:51:12 CST
 ncverilog
 	Final_tb.v
 	CHIP.v
@@ -11,13 +11,51 @@ ncverilog
 	../HazardDetection.v
 	../forward_jump.v
 	../forwardingUnit.v
+	+define+hasHazard
 	+access+r
-	+define+noHazard
-Recompiling... reason: file '../Control.v' is newer than expected.
-	expected: Tue Jun  6 23:36:15 2017
-	actual:   Wed Jun  7 14:04:42 2017
+file: Final_tb.v
+	module worklib.TestBed:v
+		errors: 0, warnings: 0
+	module worklib.Final_tb:v
+		errors: 0, warnings: 0
+file: CHIP.v
+	module worklib.CHIP:v
+		errors: 0, warnings: 0
+file: slow_memory.v
+	module worklib.slow_memory:v
+		errors: 0, warnings: 0
+file: ../Top.v
+	module worklib.MIPS_Pipeline:v
+		errors: 0, warnings: 0
+file: ../L1cache.v
+	module worklib.cache:v
+		errors: 0, warnings: 0
 file: ../Control.v
 	module worklib.Control:v
+		errors: 0, warnings: 0
+file: ../submodule.v
+	module worklib.aluCtrl:v
+		errors: 0, warnings: 0
+	module worklib.alu:v
+		errors: 0, warnings: 0
+	module worklib.register:v
+		errors: 0, warnings: 0
+	module worklib.IF_ID_reg:v
+		errors: 0, warnings: 0
+	module worklib.ID_EX_reg:v
+		errors: 0, warnings: 0
+	module worklib.EX_MEM_reg:v
+		errors: 0, warnings: 0
+	module worklib.MEM_WB_reg:v
+		errors: 0, warnings: 0
+file: ../HazardDetection.v
+	module worklib.HazardDetection:v
+		errors: 0, warnings: 0
+file: ../forward_jump.v
+	module worklib.forward_jump:v
+		errors: 0, warnings: 0
+file: ../forwardingUnit.v
+	module worklib.Forwarding:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
@@ -29,21 +67,53 @@ ncelab: *W,MEMODR (./Final_tb.v,131|37): $readmem default memory order incompati
 ncelab: *W,MEMODR (./Final_tb.v,132|37): $readmem default memory order incompatible with IEEE1364.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.Control:v <0x5f5b8972>
-			streams:   2, words:  2311
+		worklib.CHIP:v <0x35fd6fa6>
+			streams:   1, words:   101
+		worklib.Control:v <0x40864300>
+			streams:   2, words:  2314
+		worklib.EX_MEM_reg:v <0x75d147c4>
+			streams:   3, words:   914
+		worklib.Final_tb:v <0x3aebfc91>
+			streams:   3, words:  2845
+		worklib.Forwarding:v <0x3ee45600>
+			streams:   2, words:  1028
+		worklib.HazardDetection:v <0x328deb7e>
+			streams:   1, words:  1912
+		worklib.ID_EX_reg:v <0x543f42cb>
+			streams:   3, words:  1227
+		worklib.IF_ID_reg:v <0x7ec6cf8c>
+			streams:   5, words:  1699
+		worklib.MEM_WB_reg:v <0x43a7a35b>
+			streams:   3, words:   914
+		worklib.MIPS_Pipeline:v <0x431942af>
+			streams:  38, words: 18989
+		worklib.TestBed:v <0x53660514>
+			streams:  10, words:  5394
+		worklib.alu:v <0x3121037b>
+			streams:   1, words:  1923
+		worklib.aluCtrl:v <0x52e46f95>
+			streams:   2, words:  2825
+		worklib.cache:v <0x45d54d06>
+			streams:  10, words: 35085
+		worklib.forward_jump:v <0x03ce8f94>
+			streams:   3, words:  1882
+		worklib.register:v <0x79a9f8c1>
+			streams:  37, words: 10541
+		worklib.slow_memory:v <0x5329541b>
+			streams:   7, words:  5411
 	Loading native compiled code:     .................... Done
 	Building instance specific data structures.
 	Design hierarchy summary:
 		                  Instances  Unique
 		Modules:                 19      17
-		Registers:              165     130
-		Scalar wires:            53       -
+		Registers:              166     131
+		Scalar wires:            51       -
 		Expanded wires:          32       1
-		Vectored wires:          58       -
-		Always blocks:           45      37
+		Vectored wires:          59       -
+		Always blocks:           47      39
 		Initial blocks:           1       1
-		Cont. assignments:       13      39
-		Pseudo assignments:      10      10
+		Cont. assignments:       15      41
+		Pseudo assignments:      21      21
 		Simulation timescale:  10ps
 	Writing initial simulation snapshot: worklib.Final_tb:v
 Loading snapshot worklib.Final_tb:v .................... Done
@@ -55,7 +125,13 @@ START!!! Simulation Start .....
 
 -----------------------------------------------------
 
-Simulation complete via $finish(1) at time 50044500 PS + 0
-./Final_tb.v:146 		#(`CYCLE*10000)	 $finish; // calculate clock cycles for all operation
+--------------------------- Simulation FINISH !!---------------------------
+============================================================================
+
+ (T_T) FAIL!! The simulation result is FAIL!!! there were  33 errors at all.
+
+============================================================================
+Simulation complete via $finish(1) at time 1182500 PS + 0
+./Final_tb.v:158 	       #(`CYCLE) $finish;		   
 ncsim> exit
-TOOL:	ncverilog	10.20-s114: Exiting on Jun 07, 2017 at 14:04:48 CST  (total: 00:00:03)
+TOOL:	ncverilog	10.20-s114: Exiting on Jun 07, 2017 at 23:51:13 CST  (total: 00:00:01)

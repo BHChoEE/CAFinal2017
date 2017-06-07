@@ -40,7 +40,7 @@ module Control(
 	assign IF_Flush = ctrl[1];
 	assign RegWrite = ctrl[2];
 	assign ALURsc = ctrl[3];
-	assign ALUop = ctrl[5:4];
+	assign ALUOp = ctrl[5:4];
 	assign RegDst = ctrl[6];
 	assign MemWrite = ctrl[7];
 	assign MemRead = ctrl[8];
@@ -67,7 +67,7 @@ module Control(
 			6'h2: ctrl = 13'b0000000000000;//j
 			6'h3: ctrl = 13'b1010000000100;//jal
 			6'h23: ctrl = 13'b0001100001100;//lw
-			6'h2b: ctrl = 13'b0000010001000;//sw
+			6'h2b: ctrl = 13'b0000010011000;//sw
 			default: ctrl = 13'b0000000011100;//addi andi ori xori slti
 		endcase
 	end

@@ -1,4 +1,5 @@
 module forward_jump(
+JumpR,
 RegJump,		
 IDEX_Opcode,
                 
@@ -18,7 +19,8 @@ stallJ
 );
 
 //input output
-
+	
+	input JumpR;
 	input[4:0] 	RegJump;		
 	input[5:0] 	IDEX_Opcode;
 
@@ -39,7 +41,7 @@ stallJ
 	reg[1:0] ForwardJ_r;
 	reg[1:0] stallJ_r;
 //combinatinal
-	assign stallJ = stallJ_r[0] || stallJ_r[1];
+	assign stallJ = (stallJ_r[0] || stallJ_r[1]) && JumpR;
 	assign ForwardJ = ForwardJ_r;
 	//stall
 	always@(*) begin
@@ -51,7 +53,11 @@ stallJ
 			else
 				stallJ_r[0] = 1'b0;
 		end
-		else if(EXMEM_MemRead && (EXMEM_RegRd == RegJump)) begin
+		else begin
+			stallJ_r[0] = 1'b0;
+		end
+
+		if(EXMEM_MemRead && (EXMEM_RegRd == RegJump)) begin
 			stallJ_r[1] = 1'b1;
 		end
 		else begin

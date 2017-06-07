@@ -82,7 +82,7 @@ module MIPS_Pipeline(
 	//EX
 	wire[31:0] next_ALUresult;
 	wire[31:0] next_readreg2_2;
-	reg[31:0] ALUresult2exmem;
+	reg[31:0] regdata2exmem;
 	reg[31:0] ALUin1,ALUin2;
 
 	reg MemWrite_exmem_r,MemWrite_exmem_w;
@@ -105,16 +105,16 @@ module MIPS_Pipeline(
 	assign ICACHE_wen = 1'b0;
 	assign ICACHE_addr = PC_r[31:2];
 	assign ICACHE_wdata = 32'd0;
-	assign DCACHE_re = MemRead_exmem_r;
-	assign DCACHE_we = MemWrite_exmem_r;
-	assign DCACHE_addr = next_readreg2_2[31:2];
-	assign DCACHE_wdata = next_ALUresult;
+	assign DCACHE_ren = MemRead_exmem_r;
+	assign DCACHE_wen = MemWrite_exmem_r;
+	assign DCACHE_addr = next_ALUresult[31:2];
+	assign DCACHE_wdata = next_readreg2_2;
 	//submodule
 	IF_ID_reg zifidreg(.clk(clk),.rst(rst_n),.PC_4(PC_4),.inst(ICACHE_rdata),.next_PC_4(next_PC_4),.next_inst(next_inst),.IF_flush(IF_Flush),.IF_ID_write(IFIDWrite),.proc_stall(stall_ifid));
 
-	Control zctrl(.inst(next_inst[31-:6]),.funct(next_inst[5-:6]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALURsc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JumpR(JumpR),.raWrite(raWrite));	
+	Control zctrl(.inst(next_inst[31-:6]),.funct(next_inst[5-:6]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALUSrc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JumpR(JumpR),.raWrite(raWrite));	
 
-	forward_jump zforwardjump(.RegJump(next_inst[25-:5]),.IDEX_RegWrite(RegWrite_idex_r),.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRd(RegRd_idex_r),.IDEX_Opcode(Opcode_idex_r),.EXMEM_RegWrite(RegWrite_exmem_r),.EXMEM_MemRead(MemRead_exmem_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.MEMWB_RegRd(RegRd_memwb_r),.ForwardJ(ForwardJ),.stallJ(stallJ));
+	forward_jump zforwardjump(.JumpR(JumpR),.RegJump(next_inst[25-:5]),.IDEX_RegWrite(RegWrite_idex_r),.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRd(RegRd_idex_r),.IDEX_Opcode(Opcode_idex_r),.EXMEM_RegWrite(RegWrite_exmem_r),.EXMEM_MemRead(MemRead_exmem_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.MEMWB_RegRd(RegRd_memwb_r),.ForwardJ(ForwardJ),.stallJ(stallJ));
 
 	HazardDetection zhd(.opcode(next_inst[31-:6]),.IDEX_MemRead(MemRead_idex_r),.IDEX_RegRt(RegRt_idex_r),.IFID_RegRt(next_inst[20-:5]),.IFID_RegRs(next_inst[25-:5]),.PCWrite(PCWrite),.IFIDWrite(IFIDWrite),.stall(stall));
 
@@ -128,14 +128,14 @@ module MIPS_Pipeline(
 
 	Forwarding zforwarding(.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRs(RegRs_idex_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegRd(RegRd_memwb_r),.EXMEM_RegWrite(RegWrite_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.forwardA(forwardA),.forwardB(forwardB));
 
-	EX_MEM_reg zexmemreg(.clk(clk),.rst(rst_n),.ALUresult(ALUresult2exmem),.readreg2(readreg_forward),.next_ALUresult(next_ALUresult),.next_readreg2(next_readreg2_2),.proc_stall(stall_exmem));
+	EX_MEM_reg zexmemreg(.clk(clk),.rst(rst_n),.ALUresult(ALUresult),.readreg2(regdata2exmem),.next_ALUresult(next_ALUresult),.next_readreg2(next_readreg2_2),.proc_stall(stall_exmem));
 
 	MEM_WB_reg zmemwbreg(.clk(clk),.rst(rst_n),.readdata(DCACHE_rdata),.ALUresult(next_ALUresult),.next_readdata(next_readdata),.next_ALUresult(next_ALUresult2),.proc_stall(stall_memwb));
 
 //stall unit
 	always@(*) begin
 		stall_ifid = DCACHE_stall || ICACHE_stall || stallJ;
-		stall_idex = DCACHE_stall || ICACHE_stall || stallJ;
+		stall_idex = DCACHE_stall || ICACHE_stall;
 		stall_memwb = DCACHE_stall || ICACHE_stall;
 		stall_exmem = DCACHE_stall || ICACHE_stall;
 	end
@@ -150,7 +150,7 @@ module MIPS_Pipeline(
 	//PC
 	always@(*) begin
 		PC_4 = PC_r + 32'd4;
-		if(PCWrite && !stallJ) begin
+		if(!stall_ifid && PCWrite) begin
 			if(PCSrc) begin
 				PC_w = bjaddr;
 			end
@@ -168,22 +168,45 @@ module MIPS_Pipeline(
 //ID
 	//control signal
 	always@(*) begin
-		RegWrite_idex_w = (stall || stallJ) ? 1'b0 : RegWrite;
-		ALUSrc_idex_w = (stall || stallJ) ? 1'b0 : ALUSrc;
-		ALUOp_idex_w = (stall || stallJ) ? 1'b0 : ALUOp;
-		RegDst_idex_w = (stall || stallJ) ? 1'b0 : RegDst;
-		MemRead_idex_w = (stall || stallJ) ? 1'b0 : MemRead;
-		MemWrite_idex_w = (stall || stallJ) ? 1'b0 : MemWrite;
-		MemtoReg_idex_w = (stall || stallJ) ? 1'b0 : MemtoReg;
-		Jump_idex_w = (stall || stallJ) ? 1'b0 : Jump;
+		if(!stall_idex) begin
+			RegWrite_idex_w = (stall || stallJ) ? 1'b0 : RegWrite;
+			ALUSrc_idex_w = (stall || stallJ) ? 1'b0 : ALUSrc;
+			ALUOp_idex_w = (stall || stallJ) ? 1'b0 : ALUOp;
+			RegDst_idex_w = (stall || stallJ) ? 1'b0 : RegDst;
+			MemRead_idex_w = (stall || stallJ) ? 1'b0 : MemRead;
+			MemWrite_idex_w = (stall || stallJ) ? 1'b0 : MemWrite;
+			MemtoReg_idex_w = (stall || stallJ) ? 1'b0 : MemtoReg;
+			Jump_idex_w = (stall || stallJ) ? 1'b0 : Jump;
+		end
+		else begin
+			RegWrite_idex_w =RegWrite_idex_r;
+			ALUSrc_idex_w =  ALUSrc_idex_r;
+			ALUOp_idex_w =   ALUOp_idex_r ;
+			RegDst_idex_w =  RegDst_idex_r;
+			MemRead_idex_w = MemRead_idex_r;
+			MemWrite_idex_w =MemWrite_idex_r;
+			MemtoReg_idex_w =MemtoReg_idex_r;
+			Jump_idex_w =    Jump_idex_r;
+		end
 
-		PC_4_idex_w = next_PC_4;
-		Opcode_idex_w = next_inst[31:26];
-		Funct_idex_w = next_inst[5:0];
-	
-		RegRs_idex_w = next_inst[25:21];
-		RegRt_idex_w = raWrite ? 5'd31 : next_inst[20:16];
-		RegRd_idex_w = next_inst[15:11];
+		if(!stall_idex) begin
+			PC_4_idex_w = next_PC_4;
+			Opcode_idex_w = next_inst[31-:6];
+			Funct_idex_w = next_inst[5-:6];
+		
+			RegRs_idex_w = next_inst[25-:5];
+			RegRt_idex_w = raWrite ? 5'd31 : next_inst[20-:5];
+			RegRd_idex_w = next_inst[15-:5];
+		end
+		else begin
+			PC_4_idex_w = PC_4_idex_r;
+			Opcode_idex_w = Opcode_idex_r;
+			Funct_idex_w = Funct_idex_r;
+		                               
+			RegRs_idex_w = RegRs_idex_r;
+			RegRt_idex_w = RegRt_idex_r ;
+			RegRd_idex_w = RegRd_idex_r ;
+		end
 	end
 	//address for beq/jr/jrlu
 	always@(*) begin
@@ -209,11 +232,20 @@ module MIPS_Pipeline(
 //EX
 	//control signal
 	always@(*) begin
-		MemWrite_exmem_w = MemWrite_idex_r;
-		MemRead_exmem_w = MemRead_idex_r;
-		RegWrite_exmem_w = RegWrite_idex_r;
-		MemtoReg_exmem_w = MemtoReg_idex_r;
-		RegRd_exmem_w = RegDst ? RegRd_idex_r : RegRt_idex_r;
+		if(!stall_exmem) begin
+			MemWrite_exmem_w = MemWrite_idex_r;
+			MemRead_exmem_w = MemRead_idex_r;
+			RegWrite_exmem_w = RegWrite_idex_r;
+			MemtoReg_exmem_w = MemtoReg_idex_r;
+			RegRd_exmem_w = RegDst_idex_r ? RegRd_idex_r : RegRt_idex_r;
+		end
+		else begin
+			MemWrite_exmem_w =MemWrite_exmem_r;
+			MemRead_exmem_w = MemRead_exmem_r;
+			RegWrite_exmem_w =RegWrite_exmem_r;
+			MemtoReg_exmem_w =MemtoReg_exmem_r;
+			RegRd_exmem_w =   RegRd_exmem_r;
+		end
 	end
 	//ALUin determination (forwarding)
 	always@(*) begin
@@ -237,14 +269,26 @@ module MIPS_Pipeline(
 	//mux for jal/jalr
 	always@(*) begin
 		if(Jump_idex_r)
-			ALUresult2exmem = PC_4_idex_r;
+			regdata2exmem = PC_4_idex_r;
 		else
-			ALUresult2exmem = ALUresult;
+			regdata2exmem = readreg_forward;
 	end
 //MEM
+	always@(*) begin
+		if(stall_memwb) begin
+			MemtoReg_memwb_w = MemtoReg_memwb_r;
+            RegWrite_memwb_w = RegWrite_memwb_r;
+			RegRd_memwb_w =    RegRd_memwb_r; 
+		end
+		else begin
+			MemtoReg_memwb_w = MemtoReg_exmem_r;
+            RegWrite_memwb_w = RegWrite_exmem_r;
+			RegRd_memwb_w =    RegRd_exmem_r;
+		end
+	end
 //WB
 	always@(*) begin
-		WBdata = MemtoReg ? next_readdata: next_ALUresult2; 
+		WBdata = MemtoReg ? next_readdata : next_ALUresult2; 
 	end
 //sequential
 	always@(posedge clk or negedge rst_n) begin
@@ -261,8 +305,10 @@ module MIPS_Pipeline(
 			RegRs_idex_r <= 5'd0;
             RegRt_idex_r <= 5'd0;
             RegRd_idex_r <= 5'd0;
+			Jump_idex_r <= 1'b0;
 			PC_4_idex_r <= 31'd0;
 			Opcode_idex_r <= 6'd0;
+			Funct_idex_r <= 6'd0;
 
 			MemWrite_exmem_r <= 1'd0;
             MemRead_exmem_r <= 1'd0;
@@ -290,6 +336,7 @@ module MIPS_Pipeline(
 			PC_4_idex_r <= PC_4_idex_w;
 			Jump_idex_r <= Jump_idex_r;
 			Opcode_idex_r <= Opcode_idex_w;
+			Funct_idex_r <= Funct_idex_w;
 
 			MemWrite_exmem_r <= MemWrite_exmem_w;
             MemRead_exmem_r <= MemRead_exmem_w;
