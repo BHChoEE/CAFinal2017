@@ -134,8 +134,8 @@ module Final_tb;
 		// waveform dump
 	    // $dumpfile("Final.vcd");
 	    // $dumpvars;
-	    $fsdbDumpfile("Final.fsdb");			
-		$fsdbDumpvars(0,Final_tb,"+mda");
+	    $dumpfile("Final.fsdb");			
+		$dumpvars(0,Final_tb,"+mda");
 	
 		clk = 0;
 		rst_n = 1'b1;

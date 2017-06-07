@@ -11,9 +11,9 @@ module HazardDetection(
 //input output
 	input[5:0] opcode;
 	input IDEX_MemRead;
-	input IDEX_RegRt;
-	input IFID_RegRs;
-	input IFID_RegRt;
+	input[4:0] IDEX_RegRt;
+	input[4:0] IFID_RegRs;
+	input[4:0] IFID_RegRt;
 	output PCWrite;
 	output IFIDWrite;
 	output stall;
@@ -36,13 +36,14 @@ module HazardDetection(
 				ifidw = 1'b1;
 				st = 1'b0;
 			end
+		end
 		else if(opcode == 6'd2 || opcode == 6'd3) begin//J-type
 			pcw  = 1'b1;
 			ifidw = 1'b1;
 			st = 1'b0;
 		end
 		else begin//I-Type
-			if(IDEX_MemRead & (IDEX_RegRt == IFID_RegRs) begin
+			if(IDEX_MemRead & (IDEX_RegRt == IFID_RegRs)) begin
 				pcw = 1'b0;
 				ifidw = 1'b0;
 				st = 1'b1;

@@ -1,6 +1,6 @@
 module forward_jump(
 RegJump,		
-IFIDEX_Opcode,
+IDEX_Opcode,
                 
 IDEX_RegWrite,	
 IDEX_RegRt,		
@@ -40,11 +40,11 @@ stallJ
 	reg[1:0] stallJ_r;
 //combinatinal
 	assign stallJ = stallJ_r[0] || stallJ_r[1];
-	assign ForwardJ = ForwardJ_r;;
+	assign ForwardJ = ForwardJ_r;
 	//stall
 	always@(*) begin
 		if(IDEX_RegWrite) begin
-			if(IDEX_Opcode == 6'000000 && (IDEX_RegRd == RegJump))
+			if(IDEX_Opcode == 6'b000000 && (IDEX_RegRd == RegJump))
 				stallJ_r[0] = 1'b1;
 			else if(IDEX_RegRt == RegJump)
 				stallJ_r[0] = 1'b1;

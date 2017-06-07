@@ -103,8 +103,8 @@ module aluCtrl(
             ctrl <= 4'b1111;
         end
     end
-    //=============== sequential part ================
 endmodule
+    //=============== sequential part ================
 //TODO
 //==========================================================//
 //                           ALU                            //
@@ -336,6 +336,7 @@ module ID_EX_reg(
             next_readreg2 <= (proc_stall) ? next_readreg2 : readreg2;
             next_sign_ext <= (proc_stall) ? next_sign_ext : sign_ext;
         end
+	end
 endmodule
 
 module EX_MEM_reg(
@@ -351,7 +352,7 @@ module EX_MEM_reg(
     input                   clk;
     input                   rst;
     input                   proc_stall;
-    input       [31:0]      ALUreslut;
+    input       [31:0]      ALUresult;
     input       [31:0]      readreg2;
     output reg  [31:0]      next_ALUresult;
     output reg  [31:0]      next_readreg2;
@@ -378,7 +379,7 @@ module MEM_WB_reg(
     rst,
     proc_stall,
     readdata,
-    ALUreslut,
+    ALUresult,
     next_readdata,
     next_ALUresult,
 );

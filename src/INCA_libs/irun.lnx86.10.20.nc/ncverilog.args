@@ -1,0 +1,16 @@
+//
+// File created by:  ncverilog
+// Do not modify this file
+//
+Final_tb.v
+CHIP.v
+slow_memory.v
+../Top.v
+../L1cache.v
+../Control.v
+../submodule.v
+../HazardDetection.v
+../forward_jump.v
+../forwardingUnit.v
++define+noHazrd
++access+r

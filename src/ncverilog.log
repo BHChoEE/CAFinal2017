@@ -1,0 +1,23 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Jun 07, 2017 at 01:01:00 CST
+ncverilog
+	Final_tb.v
+	CHIP.v
+	slow_memory.v
+	../Top.v
+	../L1cache.v
+	../Control.v
+	../submodule.v
+	../HazardDetection.v
+	../forward_jump.v
+	../forwardingUnit.v
+	+define+noHazrd
+	+access+r
+file: Final_tb.v
+		$readmemb (`IMEM_INIT, slow_memI.mem ); // initialize data in IMEM
+		                    |
+ncvlog: *E,NOTDIR (Final_tb.v,132|22): `IMEM_INIT: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
+	module worklib.Final_tb:v
+		errors: 1, warnings: 0
+ncverilog: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
+TOOL:	ncverilog	10.20-s114: Exiting on Jun 07, 2017 at 01:01:00 CST  (total: 00:00:00)

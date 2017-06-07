@@ -10,9 +10,9 @@ module Control(
 	RegDst,
 	MemWrite,
 	MemRead,
-	MemtoReg
+	MemtoReg,
 	Jump,
-	JunpR,
+	JumpR,
 	raWrite
 );
 
@@ -72,4 +72,4 @@ module Control(
 		endcase
 	end
 //no sequential
-end module
+endmodule

@@ -1,0 +1,28 @@
+//
+// File created by:  ncverilog
+// Do not modify this file
+//
+-XLMODE
+./INCA_libs/irun.lnx86.10.20.nc
+-RUNMODE
+Final_tb.v
+CHIP.v
+slow_memory.v
+../Top.v
+../L1cache.v
+../Control.v
+../submodule.v
+../HazardDetection.v
+../forward_jump.v
+../forwardingUnit.v
+-DEFINE
+noHazrd
+-CDSLIB
+./INCA_libs/irun.lnx86.10.20.nc/cdsrun.lib
+-HDLVAR
+./INCA_libs/irun.lnx86.10.20.nc/hdlrun.var
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+./INCA_libs/irun.lnx86.10.20.nc/xllibs
+-ALLOWUNBOUND
