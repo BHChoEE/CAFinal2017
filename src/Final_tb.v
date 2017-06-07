@@ -131,11 +131,12 @@ module Final_tb;
 		$readmemb (`DMEM_INIT, slow_memD.mem ); // initialize data in DMEM
 		$readmemb (`IMEM_INIT, slow_memI.mem ); // initialize data in IMEM
 
+
 		// waveform dump
-	    // $dumpfile("Final.vcd");
-	    // $dumpvars;
-	    $dumpfile("Final.fsdb");			
-		$dumpvars(0,Final_tb,"+mda");
+	    $dumpfile("Final.vcd");
+	    $dumpvars;
+	    //$dumpfile("Final.fsdb");			
+		//$dumpvars(0,Final_tb,"+mda");
 	
 		clk = 0;
 		rst_n = 1'b1;

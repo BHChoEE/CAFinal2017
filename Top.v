@@ -101,8 +101,8 @@ module MIPS_Pipeline(
 
 	reg[31:0] WBdata;
 //combinational
-	assign ICACHE_re = 1'b1;
-	assign ICACHE_we = 1'b0;
+	assign ICACHE_ren = 1'b1;
+	assign ICACHE_wen = 1'b0;
 	assign ICACHE_addr = PC_r[31:2];
 	assign ICACHE_wdata = 32'd0;
 	assign DCACHE_re = MemRead_exmem_r;

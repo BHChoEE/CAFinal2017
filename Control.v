@@ -33,7 +33,7 @@ module Control(
 	output JumpR;
 	output raWrite;
 //reg & wire
-	reg[9:0] ctrl;
+	reg[12:0] ctrl;
 //combinational
 	
 	assign PCSrc = ctrl[0];

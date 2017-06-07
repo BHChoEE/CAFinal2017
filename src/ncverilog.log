@@ -1,5 +1,5 @@
 ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
-TOOL:	ncverilog	10.20-s114: Started on Jun 07, 2017 at 01:01:00 CST
+TOOL:	ncverilog	10.20-s114: Started on Jun 07, 2017 at 14:04:45 CST
 ncverilog
 	Final_tb.v
 	CHIP.v
@@ -11,13 +11,51 @@ ncverilog
 	../HazardDetection.v
 	../forward_jump.v
 	../forwardingUnit.v
-	+define+noHazrd
 	+access+r
-file: Final_tb.v
+	+define+noHazard
+Recompiling... reason: file '../Control.v' is newer than expected.
+	expected: Tue Jun  6 23:36:15 2017
+	actual:   Wed Jun  7 14:04:42 2017
+file: ../Control.v
+	module worklib.Control:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+		$readmemb (`DMEM_INIT, slow_memD.mem ); // initialize data in DMEM
+		                                   |
+ncelab: *W,MEMODR (./Final_tb.v,131|37): $readmem default memory order incompatible with IEEE1364.
 		$readmemb (`IMEM_INIT, slow_memI.mem ); // initialize data in IMEM
-		                    |
-ncvlog: *E,NOTDIR (Final_tb.v,132|22): `IMEM_INIT: not a recognized directive or macro [2.7.3][16.3.1][16(IEEE)].
-	module worklib.Final_tb:v
-		errors: 1, warnings: 0
-ncverilog: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
-TOOL:	ncverilog	10.20-s114: Exiting on Jun 07, 2017 at 01:01:00 CST  (total: 00:00:00)
+		                                   |
+ncelab: *W,MEMODR (./Final_tb.v,132|37): $readmem default memory order incompatible with IEEE1364.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.Control:v <0x5f5b8972>
+			streams:   2, words:  2311
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 19      17
+		Registers:              165     130
+		Scalar wires:            53       -
+		Expanded wires:          32       1
+		Vectored wires:          58       -
+		Always blocks:           45      37
+		Initial blocks:           1       1
+		Cont. assignments:       13      39
+		Pseudo assignments:      10      10
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.Final_tb:v
+Loading snapshot worklib.Final_tb:v .................... Done
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+-----------------------------------------------------
+
+START!!! Simulation Start .....
+
+-----------------------------------------------------
+
+Simulation complete via $finish(1) at time 50044500 PS + 0
+./Final_tb.v:146 		#(`CYCLE*10000)	 $finish; // calculate clock cycles for all operation
+ncsim> exit
+TOOL:	ncverilog	10.20-s114: Exiting on Jun 07, 2017 at 14:04:48 CST  (total: 00:00:03)

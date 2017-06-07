@@ -2,9 +2,8 @@
 // File created by:  ncverilog
 // Do not modify this file
 //
-+define+noHarzard
-+define+noHazard
 +access+r
++define+noHazard
 -noshowtop
 -ACCESS
 +r
