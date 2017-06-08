@@ -13,7 +13,8 @@ module Control(
 	MemtoReg,
 	Jump,
 	JumpR,
-	raWrite
+	raWrite,
+	Branch
 );
 
 //input output
@@ -32,6 +33,7 @@ module Control(
 	output Jump;
 	output JumpR;
 	output raWrite;
+	output Branch;
 //reg & wire
 	reg[12:0] ctrl;
 //combinational
@@ -48,27 +50,29 @@ module Control(
 	assign Jump = ctrl[10];
 	assign JumpR = ctrl[11];
 	assign raWrite = ctrl[12];
+	assign Branch = ctrl[13];
 
 	always@(*) begin
 		case(inst)
 			6'h0: begin//R_type
 				case(funct)
-					6'h8: ctrl = 13'b0110001100011;
-					6'h9: ctrl = 13'b0110001100111;
-					default: ctrl = 13'b0000001100100;
+					6'h8: ctrl = 14'b00110001100011;
+					6'h9: ctrl = 14'b00110001100111;
+					default: ctrl = 14'b00000001100100;
 				endcase
 			end
 			6'h4: begin
+				ctrl[13] = 1'b1;
 				if(eq)
-					ctrl = 13'b0000000011111;
+					ctrl[12:0] = 14'b0000000011111;
 				else
-					ctrl = 13'b0000000011100;//beq
+					ctrl[12:0] = 14'b0000000011100;//beq
 			end
-			6'h2: ctrl = 13'b0000000000000;//j
-			6'h3: ctrl = 13'b1010000000100;//jal
-			6'h23: ctrl = 13'b0001100001100;//lw
-			6'h2b: ctrl = 13'b0000010011000;//sw
-			default: ctrl = 13'b0000000011100;//addi andi ori xori slti
+			6'h2: ctrl = 14'b00000000000000;//j
+			6'h3: ctrl = 14'b01010000000100;//jal
+			6'h23: ctrl = 14'b00001100001100;//lw
+			6'h2b: ctrl = 14'b00000010011000;//sw
+			default: ctrl = 14'b00000000011100;//addi andi ori xori slti
 		endcase
 	end
 //no sequential
