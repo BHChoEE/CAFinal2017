@@ -1,11 +1,11 @@
 1496933685 /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/TestBed_noHazard.v
 1496813909 /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/CHIP.v
-1496945717 /home/raid7_2/userb03/b03085/ca/CAFinal2017/Top.v
-1496760333 /home/raid7_2/userb03/b03085/ca/CAFinal2017/L1cache.v
-1496940214 /home/raid7_2/userb03/b03085/ca/CAFinal2017/Control.v
-1496944818 /home/raid7_2/userb03/b03085/ca/CAFinal2017/submodule.v
+1497004130 /home/raid7_2/userb03/b03085/ca/CAFinal2017/Top.v
+1497009974 /home/raid7_2/userb03/b03085/ca/CAFinal2017/L1cache.v
+1497002302 /home/raid7_2/userb03/b03085/ca/CAFinal2017/Control.v
+1497001044 /home/raid7_2/userb03/b03085/ca/CAFinal2017/submodule.v
 1496822356 /home/raid7_2/userb03/b03085/ca/CAFinal2017/HazardDetection.v
-1496935128 /home/raid7_2/userb03/b03085/ca/CAFinal2017/forward_jump.v
+1496986203 /home/raid7_2/userb03/b03085/ca/CAFinal2017/forward_jump.v
 1496944635 /home/raid7_2/userb03/b03085/ca/CAFinal2017/forwardingUnit.v
 1496942397 /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final_tb.v
 1496759938 /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/slow_memory.v

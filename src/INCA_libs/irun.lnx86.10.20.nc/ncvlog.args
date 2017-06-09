@@ -16,7 +16,7 @@ slow_memory.v
 ../forward_jump.v
 ../forwardingUnit.v
 -DEFINE
-hasHazard
+noHazard
 -CDSLIB
 ./INCA_libs/irun.lnx86.10.20.nc/cdsrun.lib
 -HDLVAR

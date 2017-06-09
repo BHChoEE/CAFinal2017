@@ -2,7 +2,7 @@ Magic 271485
 Revision 2012.04
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort -4 1 1366 705 197 293
+viewPort -4 1 1366 705 200 262
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,52 @@ signalSpacing 3
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 55354.165556
-cursor 13417.22748254332
+zoom 928976.925935 939747.827702
+cursor 934240.25775086111
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 0
+top 2
 ; marker line index
-markerPos 44
+markerPos 33
+
+; Run Time Signal and Member
+; userBusMem member ...
+; saveRunSig name
+activeDirFile "" "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb"
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[31]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[30]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[29]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[28]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[27]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[26]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[25]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[24]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[23]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[22]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[21]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[20]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[19]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[18]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[17]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[16]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[15]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[14]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[13]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[12]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[11]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[10]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[9]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[8]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[7]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[6]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[5]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[4]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[3]
+userBusMem /Final_tb/chip0/i_MIPS/WBdata[2]
+saveRunSig "WB<<2[29:0]"
 
 ; event list
 ; addEvent event_name event_expression
@@ -49,49 +85,37 @@ addGroup "G1"
 activeDirFile "" "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb"
 addSignal -h 15 /Final_tb/clk
 addSignal -h 15 -holdScope rst_n
-addSignal -h 15 -UNSIGNED -HEX /Final_tb/chip0/i_MIPS/ICACHE_addr[29:0]
-addSignal -h 15 -holdScope ICACHE_ren
-addSignal -h 15 -holdScope ICACHE_stall
-addSignal -h 15 -UNSIGNED -HEX -holdScope ICACHE_wdata[31:0]
-addSignal -h 15 -holdScope ICACHE_wen
-addGroup "G3"
-addSignal -h 15 -UNSIGNED -BIN /Final_tb/chip0/i_MIPS/ICACHE_rdata[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_addr[29:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_rdata[31:0]
-addSignal -h 15 -holdScope DCACHE_ren
+addSignal -h 15 /Final_tb/chip0/i_MIPS/ICACHE_stall
 addSignal -h 15 -holdScope DCACHE_stall
+addSignal -h 15 -UNSIGNED -HEX -holdScope ICACHE_addr[29:0]
+addSignal -h 15 -holdScope ICACHE_ren
+addSignal -h 15 -holdScope ICACHE_wen
+addSignal -h 15 -UNSIGNED -HEX -holdScope ICACHE_wdata[31:0]
+addSignal -h 15 -UNSIGNED -BIN -holdScope ICACHE_rdata[31:0]
+addGroup "G3"
+addSignal -h 15 -UNSIGNED -BIN /Final_tb/chip0/i_MIPS/DCACHE_addr[29:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_rdata[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_wdata[31:0]
+addSignal -h 15 -holdScope DCACHE_ren
 addSignal -h 15 -holdScope DCACHE_wen
-addSignal -h 15 -UNSIGNED -HEX -holdScope ALUOp_idex_r[100]
-addSignal -h 15 -holdScope ALUSrc_idex_r
-addSignal -h 15 -UNSIGNED -HEX -holdScope Funct_idex_r[500]
-addSignal -h 15 -holdScope Jump_idex_r
-addSignal -h 15 -holdScope MemRead_idex_r
-addSignal -h 15 -holdScope MemWrite_idex_r
-addSignal -h 15 -holdScope MemtoReg_idex_r
-addSignal -h 15 -UNSIGNED -HEX -holdScope Opcode_idex_r[500]
-addSignal -h 15 -UNSIGNED -HEX -holdScope PC_4_idex_r[31:0]
-addSignal -h 15 -holdScope RegDst_idex_r
-addSignal -h 15 -UNSIGNED -HEX -holdScope RegRd_idex_r[400]
-addSignal -h 15 -UNSIGNED -HEX -holdScope RegRs_idex_r[400]
-addSignal -h 15 -UNSIGNED -HEX -holdScope RegRt_idex_r[400]
-addSignal -h 15 -holdScope RegWrite_idex_r
-addSignal -h 15 -holdScope MemRead
-addSignal -h 15 -holdScope MemWrite
-addSignal -h 15 -holdScope MemRead_idex_w
-addSignal -h 15 -holdScope MemWrite_idex_w
-addSignal -h 15 /Final_tb/chip0/i_MIPS/zifidreg/IF_ID_write
-addSignal -h 15 -holdScope IF_flush
-addSignal -h 15 -UNSIGNED -HEX -holdScope PC_4[31:0]
-addSignal -h 15 -holdScope clk
-addSignal -h 15 -UNSIGNED -HEX -holdScope inst[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope next_PC_4[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope next_inst[31:0]
-addSignal -h 15 -holdScope proc_stall
-addSignal -h 15 -holdScope rst
-addSignal -h 15 -UNSIGNED -HEX -holdScope next_PC_4_w[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope next_inst_w[31:0]
+addSignal -h 15 -holdScope RegWrite_memwb_r
+addSignal -h 15 -UNSIGNED -UDEC -holdScope RegRd_memwb_r[400]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope WBdata[31:0]
+addSignal -h 15 -UNSIGNED -HEX /WB<<2[29:0]
+addSignal -h 15 /Final_tb/chip0/D_cache/hit
+addSignal -h 15 -UNSIGNED -UDEC -holdScope proc_rdata[31:0]
 addGroup "G4"
+addSignal -h 15 -UNSIGNED -HEX /Final_tb/chip0/D_cache/d0[127:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope d1[127:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope d2[127:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope d3[127:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope d4[127:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope d5[127:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope d6[127:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope d7[127:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope state_r[100]
+addSignal -expanded -h 15 -UNSIGNED -HEX -holdScope dirty_r[700]
+addGroup "G5"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm
@@ -102,11 +126,13 @@ getSignalForm close
 
 "/Final_tb"
 "/Final_tb/chip0"
+"/Final_tb/chip0/D_cache"
 "/Final_tb/chip0/i_MIPS"
 "/Final_tb/chip0/i_MIPS/zalu"
 "/Final_tb/chip0/i_MIPS/zctrl"
 "/Final_tb/chip0/i_MIPS/zforwardjump"
 "/Final_tb/chip0/i_MIPS/zifidreg"
+"/Final_tb/chip0/i_MIPS/zregister"
 "/Final_tb/testbed"
 
 SCOPE_LIST_BEGIN
@@ -121,6 +147,8 @@ SCOPE_LIST_BEGIN
 "/Final_tb/chip0/D_cache"
 "/Final_tb/testbed"
 "/Final_tb/chip0/i_MIPS/zifidreg"
+"/Final_tb/chip0/i_MIPS/zregister"
+"/Final_tb/chip0/i_MIPS/zidexreg"
 SCOPE_LIST_END
 
 GETSIGNALFORM_SCOPE_HIERARCHY_END

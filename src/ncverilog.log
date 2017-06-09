@@ -1,5 +1,5 @@
 ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
-TOOL:	ncverilog	10.20-s114: Started on Jun 09, 2017 at 02:15:20 CST
+TOOL:	ncverilog	10.20-s114: Started on Jun 09, 2017 at 20:06:31 CST
 ncverilog
 	Final_tb.v
 	CHIP.v
@@ -11,13 +11,51 @@ ncverilog
 	../HazardDetection.v
 	../forward_jump.v
 	../forwardingUnit.v
-	+define+hasHazard
+	+define+noHazard
 	+access+r
-Recompiling... reason: file '../Top.v' is newer than expected.
-	expected: Fri Jun  9 01:52:41 2017
-	actual:   Fri Jun  9 02:15:17 2017
+file: Final_tb.v
+	module worklib.TestBed:v
+		errors: 0, warnings: 0
+	module worklib.Final_tb:v
+		errors: 0, warnings: 0
+file: CHIP.v
+	module worklib.CHIP:v
+		errors: 0, warnings: 0
+file: slow_memory.v
+	module worklib.slow_memory:v
+		errors: 0, warnings: 0
 file: ../Top.v
 	module worklib.MIPS_Pipeline:v
+		errors: 0, warnings: 0
+file: ../L1cache.v
+	module worklib.cache:v
+		errors: 0, warnings: 0
+file: ../Control.v
+	module worklib.Control:v
+		errors: 0, warnings: 0
+file: ../submodule.v
+	module worklib.aluCtrl:v
+		errors: 0, warnings: 0
+	module worklib.alu:v
+		errors: 0, warnings: 0
+	module worklib.register:v
+		errors: 0, warnings: 0
+	module worklib.IF_ID_reg:v
+		errors: 0, warnings: 0
+	module worklib.ID_EX_reg:v
+		errors: 0, warnings: 0
+	module worklib.EX_MEM_reg:v
+		errors: 0, warnings: 0
+	module worklib.MEM_WB_reg:v
+		errors: 0, warnings: 0
+file: ../HazardDetection.v
+	module worklib.HazardDetection:v
+		errors: 0, warnings: 0
+file: ../forward_jump.v
+	module worklib.forward_jump:v
+		errors: 0, warnings: 0
+file: ../forwardingUnit.v
+	module worklib.Forwarding:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
@@ -29,20 +67,52 @@ ncelab: *W,MEMODR (./Final_tb.v,131|37): $readmem default memory order incompati
 ncelab: *W,MEMODR (./Final_tb.v,132|37): $readmem default memory order incompatible with IEEE1364.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.MIPS_Pipeline:v <0x734c185b>
-			streams:  39, words: 19090
+		worklib.CHIP:v <0x35fd6fa6>
+			streams:   1, words:   101
+		worklib.Control:v <0x74df2280>
+			streams:   2, words:  2587
+		worklib.EX_MEM_reg:v <0x75d147c4>
+			streams:   3, words:   914
+		worklib.Final_tb:v <0x3aebfc91>
+			streams:   3, words:  2845
+		worklib.Forwarding:v <0x3ee45600>
+			streams:   2, words:  1018
+		worklib.HazardDetection:v <0x328deb7e>
+			streams:   1, words:  1912
+		worklib.ID_EX_reg:v <0x543f42cb>
+			streams:   3, words:  1227
+		worklib.IF_ID_reg:v <0x7ec6cf8c>
+			streams:   5, words:  1699
+		worklib.MEM_WB_reg:v <0x43a7a35b>
+			streams:   3, words:   914
+		worklib.MIPS_Pipeline:v <0x369c7382>
+			streams:  39, words: 19594
+		worklib.TestBed:v <0x4ec014f6>
+			streams:   9, words:  7066
+		worklib.alu:v <0x3121037b>
+			streams:   1, words:  1923
+		worklib.aluCtrl:v <0x52e46f95>
+			streams:   2, words:  2825
+		worklib.cache:v <0x62ad3c04>
+			streams:  18, words: 35852
+		worklib.forward_jump:v <0x64084b42>
+			streams:   3, words:  2530
+		worklib.register:v <0x022b1a6a>
+			streams:   7, words: 16024
+		worklib.slow_memory:v <0x5329541b>
+			streams:   7, words:  5411
 	Loading native compiled code:     .................... Done
 	Building instance specific data structures.
 	Design hierarchy summary:
 		                  Instances  Unique
 		Modules:                 19      17
-		Registers:              166     131
-		Scalar wires:            51       -
+		Registers:              171     136
+		Scalar wires:            52       -
 		Expanded wires:          32       1
-		Vectored wires:          60       -
+		Vectored wires:          77       -
 		Always blocks:           47      39
 		Initial blocks:           1       1
-		Cont. assignments:       17      41
+		Cont. assignments:       31      51
 		Pseudo assignments:      22      22
 		Simulation timescale:  10ps
 	Writing initial simulation snapshot: worklib.Final_tb:v
@@ -55,8 +125,13 @@ START!!! Simulation Start .....
 
 -----------------------------------------------------
 
-addr =         64: data =          0, answer =        610
-Simulation complete via $finish(1) at time 2152500 PS + 0
-./TestBed_hasHazard.v:92 									$finish;
+--------------------------- Simulation FINISH !!---------------------------
+============================================================================
+
+ \(^o^)/ CONGRATULATIONS!!  The simulation result is PASS!!!
+
+============================================================================
+Simulation complete via $finish(1) at time 352500 PS + 0
+./Final_tb.v:158 	       #(`CYCLE) $finish;		   
 ncsim> exit
-TOOL:	ncverilog	10.20-s114: Exiting on Jun 09, 2017 at 02:15:23 CST  (total: 00:00:03)
+TOOL:	ncverilog	10.20-s114: Exiting on Jun 09, 2017 at 20:06:32 CST  (total: 00:00:01)

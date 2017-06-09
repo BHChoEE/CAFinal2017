@@ -91,6 +91,9 @@ module	TestBed(
 									#(5);
 									$finish;
 								end
+								else begin
+									$display("addr = %d: data = %d, answer = %d,O",addr,data,answer);
+								end
 							end
 							nxtstate = curstate;
 							if( curaddr==`CheckNum )	

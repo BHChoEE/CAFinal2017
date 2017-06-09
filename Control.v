@@ -35,7 +35,7 @@ module Control(
 	output raWrite;
 	output Branch;
 //reg & wire
-	reg[12:0] ctrl;
+	reg[13:0] ctrl;
 //combinational
 	
 	assign PCSrc = ctrl[0];
@@ -64,13 +64,13 @@ module Control(
 			6'h4: begin
 				ctrl[13] = 1'b1;
 				if(eq)
-					ctrl[12:0] = 14'b0000000011111;
+					ctrl[12:0] = 14'b0000000011011;
 				else
-					ctrl[12:0] = 14'b0000000011100;//beq
+					ctrl[12:0] = 14'b0000000011000;//beq
 			end
 			6'h2: ctrl = 14'b00000000000000;//j
 			6'h3: ctrl = 14'b01010000000100;//jal
-			6'h23: ctrl = 14'b00001100001100;//lw
+			6'h23: ctrl = 14'b00001100011100;//lw
 			6'h2b: ctrl = 14'b00000010011000;//sw
 			default: ctrl = 14'b00000000011100;//addi andi ori xori slti
 		endcase

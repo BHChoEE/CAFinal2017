@@ -3,7 +3,6 @@ JumpR,
 Branch,
 
 RegJump,		
-RegRs,
 RegRt,
 
 IDEX_Opcode,
@@ -19,9 +18,8 @@ EXMEM_RegRd,
 MEMWB_RegWrite,	
 MEMWB_RegRd,	
                 
-ForwardJ,		
-ForwardBA,
-ForWardBB,
+ForwardJA,
+ForwardJB,
 stallJ			
 );
 
@@ -44,21 +42,18 @@ stallJ
 	input 		MEMWB_RegWrite;		
 	input[4:0] 	MEMWB_RegRd;		
 
-	output[1:0] ForwardJ;			
-	output[1:0] ForwardBA;
-	output[1:0] ForwardBB;
+	output[1:0] ForwardJA;
+	output[1:0] ForwardJB;
 	output 		stallJ;			
 //reg & wire
-	reg[1:0] ForwardJ_r;
-	reg[1:0] ForwardBA_r;
-	reg[1:0] ForwardBB_r;
+	reg[1:0] ForwardJA_r;
+	reg[1:0] ForwardJB_r;
 	reg[1:0] stallJ_r;
 	reg[1:0] stallB_r;
 //combinatinal
 	assign stallJ = (stallJ_r[0] || stallJ_r[1] ) && (JumpR || Branch );
-	assign ForwardJ = ForwardJ_r;
-	assign ForwardBA = ForwardBA_r;
-	assign ForwardBB = ForwardBB_r;
+	assign ForwardJA = ForwardJA_r;
+	assign ForwardJB = ForwardJB_r;
 	//stall
 	always@(*) begin
 

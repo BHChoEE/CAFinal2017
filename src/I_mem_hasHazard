@@ -104,7 +104,7 @@
 //	0x27	BubbleInLoop:           beq     r1, r7, BubbleInLoopExit   	// r1 for source address                               
 //	0x28	                        lw      r3, r1, 0x0000             	// r3 for temp value 1, r3=MEM[r1]                     
 //	0x29	                        lw      r4, r1, 0x0004		       	// r4 for temp value 2, r4=MEM[r1+4]  
-//	0x2A	                        slt     r5, r3, r4                 	// r5 for flag: r4 < r3 ? 32'd1: 32'd0
+//	0x2A	                        slt     r5, r3, r4                 	// r5 for flag: r3 < r4 ? 32'd1: 32'd0
 //	0x2B	                        beq     r5, r0, SwapExit           	// r7 for finished bound              
 //	0x2C	Swap:                   sw      r4, r1, 0x0000
 //	0x2D	                        sw      r3, r1, 0x0004

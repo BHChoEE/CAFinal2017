@@ -44,8 +44,17 @@ module cache(
 	wire[1:0] offset;
 	wire[2:0] index;
 	wire[24:0] tag;
+	wire[127:0] d0;
+	wire[127:0] d1;
+	wire[127:0] d2;
+	wire[127:0] d3;
+	wire[127:0] d4;
+	wire[127:0] d5;
+	wire[127:0] d6;
+	wire[127:0] d7;
 
-	reg[127:0] data,rdata,wdata;
+	reg[127:0] rdata,wdata;
+	reg[31:0] data;
 	reg[24:0] tagr;
 	reg hit;
 	reg dirty;
@@ -67,6 +76,14 @@ module cache(
 	assign mem_wdata = data2mem;
 	assign mem_read = read;
 	assign mem_write = write;
+	assign d0 = block_r[0];
+	assign d1 = block_r[1];
+	assign d2 = block_r[2];
+	assign d3 = block_r[3];
+	assign d4 = block_r[4];
+	assign d5 = block_r[5];
+	assign d6 = block_r[6];
+	assign d7 = block_r[7];
 
 	always@(*) begin//hit
 		case(index)
@@ -161,7 +178,7 @@ module cache(
 				for(i = 0; i < 8; i = i + 1) begin
 					block_w[i] = block_r[i];
 					if(index == i) begin
-						dirty_w[i] = 1'b0;
+						dirty_w[i] = dirty_r[i];
 						valid_w[i] = 1'b1;
 					end
 					else begin
@@ -191,7 +208,7 @@ module cache(
 						valid_w[i] = 1'b1;
 					end
 					else begin
-						dirty_w[i] =  dirty_r[i];
+						dirty_w[i] = dirty_r[i];
 						valid_w[i] = valid_r[i];
 					end
 				end

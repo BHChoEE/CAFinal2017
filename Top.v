@@ -46,14 +46,15 @@ module MIPS_Pipeline(
 	reg[31:0] PC_4;
 	//IF
 	//ID
-	wire PCSrc,RegWrite,ALUSrc,RegDst,MemWrite,MemRead,MemtoReg,Jump,JumpR,raWrite,PCWrite,IFIDWrite,stall,stallJ;
+	wire PCSrc,RegWrite,ALUSrc,RegDst,MemWrite,MemRead,MemtoReg,Jump,JumpR,raWrite,PCWrite,IFIDWrite,stall,stallJ,Branch;
 	wire IF_Flush;
-	wire[1:0] ALUOp,ForwardJ;
+	wire[1:0] ALUOp,ForwardJA,ForwardJB;
 	reg equal;
 	wire[31:0] next_PC_4;
 	wire[31:0] next_inst;
 	reg[31:0] sign_ext;
 	wire[31:0] Readdata1,Readdata2;
+	reg[31:0] bcomp1,bcomp2;
 	reg[31:0] bjaddr;
 
 	//ID
@@ -112,9 +113,9 @@ module MIPS_Pipeline(
 	//submodule
 	IF_ID_reg zifidreg(.clk(clk),.rst(rst_n),.PC_4(PC_4),.inst(ICACHE_rdata),.next_PC_4(next_PC_4),.next_inst(next_inst),.IF_flush(IF_Flush),.IF_ID_write(IFIDWrite),.proc_stall(stall_ifid));
 
-	Control zctrl(.inst(next_inst[31-:6]),.funct(next_inst[5-:6]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALUSrc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JumpR(JumpR),.raWrite(raWrite));	
+	Control zctrl(.inst(next_inst[31-:6]),.funct(next_inst[5-:6]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALUSrc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JumpR(JumpR),.raWrite(raWrite),.Branch(Branch));	
 
-	forward_jump zforwardjump(.JumpR(JumpR),.RegJump(next_inst[25-:5]),.IDEX_RegWrite(RegWrite_idex_r),.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRd(RegRd_idex_r),.IDEX_Opcode(Opcode_idex_r),.EXMEM_RegWrite(RegWrite_exmem_r),.EXMEM_MemRead(MemRead_exmem_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.MEMWB_RegRd(RegRd_memwb_r),.ForwardJ(ForwardJ),.stallJ(stallJ));
+	forward_jump zforwardjump(.JumpR(JumpR),.Branch(Branch),.RegJump(next_inst[25-:5]),.RegRt(next_inst[20-:5]),.IDEX_RegWrite(RegWrite_idex_r),.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRd(RegRd_idex_r),.IDEX_Opcode(Opcode_idex_r),.EXMEM_RegWrite(RegWrite_exmem_r),.EXMEM_MemRead(MemRead_exmem_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.MEMWB_RegRd(RegRd_memwb_r),.ForwardJA(ForwardJA),.ForwardJB(ForwardJB),.stallJ(stallJ));
 
 	HazardDetection zhd(.opcode(next_inst[31-:6]),.IDEX_MemRead(MemRead_idex_r),.IDEX_RegRt(RegRt_idex_r),.IFID_RegRt(next_inst[20-:5]),.IFID_RegRs(next_inst[25-:5]),.PCWrite(PCWrite),.IFIDWrite(IFIDWrite),.stall(stall));
 
@@ -212,7 +213,7 @@ module MIPS_Pipeline(
 	always@(*) begin
 		sign_ext = {{16{{next_inst[15]}}},{next_inst[15:0]}};
 		if(JumpR) begin
-			case(ForwardJ)
+			case(ForwardJA)
 				2'b01: bjaddr = next_ALUresult;
 				2'b10: bjaddr = WBdata;
 				default: bjaddr = Readdata1;
@@ -224,7 +225,19 @@ module MIPS_Pipeline(
 	end
 	//equal for Branch
 	always@(*) begin
-		if(Readdata1 == Readdata2)
+		case(ForwardJA)
+			2'b01: bcomp1 = next_ALUresult; 
+			2'b10: bcomp1 = WBdata;
+			default: bcomp1 = Readdata1;
+		endcase
+
+		case(ForwardJB)
+			2'b01: bcomp2 = next_ALUresult;
+			2'b10: bcomp2 = WBdata;
+			default: bcomp2 = Readdata2;
+		endcase
+
+		if( bcomp1 == bcomp2)
 			equal = 1'b1;
 		else
 			equal = 1'b0;
@@ -289,7 +302,7 @@ module MIPS_Pipeline(
 	end
 //WB
 	always@(*) begin
-		WBdata = MemtoReg ? next_readdata : next_ALUresult2; 
+		WBdata = MemtoReg_memwb_r ? next_readdata : next_ALUresult2; 
 	end
 //sequential
 	always@(posedge clk or negedge rst_n) begin

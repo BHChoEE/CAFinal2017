@@ -12,5 +12,5 @@ slow_memory.v
 ../HazardDetection.v
 ../forward_jump.v
 ../forwardingUnit.v
-+define+hasHazard
++define+noHazard
 +access+r
