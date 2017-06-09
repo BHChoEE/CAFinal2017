@@ -1,25 +1,26 @@
 nop
-li $8 500                     
-li $11 1                       
-beq $11 $8 0x13       
-li $12 0                       
-sub $13 0, $11
-$12 $13 0x11        
-addi $16 $12 1               
-sll $16 $16 2                
-addi $17 $16 4         
-sub $18 $29 $16           
-sub $19 $29 $17
-lw  $4 0($18)                 
-lw  $5 0($19)               
-bgt $5 $4 0x15            
-addi $12 $12 1              
+addi $t0 $0 0x1f4                     
+addi $t3 $0 0x01                       
+beq $t3 $t0 0x14       
+addi $t4 $0 0x00                       
+sub $t5 $t0 $t3
+beq $t4 $t5 0x12        
+addi $s0 $t4 0x01               
+sll $s0 $s0 0x02                
+addi $s1 $s0 0x04         
+sub $s2 $sp $s0           
+sub $s3 $sp $s0
+lw  $a0 0x00($s2)                 
+lw  $a1 0x00($s3)               
+slt $t6 $a1 $a0
+bne $t0 $zero 0x16            
+addi $t4 $t4 0x01              
 j 0x05
-addi $11 $11 1             
+addi $t3 $t3 0x01             
 j 0x03
-li $9 0                    
-j 0x18
-sw $4 0($19)                  
-sw $5 0($18)
-j 0x0F
+addi $t1 $zero 0x00                    
+j 0x19
+sw $a0 0x00($s3)                  
+sw $a1 0x00($s2)
+j 0x10
 nop                          
