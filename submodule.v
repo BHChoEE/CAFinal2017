@@ -247,8 +247,8 @@ module register(
     end
 
     //read operation
-    assign ReadData1 = prev_ReadData1;
-    assign ReadData2 = prev_ReadData2;
+    assign ReadData1 = (RegWrite && (WriteReg == ReadReg1)) ? WriteData : prev_ReadData1;
+    assign ReadData2 = (RegWrite && (WriteReg == ReadReg2)) ? WriteData : prev_ReadData2;
     always@(*) begin
         prev_ReadData1 <= register[ReadReg1];
         prev_ReadData2 <= register[ReadReg2];

@@ -19,8 +19,8 @@ module Forwarding(
     output  [1:0]   forwardB;
 //reg & wire
 //Combinational part
-    assign forwardA = (EXMEM_RegWrite && EXMEM_RegRd != 0 && EXMEM_RegRd == IDEX_RegRs) ? 2'b10 : 
-                      (MEMWB_RegWrite && MEMWB_RegRd != 0 && MEMWB_RegRd == IDEX_RegRs) ? 2'b01 : 2'b00;  
-    assign forwardB = (EXMEM_RegWrite && EXMEM_RegRd != 0 && EXMEM_RegRd == IDEX_RegRt) ? 2'b10 : 
-                      (MEMWB_RegWrite && MEMWB_RegRd != 0 && MEMWB_RegRd == IDEX_RegRt) ? 2'b01 : 2'b00; 
+    assign forwardA = (EXMEM_RegWrite && (EXMEM_RegRd != 5'd0) && (EXMEM_RegRd == IDEX_RegRs)) ? 2'b10 : 
+                      (MEMWB_RegWrite && (MEMWB_RegRd != 5'd0) && (MEMWB_RegRd == IDEX_RegRs)) ? 2'b01 : 2'b00;  
+    assign forwardB = (EXMEM_RegWrite && (EXMEM_RegRd != 5'd0) && (EXMEM_RegRd == IDEX_RegRt)) ? 2'b10 : 
+                      (MEMWB_RegWrite && (MEMWB_RegRd != 5'd0) && (MEMWB_RegRd == IDEX_RegRt)) ? 2'b01 : 2'b00; 
 endmodule

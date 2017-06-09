@@ -165,14 +165,14 @@ StickSet-TextColor = black
 [FSM_Dlg-Print]
 Orientation = Landscape
 [FileBrowser]
-nWaveOpenFsdbDirHistory = /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.rc,/home/raid7_2/userb03/b03085/B03901116_VLSI/B03901116/HW2_2.tr0,/home/raid7_2/userb03/b03085/B03901116_VLSI/inverter.tr0,/home/raid7_2/userb03/b03085/ca/HW5/cache.fsdb.fsdb,/home/raid7_2/userb03/b030\
-85,
+nWaveOpenFsdbDirHistory = /home/raid7_2/userb03/b03085,/home/raid7_2/userb03/b03085/ca/HW5/cache.fsdb.fsdb,/home/raid7_2/userb03/b03085/B03901116_VLSI/inverter.tr0,/home/raid7_2/userb03/b03085/B03901116_VLSI/B03901116/HW2_2.tr0,/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.\
+rc,
 [Form]
 version = 2012.04
-wave/openWFile.fm = 161,53,823,696
 wave/cmessage.fm = 100,100,520,275
-wave/getSignal.fm = 100,100,856,562
 wave/saveSig.fm = 100,100,723,532
+wave/openWFile.fm = 161,53,823,696
+wave/getSignal.fm = 100,100,856,562
 [General]
 TclAutoSource = 
 version = 2012.04
@@ -428,7 +428,7 @@ waveform_vertical_scroll_bar = TRUE
 scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
-viewPort = -4 1 1366 705 197 293
+viewPort = -4 1 1366 705 197 290
 signalSpacing = 3
 digitalSignalHeight = 15
 analogSignalHeight = 98

@@ -82,7 +82,7 @@ module MIPS_Pipeline(
 	//EX
 	wire[31:0] next_ALUresult;
 	wire[31:0] next_readreg2_2;
-	reg[31:0] regdata2exmem;
+	reg[31:0] ALU2exmem;
 	reg[31:0] ALUin1,ALUin2;
 
 	reg MemWrite_exmem_r,MemWrite_exmem_w;
@@ -128,7 +128,7 @@ module MIPS_Pipeline(
 
 	Forwarding zforwarding(.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRs(RegRs_idex_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegRd(RegRd_memwb_r),.EXMEM_RegWrite(RegWrite_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.forwardA(forwardA),.forwardB(forwardB));
 
-	EX_MEM_reg zexmemreg(.clk(clk),.rst(rst_n),.ALUresult(ALUresult),.readreg2(regdata2exmem),.next_ALUresult(next_ALUresult),.next_readreg2(next_readreg2_2),.proc_stall(stall_exmem));
+	EX_MEM_reg zexmemreg(.clk(clk),.rst(rst_n),.ALUresult(ALU2exmem),.readreg2(readreg_forward),.next_ALUresult(next_ALUresult),.next_readreg2(next_readreg2_2),.proc_stall(stall_exmem));
 
 	MEM_WB_reg zmemwbreg(.clk(clk),.rst(rst_n),.readdata(DCACHE_rdata),.ALUresult(next_ALUresult),.next_readdata(next_readdata),.next_ALUresult(next_ALUresult2),.proc_stall(stall_memwb));
 
@@ -219,7 +219,7 @@ module MIPS_Pipeline(
 			endcase
 		end
 		else begin
-			bjaddr = (sign_ext << 2) + PC_4;
+			bjaddr = (sign_ext << 2) + next_PC_4;
 		end
 	end
 	//equal for Branch
@@ -255,23 +255,24 @@ module MIPS_Pipeline(
 			default: ALUin1 = WBdata;
 		endcase
 		
-		if(ALUSrc_idex_r)
-			ALUin2 = next_sign_ext;
-		else
-			ALUin2 = readreg_forward;
-
 		case(forwardB)
 			2'b00: readreg_forward = next_readreg2;
 			2'b10: readreg_forward = next_ALUresult;
 			default: readreg_forward = WBdata;
 		endcase
+
+		if(ALUSrc_idex_r)
+			ALUin2 = next_sign_ext;
+		else
+			ALUin2 = readreg_forward;
+
 	end
 	//mux for jal/jalr
 	always@(*) begin
 		if(Jump_idex_r)
-			regdata2exmem = PC_4_idex_r;
+			ALU2exmem = PC_4_idex_r;
 		else
-			regdata2exmem = readreg_forward;
+			ALU2exmem = ALUresult;
 	end
 //MEM
 	always@(*) begin
@@ -334,7 +335,7 @@ module MIPS_Pipeline(
             RegRt_idex_r <= RegRt_idex_w;
             RegRd_idex_r <= RegRd_idex_w;
 			PC_4_idex_r <= PC_4_idex_w;
-			Jump_idex_r <= Jump_idex_r;
+			Jump_idex_r <= Jump_idex_w;
 			Opcode_idex_r <= Opcode_idex_w;
 			Funct_idex_r <= Funct_idex_w;
 

@@ -89,20 +89,26 @@ module	TestBed(
 							if( addr==`TestPort2 && wen && state==0 )
 							begin
 								nxtaddr = curaddr + 1;
-								if( data != `answer2 )
+								if( data != `answer2 ) begin
 									nxt_error_num = error_num + 8'd1;
+									$display("addr=%h: data=%d,answar=%d",addr,data,`answer2);
+								end
 							end
 							else if( addr==`TestPort3 && wen && state==0 )
 							begin
 								nxtaddr = curaddr + 1;
-								if( data != `answer3 )
+								if( data != `answer3 ) begin
 									nxt_error_num = error_num + 8'd1;
+									$display("addr=%h: data=%d,answar=%d",addr,data,`answer3);
+								end
 							end
 							else if( addr==`TestPort4 && wen && state==0 )
 							begin
 								nxtaddr = curaddr + 1;
-								if( data != `answer4 )
+								if( data != `answer4 )begin
 									nxt_error_num = error_num + 8'd1;
+									$display("addr=%h: data=%d,answar=%d",addr,data,`answer4);
+								end
 							end
 
 							nxtstate = curstate;
