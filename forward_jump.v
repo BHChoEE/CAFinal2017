@@ -81,12 +81,16 @@ stallJ
 	always@(*) begin
 		if(EXMEM_RegWrite && !EXMEM_MemRead && (EXMEM_RegRd == RegJump))
 			ForwardJA_r = 2'b01;
+		else if(MEMWB_RegWrite && (MEMWB_RegRd == RegJump))
+			ForwardJA_r = 2'b10;
 		else
 			ForwardJA_r = 2'b00;
 
 
 		if(EXMEM_RegWrite && !EXMEM_MemRead && (EXMEM_RegRd == RegRt))
 			ForwardJB_r = 2'b01;
+		else if(MEMWB_RegWrite && (MEMWB_RegRd == RegRt))
+			ForwardJB_r = 2'b10;
 		else
 			ForwardJB_r = 2'b00;
 

@@ -18,7 +18,7 @@ module CHIP (	clk,
 //----------for TestBed--------------				
 				DCACHE_addr, 
 				DCACHE_wdata,
-				DCACHE_wen   
+				DCACHE_wen  
 			);
 input			clk, rst_n;
 //--------------------------
@@ -81,7 +81,7 @@ wire [31:0] DCACHE_rdata;
 		DCACHE_addr,
 		DCACHE_wdata,
 		DCACHE_stall,
-		DCACHE_rdata,
+		DCACHE_rdata
 	);
 	
 	cache D_cache(
@@ -118,4 +118,3 @@ wire [31:0] DCACHE_rdata;
 		mem_ready_I
 	);
 endmodule
-

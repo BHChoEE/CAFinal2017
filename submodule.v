@@ -372,7 +372,7 @@ module MEM_WB_reg(
     readdata,
     ALUresult,
     next_readdata,
-    next_ALUresult,
+    next_ALUresult
 );
     //============ in / out declaration ===========
     input                   clk;

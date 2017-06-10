@@ -64,9 +64,16 @@ module Control(
 			6'h4: begin
 				ctrl[13] = 1'b1;
 				if(eq)
-					ctrl[12:0] = 14'b0000000011011;
+					ctrl[12:0] = 13'b0000000011011;
 				else
-					ctrl[12:0] = 14'b0000000011000;//beq
+					ctrl[12:0] = 13'b0000000011000;//beq
+			end
+			6'h5: begin
+				ctrl[13] = 1'b1;
+				if(!eq)
+					ctrl[12:0] = 13'b0000000011011;
+				else
+					ctrl[12:0] = 13'b0000000011000;//bne
 			end
 			6'h2: ctrl = 14'b00000000000000;//j
 			6'h3: ctrl = 14'b01010000000100;//jal

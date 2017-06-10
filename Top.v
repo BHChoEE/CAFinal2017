@@ -113,7 +113,7 @@ module MIPS_Pipeline(
 	//submodule
 	IF_ID_reg zifidreg(.clk(clk),.rst(rst_n),.PC_4(PC_4),.inst(ICACHE_rdata),.next_PC_4(next_PC_4),.next_inst(next_inst),.IF_flush(IF_Flush),.IF_ID_write(IFIDWrite),.proc_stall(stall_ifid));
 
-	Control zctrl(.inst(next_inst[31-:6]),.funct(next_inst[5-:6]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALUSrc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JumpR(JumpR),.raWrite(raWrite),.Branch(Branch));	
+	Control zctrl(.inst(next_inst[31-:6]),.funct(next_inst[5-:6]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALUSrc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JumpR(JumpR),.raWrite(raWrite),.Branch(Branch));
 
 	forward_jump zforwardjump(.JumpR(JumpR),.Branch(Branch),.RegJump(next_inst[25-:5]),.RegRt(next_inst[20-:5]),.IDEX_RegWrite(RegWrite_idex_r),.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRd(RegRd_idex_r),.IDEX_Opcode(Opcode_idex_r),.EXMEM_RegWrite(RegWrite_exmem_r),.EXMEM_MemRead(MemRead_exmem_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.MEMWB_RegRd(RegRd_memwb_r),.ForwardJA(ForwardJA),.ForwardJB(ForwardJB),.stallJ(stallJ));
 
