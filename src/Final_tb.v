@@ -27,6 +27,7 @@
 `endif
 `ifdef Assembly
 	`define IMEM_INIT "I_mem_Assembly"
+	`define DMEM_INIT "D_mem_Assembly"
 	`include "./TestBed_Assembly.v"
 `endif
 `ifdef MultDiv

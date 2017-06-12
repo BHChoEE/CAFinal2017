@@ -67,6 +67,12 @@ module aluCtrl(
             //SRL
             else if(temp == 6'b000010)
                 ctrl = 4'b1001;
+			//mfhi(add)
+			else if(temp == 6'd16)
+				ctrl = 4'b0010;
+			//mflo(add)
+			else if(temp == 6'd18)
+				ctrl = 4'b0010;
             //NOP
             else 
                 ctrl = 4'b1111;

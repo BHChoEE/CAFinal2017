@@ -14,7 +14,10 @@ module Control(
 	Jump,
 	JumpR,
 	raWrite,
-	Branch
+	Branch,
+	Shift,
+	Mul,
+	Div
 );
 
 //input output
@@ -34,8 +37,11 @@ module Control(
 	output JumpR;
 	output raWrite;
 	output Branch;
+	output Shift;
+	output Mul;
+	output Div;
 //reg & wire
-	reg[13:0] ctrl;
+	reg[16:0] ctrl;
 //combinational
 	
 	assign PCSrc = ctrl[0];
@@ -51,35 +57,41 @@ module Control(
 	assign JumpR = ctrl[11];
 	assign raWrite = ctrl[12];
 	assign Branch = ctrl[13];
+	assign Shift = ctrl[14];
+	assign Mul = ctrl[15];
+	assign Div = ctrl[16];
 
 	always@(*) begin
 		case(inst)
 			6'h0: begin//R_type
 				case(funct)
-					6'h8: ctrl = 14'b00110001100011;
-					6'h9: ctrl = 14'b00110001100111;
-					default: ctrl = 14'b00000001100100;
+					6'h8: ctrl = 17'b0000110001100011;
+					6'h9: ctrl = 17'b0000110001100111;
+					6'h0: ctrl = 17'b0100000001100100;
+					6'd24: ctrl = 17'b01000000001100100;
+					6'd26: ctrl = 17'b10000000001100100;
+					default: ctrl = 17'b00000000001100100;
 				endcase
 			end
 			6'h4: begin
-				ctrl[13] = 1'b1;
+				ctrl[16:13] = 4'b0001;
 				if(eq)
 					ctrl[12:0] = 13'b0000000011011;
 				else
 					ctrl[12:0] = 13'b0000000011000;//beq
 			end
 			6'h5: begin
-				ctrl[13] = 1'b1;
+				ctrl[16:13] = 4'b0001;
 				if(!eq)
 					ctrl[12:0] = 13'b0000000011011;
 				else
 					ctrl[12:0] = 13'b0000000011000;//bne
 			end
-			6'h2: ctrl = 14'b00000000000000;//j
-			6'h3: ctrl = 14'b01010000000100;//jal
-			6'h23: ctrl = 14'b00001100011100;//lw
-			6'h2b: ctrl = 14'b00000010011000;//sw
-			default: ctrl = 14'b00000000011100;//addi andi ori xori slti
+			6'h2: ctrl = 17'b00000000000000000;//j
+			6'h3: ctrl = 17'b00001010000000100;//jal
+			6'h23: ctrl = 17'b00000001100011100;//lw
+			6'h2b: ctrl = 17'b00000000010011000;//sw
+			default: ctrl = 17'b00000000000011100;//addi andi ori xori slti
 		endcase
 	end
 //no sequential

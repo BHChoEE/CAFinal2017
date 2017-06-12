@@ -2,7 +2,7 @@ Magic 271485
 Revision 2012.04
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort -4 1 1366 705 200 343
+viewPort -4 1 1366 705 200 99
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,16 @@ signalSpacing 3
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 189771.058687 202183.065727
-cursor 197193.00908190056
+zoom 93275.062187 125761.178797
+cursor 109634.69746481044
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 0
+top 1
 ; marker line index
-markerPos 21
+markerPos 32
 
 ; Run Time Signal and Member
 ; userBusMem member ...
@@ -95,7 +95,7 @@ addSignal -h 15 -UNSIGNED -BIN -holdScope ICACHE_rdata[31:0]
 addGroup "G3"
 addSignal -h 15 -UNSIGNED -BIN /Final_tb/chip0/i_MIPS/DCACHE_addr[29:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_rdata[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope DCACHE_wdata[31:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope DCACHE_wdata[31:0]
 addSignal -h 15 -holdScope DCACHE_ren
 addSignal -h 15 -holdScope DCACHE_wen
 addSignal -h 15 -holdScope RegWrite_memwb_r
@@ -104,18 +104,19 @@ addSignal -h 15 -UNSIGNED -UDEC -holdScope WBdata[31:0]
 addSignal -h 15 -UNSIGNED -HEX /WB<<2[29:0]
 addSignal -h 15 -UNSIGNED -HEX /Final_tb/chip0/i_MIPS/bcomp1[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope bcomp2[31:0]
+addSignal -h 15 -UNSIGNED -HEX /Final_tb/chip0/i_MIPS/zregister/ReadData1[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope ReadData2[31:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope ReadReg1[400]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope ReadReg2[400]
+addSignal -h 15 /Final_tb/chip0/i_MIPS/stall_ifid
+addSignal -h 15 -UNSIGNED -HEX -holdScope ForwardJA[100]
+addSignal -h 15 -holdScope stallJ
+addSignal -h 15 -holdScope PCWrite
+addSignal -h 15 -holdScope Branch
+addSignal -h 15 -UNSIGNED -HEX -holdScope bjaddr[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope PC_4[31:0]
 addGroup "G5"
-addSignal -h 15 -UNSIGNED -HEX /Final_tb/chip0/i_MIPS/readreg2_2_r[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope readreg_forward[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope readreg2_r[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope readreg1_r[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope Readdata1[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope Readdata2[31:0]
-addSignal -h 15 -UNSIGNED -HEX /Final_tb/chip0/i_MIPS/zregister/ReadReg1[400]
-addSignal -h 15 -UNSIGNED -HEX -holdScope ReadReg2[400]
-addSignal -h 15 -holdScope RegWrite
-addSignal -h 15 -UNSIGNED -HEX /Final_tb/chip0/i_MIPS/inst_r[31:0]
-addSignal -h 15 -holdScope IF_Flush2
+addSignal -h 15 /Final_tb/chip0/i_MIPS/IF_Flush2
 addSignal -h 15 -holdScope IF_Flush
 addSignal -h 15 -holdScope take
 addSignal -h 15 -holdScope take_r
@@ -132,6 +133,7 @@ activeDirFile "" "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb
 GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
 getSignalForm close
 
+"/EX_MEM_reg"
 "/Final_tb"
 "/Final_tb/chip0"
 "/Final_tb/chip0/D_cache"
@@ -143,6 +145,7 @@ getSignalForm close
 "/Final_tb/testbed"
 
 SCOPE_LIST_BEGIN
+"/EX_MEM_reg"
 "/Final_tb"
 "/Final_tb/chip0/i_MIPS/zforwardjump"
 "/Final_tb/chip0/i_MIPS/zforwarding"

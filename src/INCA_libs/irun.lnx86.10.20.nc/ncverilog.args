@@ -3,13 +3,15 @@
 // Do not modify this file
 //
 Final_tb.v
-CHIP.v
-../L1cache.v
 ../Top2.v
+../L1cache.v
+../submodule2.v
 ../forward_jump.v
 ../forwardingUnit.v
-../submodule.v
-../Control.v
 ../HazardDetection.v
-+define+noHazard
+../mul_div.v
+../Control.v
+../BranchPrd.v
+../register.v
++define+MultDiv
 +access+r
