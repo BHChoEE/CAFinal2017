@@ -1,1028 +1,154 @@
 wvResizeWindow -win $_nWave1 4 9 1366 705
+wvResizeWindow -win $_nWave1 4 9 1362 705
+wvResizeWindow -win $_nWave1 4 9 1366 705
+wvResizeWindow -win $_nWave1 4 9 1362 705
 wvRestoreSignal -win $_nWave1 \
            "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.rc" \
            -overWriteAutoAlias on
 wvConvertFile -win $_nWave1 -o \
            "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
            "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvResizeWindow -win $_nWave1 4 9 1366 689
 wvResizeWindow -win $_nWave1 4 9 1366 705
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvScrollUp -win $_nWave1 7
 wvZoomIn -win $_nWave1
 wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 7986.050289
-wvSetCursor -win $_nWave1 8323.898258
-wvSetCursor -win $_nWave1 8526.607040
-wvSetCursor -win $_nWave1 9026.622034
-wvSetCursor -win $_nWave1 9486.095271
-wvSetCursor -win $_nWave1 13418.645630
-wvSetCursor -win $_nWave1 14134.883324
-wvSetCursor -win $_nWave1 14473.406988
-wvSetCursor -win $_nWave1 15162.616845
-wvSetCursor -win $_nWave1 15162.616845
-wvSetCursor -win $_nWave1 13959.878076
-wvScrollDown -win $_nWave1 1
-wvSetCursor -win $_nWave1 14040.961588
-wvSetCursor -win $_nWave1 14635.574014
-wvSetCursor -win $_nWave1 25489.277863
-wvSetCursor -win $_nWave1 25489.277863
-wvSetCursor -win $_nWave1 26070.376370
-wvSetCursor -win $_nWave1 26246.057313
-wvSetCursor -win $_nWave1 26205.515557
-wvSetCursor -win $_nWave1 26164.973801
-wvSetCursor -win $_nWave1 26164.973801
-wvSetCursor -win $_nWave1 26637.960957
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvResizeWindow -win $_nWave1 -4 1 1366 705
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 31671.501548
-wvSetCursor -win $_nWave1 35401.027752
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoom -win $_nWave1 37914.605741 43731.050940
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 40302.409559
-wvSetCursor -win $_nWave1 40564.805583
-wvSetCursor -win $_nWave1 40870.934278
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoom -win $_nWave1 9406.860902 103475.469925
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 41415.826970
-wvSetCursor -win $_nWave1 41482.134731
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvSetCursor -win $_nWave1 41935.237758
-wvSetCursor -win $_nWave1 42598.315360
-wvSetCursor -win $_nWave1 42631.469240
-wvSetCursor -win $_nWave1 42631.469240
-wvSetCursor -win $_nWave1 42631.469240
-wvSetCursor -win $_nWave1 43261.392961
-wvSetCursor -win $_nWave1 43261.392961
-wvSetCursor -win $_nWave1 43139.828734
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 52575.422998
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvSetCursor -win $_nWave1 178942.541963
-wvSetCursor -win $_nWave1 186015.369708
-wvZoom -win $_nWave1 173284.279766 192380.914679
-wvSetCursor -win $_nWave1 181576.239663
-wvSetCursor -win $_nWave1 181019.852743
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSelectSignal -win $_nWave1 {( "G3" 1 )} 
-wvZoomIn -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 43828.930881
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 43071.526752
-wvSetCursor -win $_nWave1 43538.173846
-wvSetCursor -win $_nWave1 43636.887654
-wvSetCursor -win $_nWave1 43968.925009
-wvSetCursor -win $_nWave1 44067.638818
-wvSetCursor -win $_nWave1 44121.482713
+wvSelectSignal -win $_nWave1 {( "G6" 3 )} 
+wvSelectSignal -win $_nWave1 {( "G6" 2 3 )} 
+wvSelectSignal -win $_nWave1 {( "G6" 3 )} 
+wvSelectSignal -win $_nWave1 {( "G6" 1 )} 
 wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
-wvSetPosition -win $_nWave1 {("G3" 28)}
-wvSetPosition -win $_nWave1 {("G3" 28)}
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/I_cache"
+wvSetPosition -win $_nWave1 {("G6" 4)}
+wvSetPosition -win $_nWave1 {("G6" 4)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
 {/Final_tb/clk} \
 {/Final_tb/rst_n} \
 {/Final_tb/chip0/i_MIPS/ICACHE_stall} \
 {/Final_tb/chip0/i_MIPS/DCACHE_stall} \
-{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
 {/Final_tb/chip0/i_MIPS/ICACHE_ren} \
 {/Final_tb/chip0/i_MIPS/ICACHE_wen} \
 {/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
 }
 wvAddSignal -win $_nWave1 -group {"G3" \
-{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
-{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
 {/Final_tb/chip0/i_MIPS/DCACHE_ren} \
 {/Final_tb/chip0/i_MIPS/DCACHE_wen} \
 {/Final_tb/chip0/i_MIPS/RegWrite_memwb_r} \
-{/Final_tb/chip0/i_MIPS/RegRd_memwb_r\[400\]} \
-{/Final_tb/chip0/i_MIPS/WBdata\[31:0\]} \
-{/WB<<2\[29:0\]} \
-{/Final_tb/chip0/i_MIPS/bcomp1\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/bcomp2\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadData1\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadData2\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadReg1\[400\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadReg2\[400\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/next_HI\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/next_LO\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/Mul_idex_r} \
-{/Final_tb/chip0/i_MIPS/Div_idex_r} \
-{/Final_tb/chip0/i_MIPS/readreg1_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/readreg2_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/stall_idex} \
-{/Final_tb/chip0/i_MIPS/zdiv/HI_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/LO_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/divisor_p\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/div_iter_r\[500\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/diff\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zalu/out\[31:0\]} \
+{/Final_tb/chip0/I_cache/proc_read} \
+{/Final_tb/chip0/I_cache/proc_write} \
+{/Final_tb/chip0/I_cache/mem_ready} \
+}
+wvAddSignal -win $_nWave1 -group {"G5" \
+{/Final_tb/chip0/D_cache/mem_ready} \
+{/Final_tb/chip0/I_cache/proc_addr\[9:0\]} \
 }
 wvAddSignal -win $_nWave1 -group {"G4" \
 }
-wvSelectSignal -win $_nWave1 {( "G3" 28 )} 
-wvSetPosition -win $_nWave1 {("G3" 28)}
+wvAddSignal -win $_nWave1 -group {"G6" \
+{/Final_tb/chip0/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/r_12\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/r_13\[31:0\]} \
+{/Final_tb/chip0/I_cache/dirty_r\[700\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G7" \
+}
+wvSelectSignal -win $_nWave1 {( "G6" 4 )} 
+wvSetPosition -win $_nWave1 {("G6" 4)}
 wvGetSignalClose -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvSetPosition -win $_nWave1 {("G3" 18)}
-wvSetPosition -win $_nWave1 {("G3" 17)}
-wvSetPosition -win $_nWave1 {("G3" 16)}
-wvSetPosition -win $_nWave1 {("G3" 15)}
-wvSetPosition -win $_nWave1 {("G3" 14)}
-wvSetPosition -win $_nWave1 {("G3" 13)}
-wvSetPosition -win $_nWave1 {("G3" 12)}
-wvSetPosition -win $_nWave1 {("G3" 11)}
-wvMoveSelected -win $_nWave1
-wvSetPosition -win $_nWave1 {("G3" 11)}
-wvSetPosition -win $_nWave1 {("G3" 12)}
-wvScrollDown -win $_nWave1 0
-wvSetPosition -win $_nWave1 {("G3" 28)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvSetCursor -win $_nWave1 43627.913672
-wvSetCursor -win $_nWave1 44040.716870
-wvSetCursor -win $_nWave1 44480.442016
-wvSetCursor -win $_nWave1 44991.959023
-wvSetCursor -win $_nWave1 45297.074430
-wvSetCursor -win $_nWave1 45297.074430
-wvSetCursor -win $_nWave1 45611.163820
-wvSetCursor -win $_nWave1 45611.163820
-wvSetCursor -win $_nWave1 56024.573196
-wvSetCursor -win $_nWave1 56159.182935
 wvGetSignalOpen -win $_nWave1
 wvGetSignalSetScope -win $_nWave1 "/Final_tb"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/D_cache"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/I_cache"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zctrl"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zdiv"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zforwardjump"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zmul"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
 wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zalu"
-wvSetPosition -win $_nWave1 {("G3" 30)}
-wvSetPosition -win $_nWave1 {("G3" 30)}
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/I_cache"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/D_cache"
+wvSetPosition -win $_nWave1 {("G6" 5)}
+wvSetPosition -win $_nWave1 {("G6" 5)}
 wvAddSignal -win $_nWave1 -clear
 wvAddSignal -win $_nWave1 -group {"G1" \
 {/Final_tb/clk} \
 {/Final_tb/rst_n} \
 {/Final_tb/chip0/i_MIPS/ICACHE_stall} \
 {/Final_tb/chip0/i_MIPS/DCACHE_stall} \
-{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
 {/Final_tb/chip0/i_MIPS/ICACHE_ren} \
 {/Final_tb/chip0/i_MIPS/ICACHE_wen} \
 {/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
 }
 wvAddSignal -win $_nWave1 -group {"G3" \
-{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
-{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
 {/Final_tb/chip0/i_MIPS/DCACHE_ren} \
 {/Final_tb/chip0/i_MIPS/DCACHE_wen} \
 {/Final_tb/chip0/i_MIPS/RegWrite_memwb_r} \
-{/Final_tb/chip0/i_MIPS/RegRd_memwb_r\[400\]} \
-{/Final_tb/chip0/i_MIPS/WBdata\[31:0\]} \
-{/WB<<2\[29:0\]} \
-{/Final_tb/chip0/i_MIPS/bcomp1\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/bcomp2\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zalu/out\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadData1\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadData2\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadReg1\[400\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadReg2\[400\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/next_HI\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/next_LO\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/Mul_idex_r} \
-{/Final_tb/chip0/i_MIPS/Div_idex_r} \
-{/Final_tb/chip0/i_MIPS/readreg1_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/readreg2_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/stall_idex} \
-{/Final_tb/chip0/i_MIPS/zdiv/HI_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/LO_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/divisor_p\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/div_iter_r\[500\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/diff\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zalu/x\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zalu/y\[31:0\]} \
+{/Final_tb/chip0/I_cache/proc_read} \
+{/Final_tb/chip0/I_cache/proc_write} \
+{/Final_tb/chip0/I_cache/mem_ready} \
+}
+wvAddSignal -win $_nWave1 -group {"G5" \
+{/Final_tb/chip0/D_cache/mem_ready} \
+{/Final_tb/chip0/I_cache/proc_addr\[9:0\]} \
 }
 wvAddSignal -win $_nWave1 -group {"G4" \
 }
-wvSelectSignal -win $_nWave1 {( "G3" 29 30 )} 
-wvSetPosition -win $_nWave1 {("G3" 30)}
-wvGetSignalClose -win $_nWave1
-wvSetPosition -win $_nWave1 {("G3" 22)}
-wvSetPosition -win $_nWave1 {("G3" 21)}
-wvSetPosition -win $_nWave1 {("G3" 20)}
-wvSetPosition -win $_nWave1 {("G3" 19)}
-wvSetPosition -win $_nWave1 {("G3" 18)}
-wvSetPosition -win $_nWave1 {("G3" 17)}
-wvSetPosition -win $_nWave1 {("G3" 16)}
-wvSetPosition -win $_nWave1 {("G3" 15)}
-wvSetPosition -win $_nWave1 {("G3" 14)}
-wvSetPosition -win $_nWave1 {("G3" 15)}
-wvSetPosition -win $_nWave1 {("G3" 16)}
-wvSetPosition -win $_nWave1 {("G3" 17)}
-wvSetPosition -win $_nWave1 {("G3" 18)}
-wvSetPosition -win $_nWave1 {("G3" 19)}
-wvSetPosition -win $_nWave1 {("G3" 20)}
-wvSetPosition -win $_nWave1 {("G3" 19)}
-wvSetPosition -win $_nWave1 {("G3" 18)}
-wvSetPosition -win $_nWave1 {("G3" 17)}
-wvSetPosition -win $_nWave1 {("G3" 16)}
-wvSetPosition -win $_nWave1 {("G3" 15)}
-wvSetPosition -win $_nWave1 {("G3" 14)}
-wvSetPosition -win $_nWave1 {("G3" 13)}
-wvSetPosition -win $_nWave1 {("G3" 12)}
-wvSetPosition -win $_nWave1 {("G3" 11)}
-wvSetPosition -win $_nWave1 {("G3" 12)}
-wvSetPosition -win $_nWave1 {("G3" 13)}
-wvSetPosition -win $_nWave1 {("G3" 14)}
-wvSetPosition -win $_nWave1 {("G3" 15)}
-wvSetPosition -win $_nWave1 {("G3" 16)}
-wvSetPosition -win $_nWave1 {("G3" 17)}
-wvSetPosition -win $_nWave1 {("G3" 18)}
-wvSetPosition -win $_nWave1 {("G3" 19)}
-wvSetPosition -win $_nWave1 {("G3" 20)}
-wvSetPosition -win $_nWave1 {("G3" 21)}
-wvSetPosition -win $_nWave1 {("G3" 22)}
-wvSetPosition -win $_nWave1 {("G3" 23)}
-wvSetPosition -win $_nWave1 {("G3" 24)}
-wvSetPosition -win $_nWave1 {("G3" 25)}
-wvSetPosition -win $_nWave1 {("G3" 26)}
-wvSetPosition -win $_nWave1 {("G3" 27)}
-wvSetPosition -win $_nWave1 {("G3" 28)}
-wvSetPosition -win $_nWave1 {("G3" 27)}
-wvSetPosition -win $_nWave1 {("G3" 26)}
-wvSetPosition -win $_nWave1 {("G3" 25)}
-wvSetPosition -win $_nWave1 {("G3" 24)}
-wvSetPosition -win $_nWave1 {("G3" 23)}
-wvSetPosition -win $_nWave1 {("G3" 22)}
-wvSetPosition -win $_nWave1 {("G3" 21)}
-wvSetPosition -win $_nWave1 {("G3" 20)}
-wvSetPosition -win $_nWave1 {("G3" 19)}
-wvSetPosition -win $_nWave1 {("G3" 18)}
-wvSetPosition -win $_nWave1 {("G3" 17)}
-wvSetPosition -win $_nWave1 {("G3" 16)}
-wvSetPosition -win $_nWave1 {("G3" 15)}
-wvSetPosition -win $_nWave1 {("G3" 14)}
-wvSetPosition -win $_nWave1 {("G3" 13)}
-wvSetPosition -win $_nWave1 {("G3" 12)}
-wvMoveSelected -win $_nWave1
-wvSetPosition -win $_nWave1 {("G3" 12)}
-wvSetPosition -win $_nWave1 {("G3" 14)}
-wvScrollDown -win $_nWave1 0
-wvSetPosition -win $_nWave1 {("G3" 30)}
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 54202.854734
-wvSetCursor -win $_nWave1 54202.854734
-wvSetCursor -win $_nWave1 54588.735985
-wvSetCursor -win $_nWave1 54786.163602
-wvSetCursor -win $_nWave1 54786.163602
-wvSetCursor -win $_nWave1 54884.877410
-wvSetCursor -win $_nWave1 54884.877410
-wvSetCursor -win $_nWave1 54884.877410
-wvSetCursor -win $_nWave1 54552.840055
-wvSetCursor -win $_nWave1 54947.695288
-wvSetCursor -win $_nWave1 55629.717963
-wvSetCursor -win $_nWave1 55647.665928
-wvSelectSignal -win $_nWave1 {( "G3" 12 )} 
-wvSelectSignal -win $_nWave1 {( "G3" 12 )} 
-wvSetRadix -win $_nWave1 -format UDec
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 2505579.868751
-wvSetCursor -win $_nWave1 2505634.987076
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvGetSignalOpen -win $_nWave1
-wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS/zregister"
-wvSetPosition -win $_nWave1 {("G3" 32)}
-wvSetPosition -win $_nWave1 {("G3" 32)}
-wvAddSignal -win $_nWave1 -clear
-wvAddSignal -win $_nWave1 -group {"G1" \
-{/Final_tb/clk} \
-{/Final_tb/rst_n} \
-{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
-{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
-{/Final_tb/chip0/i_MIPS/ICACHE_addr\[29:0\]} \
-{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
-{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
-{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/ICACHE_rdata\[31:0\]} \
-}
-wvAddSignal -win $_nWave1 -group {"G3" \
-{/Final_tb/chip0/i_MIPS/DCACHE_addr\[29:0\]} \
-{/Final_tb/chip0/i_MIPS/DCACHE_rdata\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/DCACHE_wdata\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
-{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
-{/Final_tb/chip0/i_MIPS/RegWrite_memwb_r} \
-{/Final_tb/chip0/i_MIPS/RegRd_memwb_r\[400\]} \
-{/Final_tb/chip0/i_MIPS/WBdata\[31:0\]} \
-{/WB<<2\[29:0\]} \
-{/Final_tb/chip0/i_MIPS/bcomp1\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/bcomp2\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zalu/out\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zalu/x\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zalu/y\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadData1\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadData2\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadReg1\[400\]} \
-{/Final_tb/chip0/i_MIPS/zregister/ReadReg2\[400\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/next_HI\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/next_LO\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/Mul_idex_r} \
-{/Final_tb/chip0/i_MIPS/Div_idex_r} \
-{/Final_tb/chip0/i_MIPS/readreg1_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/readreg2_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/stall_idex} \
-{/Final_tb/chip0/i_MIPS/zdiv/HI_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/LO_r\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/divisor_p\[31:0\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/div_iter_r\[500\]} \
-{/Final_tb/chip0/i_MIPS/zdiv/diff\[31:0\]} \
+wvAddSignal -win $_nWave1 -group {"G6" \
+{/Final_tb/chip0/DCACHE_wdata\[31:0\]} \
 {/Final_tb/chip0/i_MIPS/zregister/r_12\[31:0\]} \
 {/Final_tb/chip0/i_MIPS/zregister/r_13\[31:0\]} \
+{/Final_tb/chip0/I_cache/dirty_r\[700\]} \
+{/Final_tb/chip0/D_cache/dirty_r\[700\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G7" \
+}
+wvSelectSignal -win $_nWave1 {( "G6" 5 )} 
+wvSetPosition -win $_nWave1 {("G6" 5)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/Final_tb"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/I_cache"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/testbed"
+wvGetSignalSetScope -win $_nWave1 "/Final_tb/chip0/D_cache"
+wvSetPosition -win $_nWave1 {("G6" 6)}
+wvSetPosition -win $_nWave1 {("G6" 6)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/Final_tb/clk} \
+{/Final_tb/rst_n} \
+{/Final_tb/chip0/i_MIPS/ICACHE_stall} \
+{/Final_tb/chip0/i_MIPS/DCACHE_stall} \
+{/Final_tb/chip0/i_MIPS/ICACHE_ren} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wen} \
+{/Final_tb/chip0/i_MIPS/ICACHE_wdata\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G3" \
+{/Final_tb/chip0/i_MIPS/DCACHE_ren} \
+{/Final_tb/chip0/i_MIPS/DCACHE_wen} \
+{/Final_tb/chip0/i_MIPS/RegWrite_memwb_r} \
+{/Final_tb/chip0/I_cache/proc_read} \
+{/Final_tb/chip0/I_cache/proc_write} \
+{/Final_tb/chip0/I_cache/mem_ready} \
+}
+wvAddSignal -win $_nWave1 -group {"G5" \
+{/Final_tb/chip0/D_cache/mem_ready} \
+{/Final_tb/chip0/I_cache/proc_addr\[9:0\]} \
 }
 wvAddSignal -win $_nWave1 -group {"G4" \
 }
-wvSelectSignal -win $_nWave1 {( "G3" 31 32 )} 
-wvSetPosition -win $_nWave1 {("G3" 32)}
+wvAddSignal -win $_nWave1 -group {"G6" \
+{/Final_tb/chip0/DCACHE_wdata\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/r_12\[31:0\]} \
+{/Final_tb/chip0/i_MIPS/zregister/r_13\[31:0\]} \
+{/Final_tb/chip0/I_cache/dirty_r\[700\]} \
+{/Final_tb/chip0/D_cache/dirty_r\[700\]} \
+{/Final_tb/chip0/D_cache/state_r\[100\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G7" \
+}
+wvSelectSignal -win $_nWave1 {( "G6" 6 )} 
+wvSetPosition -win $_nWave1 {("G6" 6)}
 wvGetSignalClose -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
+wvZoom -win $_nWave1 325345.093621 807553.000237
+wvSetCursor -win $_nWave1 456773.940349
+wvSetCursor -win $_nWave1 456773.940349
+wvSetCursor -win $_nWave1 493483.376849
 wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 6043061.407430
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvSetCursor -win $_nWave1 6043667.709011
-wvSetCursor -win $_nWave1 6043557.472360
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvSetCursor -win $_nWave1 6029006.234402
-wvSetCursor -win $_nWave1 6029006.234402
-wvSetCursor -win $_nWave1 6027462.921285
-wvSetCursor -win $_nWave1 6028105.968417
-wvSetCursor -win $_nWave1 6028105.968417
-wvSetCursor -win $_nWave1 6027518.039611
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvSetCursor -win $_nWave1 6042958.519888
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvSetCursor -win $_nWave1 6043362.720943
-wvSetCursor -win $_nWave1 6043454.584819
-wvSetCursor -win $_nWave1 6043454.584819
-wvSetCursor -win $_nWave1 6043454.584819
-wvSetCursor -win $_nWave1 6043656.685346
-wvSetCursor -win $_nWave1 6043564.821470
-wvSetCursor -win $_nWave1 6043454.584819 -snap {("G3" 13)}
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvSetCursor -win $_nWave1 6043566.389411
-wvSetCursor -win $_nWave1 6038072.929627
-wvSetCursor -win $_nWave1 6038348.521255
-wvSetCursor -win $_nWave1 6038366.894030
-wvSetCursor -win $_nWave1 6038532.249007
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvDisplayGridCount -win $_nWave1 -off
-wvGetSignalClose -win $_nWave1
-wvConvertFile -win $_nWave1 -o \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb" \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd"
-wvReloadFile -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvZoomIn -win $_nWave1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvZoomOut -win $_nWave1
-wvZoomOut -win $_nWave1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvSetCursor -win $_nWave1 153192.199611
-wvSetCursor -win $_nWave1 150932.348262
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 1
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollDown -win $_nWave1 0
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvScrollUp -win $_nWave1 1
-wvSelectSignal -win $_nWave1 {( "G3" 4 )} 
-wvSaveSignal -win $_nWave1 \
-           "/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.rc"
 wvExit

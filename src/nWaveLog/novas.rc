@@ -171,9 +171,9 @@ rc,
 version = 2012.04
 wave/createBus.fm = 100,100,737,603
 wave/cmessage.fm = 100,100,520,275
+wave/saveSig.fm = 100,100,723,532
 wave/openWFile.fm = 161,53,823,696
 wave/getSignal.fm = 100,100,856,562
-wave/saveSig.fm = 100,100,723,532
 [General]
 TclAutoSource = 
 version = 2012.04

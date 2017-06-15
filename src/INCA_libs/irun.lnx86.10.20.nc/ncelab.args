@@ -2,7 +2,7 @@
 // File created by:  ncverilog
 // Do not modify this file
 //
-+define+hasHazard+SDF
++define+noHazard+SDF
 +access+r
 -noshowtop
 -ACCESS

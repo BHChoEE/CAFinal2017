@@ -3,10 +3,10 @@
 
 `timescale 1 ns/100 ps
 
-`define CYCLE 20 // You can modify your clock frequency
+`define CYCLE 5.3 // You can modify your clock frequency
 
 `define DMEM_INIT "D_mem"
-`define SDFFILE   "CHIP_syn.sdf"	// Modify your SDF file name
+`define SDFFILE   "../baseline/CHIP_syn.sdf"	// Modify your SDF file name
 
 // For different condition (I_mem, TestBed)
 `ifdef noHazard

@@ -3,6 +3,6 @@
 // Do not modify this file
 //
 Final_tb.v
-syn/CHIP_syn.v
-+define+hasHazard+SDF
+../baseline/CHIP_syn.v
++define+noHazard+SDF
 +access+r

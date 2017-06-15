@@ -6,9 +6,9 @@
 ./INCA_libs/irun.lnx86.10.20.nc
 -RUNMODE
 Final_tb.v
-syn/CHIP_syn.v
+../baseline/CHIP_syn.v
 -DEFINE
-hasHazard
+noHazard
 -DEFINE
 SDF
 -CDSLIB
