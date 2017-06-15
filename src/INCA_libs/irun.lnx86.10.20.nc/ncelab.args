@@ -2,7 +2,7 @@
 // File created by:  ncverilog
 // Do not modify this file
 //
-+define+MultDiv
++define+hasHazard+SDF
 +access+r
 -noshowtop
 -ACCESS

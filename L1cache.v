@@ -87,14 +87,14 @@ module cache(
 
 	always@(*) begin//hit
 		case(index)
-			3'd0: hit = tag_r[0] == tag && valid_r[0];
-			3'd1: hit = tag_r[1] == tag && valid_r[1];
-			3'd2: hit = tag_r[2] == tag && valid_r[2];
-			3'd3: hit = tag_r[3] == tag && valid_r[3];
-			3'd4: hit = tag_r[4] == tag && valid_r[4];
-			3'd5: hit = tag_r[5] == tag && valid_r[5];
-			3'd6: hit = tag_r[6] == tag && valid_r[6];
-			default: hit = tag_r[7] == tag && valid_r[7];
+			3'd0: hit = (tag_r[0] == tag) && valid_r[0];
+			3'd1: hit = (tag_r[1] == tag) && valid_r[1];
+			3'd2: hit = (tag_r[2] == tag) && valid_r[2];
+			3'd3: hit = (tag_r[3] == tag) && valid_r[3];
+			3'd4: hit = (tag_r[4] == tag) && valid_r[4];
+			3'd5: hit = (tag_r[5] == tag) && valid_r[5];
+			3'd6: hit = (tag_r[6] == tag) && valid_r[6];
+			default: hit = (tag_r[7] == tag) && valid_r[7];
 		endcase
 
 		case(index)
@@ -191,12 +191,11 @@ module cache(
 					state_w = state_r;
 				end
 				else begin
+					stall = 1'b1;
 					if(dirty) begin
-						stall = 1'b1;
 						state_w = 2'd2;
 					end
 					else begin
-						stall = 1'b1;
 						state_w = 2'd1;
 					end
 				end
@@ -224,9 +223,9 @@ module cache(
 					end
 				end
 				else begin
+					stall = 1'b1;
 					for(i = 0; i < 8; i = i + 1)
 						block_w[i] = block_r[i];
-					stall = 1'b1;
 					if(dirty)
 						state_w = 2'd2;
 					else
@@ -249,6 +248,7 @@ module cache(
 			write = 1'b0;
 			dirty_w = dirty_r;
 			valid_w = valid_r;
+			stall = 1'd1;
 			if(mem_ready) begin
 				for(i = 0; i < 8; i = i + 1) begin
 					if(index == i) begin
@@ -260,11 +260,9 @@ module cache(
 						tag_w[i] = tag_r[i];
 					end
 				end
-				stall = 1'b1;
 				state_w = 2'd0;
 			end
 			else begin
-				stall = 1'b1;
 				state_w = state_r;
 				for(i = 0; i < 8; i = i + 1) begin
 					block_w[i] = block_r[i];
@@ -316,10 +314,22 @@ always@( posedge clk or posedge proc_reset ) begin
     end
     else begin
     	state_r <= state_w;
-		for(i = 0; i < 8; i = i + 1) begin
-			block_r[i] <= block_w[i];
-			tag_r[i] <= tag_w[i];
-		end
+		block_r[0] <= block_w[0];
+		block_r[1] <= block_w[1];
+		block_r[2] <= block_w[2];
+		block_r[3] <= block_w[3];
+		block_r[4] <= block_w[4];
+		block_r[5] <= block_w[5];
+		block_r[6] <= block_w[6];
+		block_r[7] <= block_w[7];
+		tag_r[0] <= tag_w[0];
+		tag_r[1] <= tag_w[1];
+		tag_r[2] <= tag_w[2];
+		tag_r[3] <= tag_w[3];
+		tag_r[4] <= tag_w[4];
+		tag_r[5] <= tag_w[5];
+		tag_r[6] <= tag_w[6];
+		tag_r[7] <= tag_w[7];
 		dirty_r <= dirty_w;
 		valid_r <= valid_w;
     end

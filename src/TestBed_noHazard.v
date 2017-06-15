@@ -79,8 +79,12 @@ module	TestBed(
 							begin
 								nxt_error_num = 0;
 								nxtstate = state_check;
+								$display("%d  %d",addr,data);
 							end	 	
-							else nxtstate = state_idle;
+							else begin
+								nxtstate = state_idle;
+								$display("%d  %d",addr,data);
+							end
 						end
 		state_check:	begin
 							nxtduration = duration + 1;

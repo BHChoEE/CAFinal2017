@@ -6,7 +6,7 @@ module mul(
     LO,
     next_HI,
     next_LO,
-    mul_stall,
+    mul_stall
 );
 //=================== in / out declaration ===================
     input               clk;

@@ -17,7 +17,9 @@ module Control(
 	Branch,
 	Shift,
 	Mul,
-	Div
+	Div,
+	HI,
+	LO
 );
 
 //input output
@@ -40,6 +42,8 @@ module Control(
 	output Shift;
 	output Mul;
 	output Div;
+	output HI;
+	output LO;
 //reg & wire
 	reg[16:0] ctrl;
 //combinational
@@ -60,7 +64,8 @@ module Control(
 	assign Shift = ctrl[14];
 	assign Mul = ctrl[15];
 	assign Div = ctrl[16];
-
+	assign HI = inst == 6'd0 && funct == 6'd16;
+	assign LO = inst == 6'd0 && funct == 6'd18;
 	always@(*) begin
 		case(inst)
 			6'h0: begin//R_type

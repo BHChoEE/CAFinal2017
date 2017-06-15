@@ -170,10 +170,10 @@ module alu(
         end
         //    sll:    0101
         else if(ctrl == 4'b0101)
-            out = x << y;
+            out = y << x;
         //    sra:    1000
         else if(ctrl == 4'b1000)
-            out = x >>> y;
+            out = y >>> x;
         //    srl:    1001
         else if(ctrl == 4'b1001)
             out = x >> y;

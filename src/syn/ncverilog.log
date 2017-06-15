@@ -1,0 +1,10 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Jun 15, 2017 at 15:45:47 CST
+ncverilog
+	Final_tb.v
+	../CHIP_syn.v
+	+define+hasHazard+SDF
+	+access+r
+ncverilog: *E,FILEMIS: Cannot find the provided file Final_tb.v.
+ncverilog: *E,FILEMIS: Cannot find the provided file ../CHIP_syn.v.
+TOOL:	ncverilog	10.20-s114: Exiting on Jun 15, 2017 at 15:45:47 CST  (total: 00:00:00)

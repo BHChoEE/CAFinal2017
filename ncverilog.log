@@ -1,26 +1,30 @@
 ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
-TOOL:	ncverilog	10.20-s114: Started on Jun 07, 2017 at 12:56:56 CST
+TOOL:	ncverilog	10.20-s114: Started on Jun 13, 2017 at 22:04:25 CST
 ncverilog
 	Final_tb.v
 	CHIP.v
-	slow_memory.v
-	../Top.v
 	../L1cache.v
-	../Control.v
-	../submodule.v
-	../HazardDetection.v
+	../Top2.v
 	../forward_jump.v
 	../forwardingUnit.v
-	+define+noHazrd
+	../submodule2.v
+	../Control.v
+	../HazardDetection.v
+	../mul_div.v
+	../BranchPrd.v
+	../register.v
+	+define+Assembly
 	+access+r
 ncverilog: *E,FILEMIS: Cannot find the provided file Final_tb.v.
 ncverilog: *E,FILEMIS: Cannot find the provided file CHIP.v.
-ncverilog: *E,FILEMIS: Cannot find the provided file slow_memory.v.
-ncverilog: *E,FILEMIS: Cannot find the provided file ../Top.v.
 ncverilog: *E,FILEMIS: Cannot find the provided file ../L1cache.v.
-ncverilog: *E,FILEMIS: Cannot find the provided file ../Control.v.
-ncverilog: *E,FILEMIS: Cannot find the provided file ../submodule.v.
-ncverilog: *E,FILEMIS: Cannot find the provided file ../HazardDetection.v.
+ncverilog: *E,FILEMIS: Cannot find the provided file ../Top2.v.
 ncverilog: *E,FILEMIS: Cannot find the provided file ../forward_jump.v.
 ncverilog: *E,FILEMIS: Cannot find the provided file ../forwardingUnit.v.
-TOOL:	ncverilog	10.20-s114: Exiting on Jun 07, 2017 at 12:56:56 CST  (total: 00:00:00)
+ncverilog: *E,FILEMIS: Cannot find the provided file ../submodule2.v.
+ncverilog: *E,FILEMIS: Cannot find the provided file ../Control.v.
+ncverilog: *E,FILEMIS: Cannot find the provided file ../HazardDetection.v.
+ncverilog: *E,FILEMIS: Cannot find the provided file ../mul_div.v.
+ncverilog: *E,FILEMIS: Cannot find the provided file ../BranchPrd.v.
+ncverilog: *E,FILEMIS: Cannot find the provided file ../register.v.
+TOOL:	ncverilog	10.20-s114: Exiting on Jun 13, 2017 at 22:04:25 CST  (total: 00:00:00)

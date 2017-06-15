@@ -51,7 +51,7 @@ module MIPS_Pipeline(
 	reg take_r,take_w;
 	//ID
 	wire PCSrc,RegWrite,ALUSrc,RegDst,MemWrite,MemRead,MemtoReg,Jump,JumpR,raWrite,PCWrite,IFIDWrite,stall,stallJ,Branch,Shift;
-	wire IF_Flush,Mul,Div;
+	wire IF_Flush,Mul,Div,HI,LO;
 	reg IF_Flush2;
 	wire[1:0] ALUOp,ForwardJA,ForwardJB;
 	reg equal;
@@ -75,6 +75,8 @@ module MIPS_Pipeline(
 	reg Shift_idex_r,Shift_idex_w;
 	reg Mul_idex_r,Mul_idex_w;
 	reg Div_idex_r,Div_idex_w;
+	reg HI_idex_r,HI_idex_w;
+	reg LO_idex_r,LO_idex_w;
 
 	reg[31:0] readreg1_r,readreg1_w;
 	reg[31:0] readreg2_r,readreg2_w;
@@ -131,7 +133,7 @@ module MIPS_Pipeline(
 	assign DCACHE_addr = ALUresult_r[31:2];
 	assign DCACHE_wdata = readreg2_2_r;
 	//submodule
-	Control zctrl(.inst(inst_r[31-:6]),.funct(inst_r[5-:6]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALUSrc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JumpR(JumpR),.raWrite(raWrite),.Branch(Branch),.Shift(Shift),.Mul(Mul),.Div(Div));	
+	Control zctrl(.inst(inst_r[31-:6]),.funct(inst_r[5-:6]),.eq(equal),.PCSrc(PCSrc),.IF_Flush(IF_Flush),.RegWrite(RegWrite),.ALURsc(ALUSrc),.ALUOp(ALUOp),.RegDst(RegDst),.MemWrite(MemWrite),.MemRead(MemRead),.MemtoReg(MemtoReg),.Jump(Jump),.JumpR(JumpR),.raWrite(raWrite),.Branch(Branch),.Shift(Shift),.Mul(Mul),.Div(Div),.HI(HI),.LO(LO));	
 
 	BranchPrd zbranchprd(.clk(i_clk),.rst(rst_n),.taken(taken),.take(take),.Branch(Branch));
 
@@ -146,9 +148,9 @@ module MIPS_Pipeline(
 
 	alu zalu(.ctrl(ALUctrl),.x(ALUin1),.y(ALUin2),.out(ALUresult));
 
-	mul zmul(i_clk,rst_n,Mul_idex_r,readreg1_r,readreg2_r,HI_mul,LO_mul,stall_mul);
+	mul zmul(i_clk,rst_n,Mul_idex_r,readreg1_forward,readreg2_forward,HI_mul,LO_mul,stall_mul);
 
-	div zdiv(i_clk,rst_n,Div_idex_r,readreg2_r,readreg1_r,HI_div,LO_div,stall_div);
+	div zdiv(i_clk,rst_n,Div_idex_r,readreg2_forward,readreg1_forward,HI_div,LO_div,stall_div);
 
 	Forwarding zforwarding(.IDEX_RegRt(RegRt_idex_r),.IDEX_RegRs(RegRs_idex_r),.EXMEM_RegRd(RegRd_exmem_r),.MEMWB_RegRd(RegRd_memwb_r),.EXMEM_RegWrite(RegWrite_exmem_r),.MEMWB_RegWrite(RegWrite_memwb_r),.forwardA(forwardA),.forwardB(forwardB));
 
@@ -227,6 +229,8 @@ module MIPS_Pipeline(
 			Shift_idex_w = (stall || stallJ) ? 1'b0 : Shift;
 			Div_idex_w = (stall || stallJ) ? 1'b0 : Div;
 			Mul_idex_w = (stall || stallJ) ? 1'b0 : Mul;
+			HI_idex_w = (stall || stallJ) ? 1'b0 : HI;
+			LO_idex_w = (stall || stallJ) ? 1'b0 : LO;
 		end
 		else begin
 			RegWrite_idex_w =RegWrite_idex_r;
@@ -240,6 +244,8 @@ module MIPS_Pipeline(
 			Shift_idex_w = Shift_idex_r;
 			Mul_idex_w = Mul_idex_r;
 			Div_idex_w = Div_idex_r;
+			HI_idex_w = HI_idex_r;
+			LO_idex_w = LO_idex_r;
 		end
 
 		if(!stall_idex) begin
@@ -258,33 +264,15 @@ module MIPS_Pipeline(
 			Funct_idex_w = Funct_idex_r;
 		                               
 			RegRs_idex_w = RegRs_idex_r;
-			RegRt_idex_w = RegRt_idex_r ;
-			RegRd_idex_w = RegRd_idex_r ;
+			RegRt_idex_w = RegRt_idex_r;
+			RegRd_idex_w = RegRd_idex_r;
 			shamt_idex_w = shamt_idex_r;
 		end
 	end
 
 	always@(*) begin
 		if(!stall_idex) begin
-			if(inst_r[5:0] == 6'b010000) begin
-				if(Mul_idex_r)
-					readreg1_w = HI_mul;
-				else if(Div_idex_r)
-					readreg1_w = HI_div;
-				else
-					readreg1_w = HI_r;
-			end
-			else if(inst_r[5:0] == 6'b010010) begin
-				if(Mul_idex_r)
-					readreg1_w = LO_mul;
-				else if(Div_idex_r)
-					readreg1_w = LO_div;
-				else
-					readreg1_w = LO_r;
-			end
-			else
-				readreg1_w = Readdata1;
-
+			readreg1_w = Readdata1;
 			readreg2_w = Readdata2;
 			sign_ext_w = sign_ext;
 		end
@@ -312,7 +300,7 @@ module MIPS_Pipeline(
 	//equal for Branch
 	always@(*) begin
 		case(ForwardJA)
-			2'b01: bcomp1 = ALUresult_r; 
+			2'b01: bcomp1 = ALUresult_r;
 			2'b10: bcomp1 = WBdata;
 			default: bcomp1 = Readdata1;
 		endcase
@@ -370,6 +358,10 @@ module MIPS_Pipeline(
 
 		if(Shift_idex_r)
 			ALUin1 = {{27{1'b0}},{shamt_idex_r}};
+		else if(HI_idex_r)
+			ALUin1 = HI_r;
+		else if(LO_idex_r)
+			ALUin1 = LO_r;
 		else
 			ALUin1 = readreg1_forward;
 
@@ -440,6 +432,8 @@ module MIPS_Pipeline(
 			Shift_idex_r <= 1'b0;
 			Div_idex_r <= 1'b0;
 			Mul_idex_r <= 1'b0;
+			HI_idex_r <= 1'b0;
+			LO_idex_r <= 1'b0;
 			PC_4_idex_r <= 31'd0;
 			Opcode_idex_r <= 6'd0;
 			Funct_idex_r <= 6'd0;
@@ -487,6 +481,8 @@ module MIPS_Pipeline(
 			Shift_idex_r <= Shift_idex_w;
 			Div_idex_r <= Div_idex_w;
 			Mul_idex_r <= Mul_idex_w;
+			HI_idex_r <= HI_idex_w;
+			LO_idex_r <= LO_idex_w;
 			Opcode_idex_r <= Opcode_idex_w;
 			Funct_idex_r <= Funct_idex_w;
 

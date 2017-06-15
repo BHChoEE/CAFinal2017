@@ -1,12 +1,12 @@
 // this is a test bench feeds initial instruction and data
 // the processor output is not verified
 
-`timescale 1 ns/10 ps
+`timescale 1 ns/100 ps
 
-`define CYCLE 5 // You can modify your clock frequency
+`define CYCLE 20 // You can modify your clock frequency
 
 `define DMEM_INIT "D_mem"
-`define SDFFILE   "./CHIP_syn.sdf"	// Modify your SDF file name
+`define SDFFILE   "CHIP_syn.sdf"	// Modify your SDF file name
 
 // For different condition (I_mem, TestBed)
 `ifdef noHazard
@@ -27,12 +27,12 @@
 `endif
 `ifdef Assembly
 	`define IMEM_INIT "I_mem_Assembly"
-	`define DMEM_INIT "D_mem_Assembly"
+	//`define DMEM_INIT "D_mem_Assembly"
 	`include "./TestBed_Assembly.v"
 `endif
 `ifdef MultDiv
 	`define IMEM_INIT "I_mem_MultDiv"
-	// `include "./TestBed_MultDiv.v"
+	//`include "./TestBed_MultDiv.v"
 `endif			
 
 module Final_tb;
@@ -144,7 +144,7 @@ module Final_tb;
 		#2 rst_n = 1'b0;
 		#(`CYCLE*8.5) rst_n = 1'b1;
      
-		#(`CYCLE*10000)	 $finish; // calculate clock cycles for all operation
+		#(`CYCLE*80000)	 $finish; // calculate clock cycles for all operation
 		$display("-----------------------------------------------------\n");
 		$display("Error!!! There is something wrong with your code ...!\n");
 	 	$display("------The test result is .....FAIL ------------------\n");

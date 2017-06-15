@@ -57,6 +57,20 @@ wire [31:0] DCACHE_wdata;
 wire        DCACHE_stall;
 wire [31:0] DCACHE_rdata;
 
+/*wire        IL2CACHE_ren;
+wire        IL2CACHE_wen;
+wire [27:0] IL2CACHE_addr;
+wire [31:0] IL2CACHE_wdata;
+wire        IL2CACHE_stall;
+wire [31:0] IL2CACHE_rdata;
+
+wire        DL2CACHE_ren;
+wire        DL2CACHE_wen;
+wire [27:0] DL2CACHE_addr;
+wire [31:0] DL2CACHE_wdata;
+wire        DL2CACHE_stall;
+wire [31:0] DL2CACHE_rdata;*/
+
 //=========================================
 	// Note that the overall design of your MIPS includes:
 	// 1. pipelined MIPS processor
@@ -117,4 +131,36 @@ wire [31:0] DCACHE_rdata;
 		mem_wdata_I,
 		mem_ready_I
 	);
+
+/*	l2cache D_L2cache(
+		clk,
+		~rst_n,
+		IL2CACHE_ren,
+		IL2CACHE_wen,
+		IL2CACHE_addr,
+		IL2CACHE_wdata,
+		IL2CACHE_ready,
+		IL2CACHE_rdata,
+		mem_read_I,
+		mem_write_I,
+		mem_addr_I,
+		mem_rdata_I,
+		mem_wdata_I,
+		mem_ready
+	);
+
+	l2cache I_L2cache(
+		DL2CACHE_ren,
+		DL2CACHE_wen,
+		DL2CACHE_addr,
+		DL2CACHE_wdata,
+		DL2CACHE_ready,
+		DL2CACHE_rdata,
+		mem_read_I,
+		mem_write_I,
+		mem_addr_I,
+		mem_rdata_I,
+		mem_wdata_I,
+		mem_ready
+	);*/
 endmodule

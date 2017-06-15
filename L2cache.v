@@ -1,4 +1,4 @@
-module cache(
+module l2cache(
     clk,
     cache_reset,
     cache_read,
@@ -261,7 +261,7 @@ module cache(
 			else begin
 				state_w = state_r;
 				for(i = 0; i < LARGE_BLOCK_NUM; i = i + 1) begin
-                    for (j = 0; j < SMALL_BLOCK_NUM; j = j + 1)
+                    for (j = 0; j < SMALL_BLOCK_NUM; j = j + 1) begin
                         block_w[i] = block_r[i];
                         tag_w[i] = tag_r[i];
                     end
@@ -312,7 +312,7 @@ module cache(
 			write = 1'b1;
 			// stall = 1'b1;
             for(i = 0; i < LARGE_BLOCK_NUM; i = i + 1) begin
-                for (j = 0; j < SMALL_BLOCK_NUM; j = j + 1)
+                for (j = 0; j < SMALL_BLOCK_NUM; j = j + 1) begin
                     block_w[i] = block_r[i];
                     tag_w[i] = tag_r[i];
                 end

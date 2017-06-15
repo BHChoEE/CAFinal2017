@@ -53,6 +53,12 @@ module BranchPrd(
 					end
 			endcase
 		end
+		case(state_r)
+			2'b00:take_r = 1'b1;
+			2'b01:take_r = 1'b1;
+			2'b10:take_r = 1'b0;
+			default:take_r = 1'b0;
+		endcase
 	end
 //sequential
 	always@(posedge clk or negedge rst) begin

@@ -429,7 +429,7 @@ waveform_vertical_scroll_bar = TRUE
 scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
-viewPort = -4 1 1366 705 200 99
+viewPort = -4 1 1366 705 200 80
 signalSpacing = 3
 digitalSignalHeight = 15
 analogSignalHeight = 98

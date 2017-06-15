@@ -3,15 +3,6 @@
 // Do not modify this file
 //
 Final_tb.v
-../Top2.v
-../L1cache.v
-../submodule2.v
-../forward_jump.v
-../forwardingUnit.v
-../HazardDetection.v
-../mul_div.v
-../Control.v
-../BranchPrd.v
-../register.v
-+define+MultDiv
+syn/CHIP_syn.v
++define+hasHazard+SDF
 +access+r

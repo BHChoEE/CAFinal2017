@@ -3,13 +3,4 @@
 // Do not modify this file
 //
 /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final_tb.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/Top2.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/L1cache.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/submodule2.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/forward_jump.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/forwardingUnit.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/HazardDetection.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/mul_div.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/Control.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/BranchPrd.v
-/home/raid7_2/userb03/b03085/ca/CAFinal2017/register.v
+/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/syn/CHIP_syn.v
