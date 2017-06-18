@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version G-2012.06 for amd64 -- May 30, 2012
-#@ # Date:   Thu Jun 15 17:44:49 2017
+#@ # Date:   Sun Jun 18 16:30:05 2017
 #@ # Run by: b03085@cad29
 #@ 
 
@@ -4826,4 +4826,3 @@ source -echo -verbose /home/raid7_2/userb03/b03085/ca/CAFinal2017/baseline/synth
 #@ # -- End source /home/raid7_2/userb03/b03085/ca/CAFinal2017/baseline/synthesis.scr
 
 report_timing
-report_area

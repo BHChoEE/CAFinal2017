@@ -1,5 +1,5 @@
 ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
-TOOL:	ncverilog	10.20-s114: Started on Jun 15, 2017 at 17:14:15 CST
+TOOL:	ncverilog	10.20-s114: Started on Jun 18, 2017 at 16:27:09 CST
 ncverilog
 	Final_tb.v
 	../baseline/CHIP_syn.v
@@ -5061,6 +5061,9 @@ ncelab: (./tsmc13.v,18240): Q
 
 ncelab: *W,MXWARN: Reached maximum warning limit for 'CUVWSP'(1000).
 	Reading SDF file from location "../baseline/CHIP_syn.sdf"
+	Compiled SDF file "CHIP_syn.sdf.X" older than source SDF file "../baseline/CHIP_syn.sdf".
+	Recompiling.
+	Writing compiled SDF file to "CHIP_syn.sdf.X".
 	Annotating SDF timing data:
 		Compiled SDF file:     CHIP_syn.sdf.X
 		Log file:              
@@ -6195,8 +6198,8 @@ ncelab: *W,MEMODR (./Final_tb.v,133|37): $readmem default memory order incompati
 			streams:   4, words:  3073
 		worklib.MIPS_Pipeline:v <0x469eb494>
 			streams:   2, words:   216
-		worklib.TestBed:v <0x24f88c20>
-			streams:   9, words:  8766
+		worklib.TestBed:v <0x417e3151>
+			streams:   9, words:  5893
 		worklib.alu:v <0x41806667>
 			streams:   0, words:     0
 		worklib.cache_0:v <0x56121bb1>
@@ -6235,54 +6238,13 @@ START!!! Simulation Start .....
 
 -----------------------------------------------------
 
-         x           x
-         x           x
-         X           x
-         X           x
-         X           x
-         X           x
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           X
-         X           0
-         X           0
-         0           0
-         1           0
-         0           0
-         1           0
-         0           0
-         1           0
-         0           0
-         0           4
-         0           4
-         0           5
-addr=00000001: data=         0,answar=         4
-addr=00000002: data=         0,answar=         4
 --------------------------- Simulation FINISH !!---------------------------
 ============================================================================
 
  \(^o^)/ CONGRATULATIONS!!  The simulation result is PASS!!!
 
 ============================================================================
-Simulation complete via $finish(1) at time 378950 PS + 0
+Simulation complete via $finish(1) at time 386100 PS + 0
 ./Final_tb.v:159 	       #(`CYCLE) $finish;		   
 ncsim> exit
-TOOL:	ncverilog	10.20-s114: Exiting on Jun 15, 2017 at 17:14:21 CST  (total: 00:00:06)
+TOOL:	ncverilog	10.20-s114: Exiting on Jun 18, 2017 at 16:27:15 CST  (total: 00:00:06)

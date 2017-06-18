@@ -1,3 +1,3 @@
 Command Line: /usr/spring_soft/verdi/cur/platform/LINUXAMD64/bin/vfast -silent -del . -o /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd.fsdb -ft verilog /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/Final.vcd
 uname(Linux cad29 2.6.32-642.11.1.el6.x86_64 #1 SMP Fri Nov 18 19:25:05 UTC 2016 x86_64)
-au time 0.184261 0.132980 0.005000 delta 10891264 12992512 total 10957816 13059064
+au time 3.606242 0.974852 0.031996 delta 27734016 29835264 total 27800568 29901816
