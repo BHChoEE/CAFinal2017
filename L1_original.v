@@ -1,4 +1,4 @@
-module L1cache(
+module cache(
     clk,
     proc_reset,
     proc_read,
@@ -12,8 +12,7 @@ module L1cache(
     mem_addr,
     mem_rdata,
     mem_wdata,
-    mem_ready,
-	cache_reset
+    mem_ready
 );
     
 //==== input/output definition ============================
@@ -29,9 +28,8 @@ module L1cache(
     input  [127:0] mem_rdata;
     input          mem_ready;
     output         mem_read, mem_write;
-    output [27:0] mem_addr;
-    output reg [127:0] mem_wdata;
-	output 		   cache_reset;
+    output  [27:0] mem_addr;
+    output [127:0] mem_wdata;
 //====parameters===========================================
 	integer i;
 //==== wire/reg definition ================================
@@ -71,11 +69,11 @@ module L1cache(
 	assign offset = proc_addr[1:0];
 	assign index = proc_addr[4:2];
 	assign tag = proc_addr[29:5];
-	assign cache_reset = proc_reset;
 
 	assign proc_stall = stall;
 	assign proc_rdata = data;
 	assign mem_addr = address;
+	assign mem_wdata = data2mem;
 	assign mem_read = read;
 	assign mem_write = write;
 /*	assign d0 = block_r[0];
@@ -152,14 +150,20 @@ module L1cache(
 		endcase
 	end
 
-	always@(*) begin
-		if (!mem_write) mem_wdata = rdata;
-		else mem_wdata = data2mem;	
-		// address = {tag, index};
+	always@(*) begin	
 		case(state_r)
-			2'd1: 		address = {tag,index};
-			2'd2: 	 	address = {tagr,index};
-			default: 	address = {tag,index};
+			2'd1: begin
+				address = {tag,index};
+				data2mem = rdata;
+			end
+			2'd2: begin
+				address = {tagr,index};
+				data2mem = rdata;
+			end
+			default: begin	
+				address = {tag,index};
+				data2mem = rdata;
+			end
 		endcase
 	end
 
@@ -222,10 +226,8 @@ module L1cache(
 					stall = 1'b1;
 					for(i = 0; i < 8; i = i + 1)
 						block_w[i] = block_r[i];
-					if(dirty) begin
+					if(dirty)
 						state_w = 2'd2;
-						// address = {tagr,index};
-					end
 					else
 						state_w = 2'd1;
 				end
@@ -336,8 +338,6 @@ always@( posedge clk or posedge proc_reset ) begin
 		tag_r[7] <= tag_w[7];
 		dirty_r <= dirty_w;
 		valid_r <= valid_w;
-		data2mem <= mem_wdata;
-		// mem_addr <= address;
     end
 end
 
