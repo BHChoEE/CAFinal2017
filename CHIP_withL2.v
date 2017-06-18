@@ -57,13 +57,21 @@ wire [31:0] DCACHE_wdata;
 wire        DCACHE_stall;
 wire [31:0] DCACHE_rdata;
 
-wire        	D_conn_read,
-wire        	D_conn_write,
-wire [27:0]     D_conn_addr,
-wire [127:0]    D_conn_rdata,
-wire [127:0]    D_conn_wdata,
-wire            D_conn_ready,
-wire     	    D_conn_reset
+wire        	D_conn_read;
+wire        	D_conn_write;
+wire [27:0]     D_conn_addr;
+wire [127:0]    D_conn_rdata;
+wire [127:0]    D_conn_wdata;
+wire            D_conn_ready;
+wire     	    D_conn_reset;
+
+wire        	I_conn_read;
+wire        	I_conn_write;
+wire [27:0]     I_conn_addr;
+wire [127:0]    I_conn_rdata;
+wire [127:0]    I_conn_wdata;
+wire            I_conn_ready;
+wire     	    I_conn_reset;
 
 //=========================================
 	// Note that the overall design of your MIPS includes:
@@ -135,6 +143,23 @@ wire     	    D_conn_reset
 		ICACHE_wdata,
 		ICACHE_stall,
 		ICACHE_rdata,
+        I_conn_read,
+        I_conn_write,
+        I_conn_addr,
+        I_conn_rdata,
+        I_conn_wdata,
+        I_conn_ready,
+	    I_conn_reset
+	);
+	L2cache I2_cache(
+		clk,
+        I_conn_reset,
+        I_conn_read,
+        I_conn_write,
+        I_conn_addr,
+        I_conn_wdata,
+        I_conn_ready,
+        I_conn_rdata,
 		mem_read_I,
 		mem_write_I,
 		mem_addr_I,
@@ -142,5 +167,21 @@ wire     	    D_conn_reset
 		mem_wdata_I,
 		mem_ready_I
 	);
+	// L1cache I_cache(
+	// 	clk,
+	// 	~rst_n,
+	// 	ICACHE_ren,
+	// 	ICACHE_wen,
+	// 	ICACHE_addr,
+	// 	ICACHE_wdata,
+	// 	ICACHE_stall,
+	// 	ICACHE_rdata,
+	// 	mem_read_I,
+	// 	mem_write_I,
+	// 	mem_addr_I,
+	// 	mem_rdata_I,
+	// 	mem_wdata_I,
+	// 	mem_ready_I
+	// );
 endmodule
 
