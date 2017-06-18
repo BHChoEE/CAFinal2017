@@ -63,7 +63,6 @@ wire [27:0]     D_conn_addr;
 wire [127:0]    D_conn_rdata;
 wire [127:0]    D_conn_wdata;
 wire            D_conn_ready;
-wire     	    D_conn_reset;
 
 wire        	I_conn_read;
 wire        	I_conn_write;
@@ -71,7 +70,6 @@ wire [27:0]     I_conn_addr;
 wire [127:0]    I_conn_rdata;
 wire [127:0]    I_conn_wdata;
 wire            I_conn_ready;
-wire     	    I_conn_reset;
 
 //=========================================
 	// Note that the overall design of your MIPS includes:
@@ -114,12 +112,11 @@ wire     	    I_conn_reset;
         D_conn_addr,
         D_conn_rdata,
         D_conn_wdata,
-        D_conn_ready,
-	    D_conn_reset
+        D_conn_ready
 	);
 	L2cache D2_cache(
 		clk,
-        D_conn_reset,
+        ~rst_n,
         D_conn_read,
         D_conn_write,
         D_conn_addr,
@@ -149,11 +146,10 @@ wire     	    I_conn_reset;
         I_conn_rdata,
         I_conn_wdata,
         I_conn_ready,
-	    I_conn_reset
 	);
 	L2cache I2_cache(
 		clk,
-        I_conn_reset,
+        ~rst_n,
         I_conn_read,
         I_conn_write,
         I_conn_addr,
