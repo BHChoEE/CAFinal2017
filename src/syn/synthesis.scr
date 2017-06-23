@@ -6,12 +6,11 @@ read_verilog ../../forward_jump.v
 read_verilog ../../forwardingUnit.v
 read_verilog ../../HazardDetection.v
 read_verilog ../../register.v
-read_verilog ../../mul_div.v
 read_verilog ../../BranchPrd.v
-read_verilog ../../Top2.v
+read_verilog ../../BrPred/Top2.v
 current_design CHIP 
 
-set cycle  20 
+set cycle  5 
 
 
 create_clock -name CLK -period $cycle [get_ports clk]
@@ -34,6 +33,6 @@ set_output_delay $t_out -clock CLK [all_outputs]
 
 
 compile
-write_sdf -version 2.1 ../CHIP_syn.sdf
-write -format verilog -hier -output CHIP_syn.v
-write -format ddc     -hier -output CHIP_syn.ddc  
+write_sdf -version 2.1 ../../BrPred/CHIP_syn.sdf
+write -format verilog -hier -output ../../BrPred/CHIP_syn.v
+write -format ddc     -hier -output ../../BrPred/CHIP_syn.ddc  
