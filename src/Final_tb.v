@@ -3,10 +3,10 @@
 
 `timescale 1 ns/100 ps
 
-`define CYCLE 5.40 // You can modify your clock frequency
+`define CYCLE 5.6 // You can modify your clock frequency
 
 `define DMEM_INIT "D_mem"
-`define SDFFILE   "../baseline/CHIP_syn.sdf"	// Modify your SDF file name
+`define SDFFILE   "../BrPred/CHIP_syn.sdf"	// Modify your SDF file name
 
 // For different condition (I_mem, TestBed)
 `ifdef noHazard
@@ -32,7 +32,7 @@
 `endif
 `ifdef MultDiv
 	`define IMEM_INIT "I_mem_MultDiv"
-	//`include "./TestBed_MultDiv.v"
+	`include "./TestBed_MultDiv.v"
 `endif			
 
 module Final_tb;

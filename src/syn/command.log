@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version G-2012.06 for amd64 -- May 30, 2012
-#@ # Date:   Thu Jun 15 15:47:17 2017
+#@ # Date:   Fri Jun 23 01:38:08 2017
 #@ # Run by: b03085@cad29
 #@ 
 
@@ -4794,12 +4794,11 @@ source -echo -verbose /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/syn/synthe
 #@ read_verilog ../../forwardingUnit.v
 #@ read_verilog ../../HazardDetection.v
 #@ read_verilog ../../register.v
-#@ read_verilog ../../mul_div.v
 #@ read_verilog ../../BranchPrd.v
-#@ read_verilog ../../Top2.v
+#@ read_verilog ../../BrPred/Top2.v
 #@ current_design CHIP 
 #@ 
-#@ set cycle  20 
+#@ set cycle  5 
 #@ 
 #@ 
 #@ create_clock -name CLK -period $cycle [get_ports clk]
@@ -4822,9 +4821,10 @@ source -echo -verbose /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/syn/synthe
 #@ 
 #@ 
 #@ compile
-#@ write_sdf -version 2.1 ../CHIP_syn.sdf
-#@ write -format verilog -hier -output CHIP_syn.v
-#@ write -format ddc     -hier -output CHIP_syn.ddc  
+#@ write_sdf -version 2.1 ../../BrPred/CHIP_syn.sdf
+#@ write -format verilog -hier -output ../../BrPred/CHIP_syn.v
+#@ write -format ddc     -hier -output ../../BrPred/CHIP_syn.ddc  
 #@ # -- End source /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/syn/synthesis.scr
 
 report_timing
+exit

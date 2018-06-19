@@ -165,15 +165,15 @@ StickSet-TextColor = black
 [FSM_Dlg-Print]
 Orientation = Landscape
 [FileBrowser]
-nWaveOpenFsdbDirHistory = /home/raid7_2/userb03/b03085,/home/raid7_2/userb03/b03085/ca/HW5/cache.fsdb.fsdb,/home/raid7_2/userb03/b03085/B03901116_VLSI/inverter.tr0,/home/raid7_2/userb03/b03085/B03901116_VLSI/B03901116/HW2_2.tr0,/home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.\
-rc,
+nWaveOpenFsdbDirHistory = /home/raid7_2/userb03/b03085/ca/CAFinal2017/src/final.rc,/home/raid7_2/userb03/b03085/B03901116_VLSI/B03901116/HW2_2.tr0,/home/raid7_2/userb03/b03085/B03901116_VLSI/inverter.tr0,/home/raid7_2/userb03/b03085/ca/HW5/cache.fsdb.fsdb,/home/raid7_2/userb03/b030\
+85,
 [Form]
 version = 2012.04
 wave/createBus.fm = 100,100,737,603
-wave/cmessage.fm = 100,100,520,275
 wave/saveSig.fm = 100,100,723,532
 wave/openWFile.fm = 161,53,823,696
 wave/getSignal.fm = 100,100,856,562
+wave/cmessage.fm = 100,100,520,275
 [General]
 TclAutoSource = 
 version = 2012.04
